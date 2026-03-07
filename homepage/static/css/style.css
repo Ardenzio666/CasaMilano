@@ -719,3 +719,7 @@ body {
   margin-right: 0px;
   margin-left: 0px;
 }
+
+#main-nav {
+    background-color: #2b2b2b;
+}
