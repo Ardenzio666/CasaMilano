@@ -1,17 +1,21 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vru*47tq9@d9auv(aqxf6r-l-_h!817#y3fw7i29o+h=9w&7)h'
+SECRET_KEY = os.environ.get("SECRET_KEY","")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG")
 
 ALLOWED_HOSTS = []
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'casamilano',
-        'USER': 'casamilanoadmin',
-        'PASSWORD': 'Porcino1!',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
         'HOST': 'localhost'
     }
 }
