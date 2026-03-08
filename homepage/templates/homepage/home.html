@@ -11,7 +11,7 @@
 
       <!-- LOGO PRINCIPALE -->
       <div class="mb-4">
-        <img src="{% static 'img/logo.png' %}"
+        <img src="{% static 'homepage/img/logo.png' %}"
              alt="Logo Casa Milano"
              class="img-fluid"
              style="max-width: 220px;">
@@ -39,7 +39,7 @@
 <section class="mb-5">
   <div class="card border-0 shadow-custom">
     <div class="card-body p-0">
-      <img src="{% static 'img/homepage/hero.jpeg' %}"
+      <img src="{% static 'homepage/img/homepage/hero.jpeg' %}"
            alt="Placeholder immagine atmosfera home restaurant"
            class="img-fluid w-100">
     </div>
@@ -131,55 +131,61 @@
   </div>
 </section>
 
-<!-- GALLERIA PLACEHOLDER -->
-<section class="mb-5">
+<!-- CAROSELLO IMMAGINI !-->
+<section class="mb-5 container">
   <div class="text-center mb-4">
     <h2 class="font-weight-bold">Suggestioni</h2>
     <div class="bottom_line mx-auto"></div>
   </div>
 
-  <div class="row">
-    <div class="col-md-4 mb-4">
-      <div class="card border-0 shadow-custom">
-        <img src="{% static 'img/homepage/tavola.jpeg' %}"
-             alt="Placeholder tavola apparecchiata"
-             class="img-fluid">
-        <div class="card-body">
-          <p class="mb-0 text-muted small">
-            Placeholder immagine: tavola elegante, dettagli di piatti, bicchieri,
-            mise en place curata.
-          </p>
-        </div>
-      </div>
-    </div>
+  <div class="swiper suggestioniSwiper">
+    <div class="swiper-wrapper">
 
-    <div class="col-md-4 mb-4">
-      <div class="card border-0 shadow-custom">
-        <img src="{% static 'img/homepage/piatto.jpeg' %}"
-             alt="Placeholder piatto firmato Casa Milano"
-             class="img-fluid">
-        <div class="card-body">
-          <p class="mb-0 text-muted small">
-            Placeholder immagine: primo piano di un piatto rappresentativo,
-            impiattato con gusto ma senza eccessi.
-          </p>
+      <div class="swiper-slide">
+        <div class="card border-0 shadow">
+          <img src="{% static 'homepage/img/homepage/tavola.jpeg' %}"
+               alt="Placeholder tavola apparecchiata"
+               class="card-img-top carousel-img-fixed">
+          <div class="card-body">
+            <p class="mb-0 text-muted small">
+              Placeholder immagine: tavola elegante, dettagli di piatti, bicchieri,
+              mise en place curata.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-4 mb-4">
-      <div class="card border-0 shadow-custom">
-        <img src="{% static 'img/homepage/pane.jpeg' %}"
-             alt="Placeholder ambiente interno"
-             class="img-fluid">
-        <div class="card-body">
-          <p class="mb-0 text-muted small">
-            Placeholder immagine: scorcio dell'ambiente interno, luce calda,
-            sensazione di casa e accoglienza.
-          </p>
+      <div class="swiper-slide shadow">
+        <div class="card border-0">
+          <img src="{% static 'homepage/img/homepage/piatto.jpeg' %}"
+               alt="Placeholder piatto firmato Casa Milano"
+               class="card-img-top carousel-img-fixed">
+          <div class="card-body">
+            <p class="mb-0 text-muted small">
+              Placeholder immagine: primo piano di un piatto rappresentativo,
+              impiattato con gusto ma senza eccessi.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div class="swiper-slide shadow">
+        <div class="card border-0">
+          <img src="{% static 'homepage/img/homepage/pane.jpeg' %}"
+               alt="Placeholder ambiente interno"
+               class="card-img-top carousel-img-fixed">
+          <div class="card-body">
+            <p class="mb-0 text-muted small">
+              Placeholder immagine: scorcio dell'ambiente interno, luce calda,
+              sensazione di casa e accoglienza.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 

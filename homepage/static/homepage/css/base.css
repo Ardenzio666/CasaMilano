@@ -1,0 +1,7 @@
+.navbar-toggler {
+    /* Size of inner lines (default 1.25rem) */
+    font-size: 1rem !important;;
+
+    /* Top/Bottom padding | Left/Right padding (Default is 0.25rem 0.75rem) */
+    padding: 0.2rem 0.7rem !important;
+}

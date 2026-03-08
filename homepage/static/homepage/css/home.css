@@ -1,0 +1,14 @@
+.carousel-img-fixed {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Taglia l'immagine in eccesso senza deformarla */
+}
+
+.swiper {
+    padding-bottom: 40px !important;
+
+    .card-body {
+        min-height: 100px;
+        max-height: 125px;
+    }
+}
