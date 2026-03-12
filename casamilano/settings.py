@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'homepage.apps.HomepageConfig'
+    'homepage.apps.HomepageConfig',
+    'chisiamo.apps.ChisiamoConfig',
+    'contatti.apps.ContattiConfig',
+    'dovetrovarci.apps.DovetrovarciConfig',
+    'menu.apps.MenuConfig'
 ]
 
 MIDDLEWARE = [
