@@ -1,7 +1,77 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Casa Milano{% endblock %}
+
+{% block title %}Chi Siamo - Casa Milano{% endblock %}
 
 {% block content %}
-<h1>CHI SIAMO TEMPLATE</h1>
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4">Chi Siamo</h1>
+            <p class="lead text-muted">Scopri la storia, la passione e le persone dietro Casa Milano.</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <!-- HERE !-->
+            <img src="{% static 'images/chisiamo-1.jpg' %}" alt="Interno del ristorante" class="img-fluid rounded shadow-sm mb-4 mb-md-0">
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-3">La Nostra Storia</h2>
+            <p>
+                Casa Milano nasce dal desiderio di portare in tavola l'eccellenza della cucina italiana,
+                combinando tradizione e innovazione. Fondato nel cuore di Isernia, il nostro home restaurant
+                è diventato un punto di riferimento per chi cerca sapori autentici in un ambiente elegante e accogliente.
+            </p>
+            <p>
+                Ogni giorno i nostri chef selezionano con cura le migliori materie prime per creare piatti
+                che raccontano la nostra passione per il buon cibo e per l'ospitalità.
+            </p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6">
+            <!-- HERE !-->
+            <img src="{% static 'images/chisiamo-2.jpg' %}" alt="I nostri chef al lavoro" class="img-fluid rounded shadow-sm mb-4 mb-md-0">
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-3">La Nostra Filosofia</h2>
+            <p>
+                Crediamo che mangiare bene sia uno dei piaceri della vita. Per questo motivo, la nostra filosofia
+                si basa su tre pilastri fondamentali: qualità, freschezza e stagionalità.
+            </p>
+            <p>
+                Rispettiamo la tradizione culinaria regionale, ma amiamo anche sorprendere i nostri ospiti
+                con rivisitazioni moderne e creative. Il nostro obiettivo è farvi sentire a casa,
+                coccolati da un servizio attento e premuroso.
+            </p>
+        </div>
+    </div>
+
+    <div class="row text-center mt-5">
+        <div class="col-12 mb-4">
+            <h2>I Nostri Valori</h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="h-100 p-4 border rounded shadow-sm">
+                <h3>Passione</h3>
+                <p class="text-muted">Mettiamo il cuore in ogni piatto che prepariamo.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="h-100 p-4 border rounded shadow-sm">
+                <h3>Qualità</h3>
+                <p class="text-muted">Utilizziamo solo ingredienti di prima scelta.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="h-100 p-4 border rounded shadow-sm">
+                <h3>Ospitalità</h3>
+                <p class="text-muted">Vi accogliamo sempre con un sorriso.</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

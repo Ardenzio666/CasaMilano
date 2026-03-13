@@ -23,6 +23,11 @@
     <orderEntry type="library" name="jquery-3.5.1" level="application" />
     <orderEntry type="library" name="font-awesome" level="application" />
     <orderEntry type="library" name="swiper" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.5.1" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="swiper" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
@@ -34,6 +39,8 @@
       <list>
         <option value="$MODULE_DIR$/homepage/templates" />
         <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/static" />
+        <option value="$MODULE_DIR$/chisiamo/templates" />
       </list>
     </option>
   </component>

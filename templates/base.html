@@ -11,9 +11,10 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="{% static 'homepage/css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'homepage/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'base/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
   <link rel="stylesheet" href="{% static 'homepage/css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'chisiamo/css/chisiamo.css' %}">
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -33,16 +34,16 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="{% url 'chisiamo:chisiamo' %}" class="nav-link font-weight-bold text-dark">Chi siamo</a>
+            <a href="{% url 'chisiamo:chisiamo' %}" class="nav-link text-dark">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'menu:menu' %}" class="nav-link font-weight-bold text-dark">I nostri menù</a>
+            <a href="{% url 'menu:menu' %}" class="nav-link text-dark">I nostri menù</a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'dovetrovarci:dovetrovarci' %}" class="nav-link font-weight-bold text-dark">Dove trovarci</a>
+            <a href="{% url 'dovetrovarci:dovetrovarci' %}" class="nav-link text-dark">Dove trovarci</a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'contatti:contatti' %}" class="nav-link font-weight-bold text-dark">Contatti</a>
+            <a href="{% url 'contatti:contatti' %}" class="nav-link text-dark">Contatti</a>
           </li>
         </ul>
       </div>
