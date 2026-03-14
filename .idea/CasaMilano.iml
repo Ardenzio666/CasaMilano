@@ -41,6 +41,9 @@
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/static" />
         <option value="$MODULE_DIR$/chisiamo/templates" />
+        <option value="$MODULE_DIR$/dovetrovarci/templates" />
+        <option value="$MODULE_DIR$/menu/templates" />
+        <option value="$MODULE_DIR$/contatti/templates" />
       </list>
     </option>
   </component>

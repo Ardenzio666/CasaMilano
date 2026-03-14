@@ -1,7 +1,97 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Casa Milano{% endblock %}
+{% block title %}Contatti - Casa Milano{% endblock %}
 
 {% block content %}
-<h1>CCONTATTI TEMPLATE</h1>
+<div class="container my-5">
+    <!-- Titolo della Pagina -->
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h1 class="display-4 mb-3">Contattaci</h1>
+            <p class="lead">
+                Siamo a tua disposizione per qualsiasi domanda o per organizzare il tuo prossimo evento.
+            </p>
+        </div>
+    </div>
+
+    <!-- Proprietari -->
+    <div class="row mb-5 text-center">
+        <div class="col-12">
+            <h2 class="mb-2">I Tuoi Host</h2>
+            <div class="bottom_line mx-auto"></div>
+        </div>
+        <!-- Proprietario 1 -->
+        <div class="col-md-6 mt-4 mb-4">
+            <div class="card h-100 border-0 shadow">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Tiziano Pacifico</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+                            <a href="mailto:email1@example.com" class="text-decoration-none text-body">email1@example.com</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill text-primary me-2"></i>
+                            <a href="tel:+393808939568" class="text-decoration-none text-body">+39 333 111 2233</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Proprietario 2 -->
+        <div class="col-md-6 mt-4 mb-4">
+            <div class="card h-100 border-0 shadow">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Nome Proprietario 2</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+                            <a href="mailto:email2@example.com" class="text-decoration-none text-body">email2@example.com</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill text-primary me-2"></i>
+                            <a href="tel:+393334445566" class="text-decoration-none text-body">+39 333 444 5566</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form di Contatto -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="text-center mb-4">Invia un Messaggio</h3>
+                    <!-- NOTA: L'attributo 'action' e il metodo 'method' del form andranno configurati nel backend -->
+                    <form action="#" method="POST">
+                        {% csrf_token %} <!-- Token di sicurezza per Django -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="form_name" class="form-label">Nome Completo</label>
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Mario Rossi" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="form_email" class="form-label">La tua Email</label>
+                                <input id="form_email" type="email" name="email" class="form-control" placeholder="mario.rossi@email.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="form_subject" class="form-label">Oggetto</label>
+                            <input id="form_subject" type="text" name="subject" class="form-control" placeholder="Richiesta informazioni per cena" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="form_message" class="form-label">Messaggio</label>
+                            <textarea id="form_message" name="message" class="form-control" placeholder="Scrivi qui il tuo messaggio..." rows="5" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger btn-lg">Invia Messaggio</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
