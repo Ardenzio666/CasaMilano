@@ -1,7 +1,48 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Casa Milano{% endblock %}
+{% block title %}I Nostri Menù - Casa Milano{% endblock %}
 
 {% block content %}
-<h1>MENU TEMPLATE</h1>
+<div class="container my-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h1 class="display-4 mb-3">I Nostri Menù</h1>
+            <p class="lead">
+                A Casa Milano, crediamo che ogni evento meriti un'esperienza culinaria unica e personalizzata.
+                Per questo motivo, non abbiamo un menù fisso, ma creiamo proposte su misura in base alla tipologia di evento organizzato.
+            </p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <img src="{% static 'menu/img/menu.png' %}" alt="Esempio Menù Evento" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6">
+            <h3 class="mb-3">Cucina Intima</h3>
+            <p>
+                Essendo un home restaurant, offriamo un'esperienza più personale e raccolta. Ogni menù è il frutto di una chiacchierata con voi, per capire i vostri gusti e creare un percorso gastronomico che parli di voi e della vostra occasione speciale.
+            </p>
+            <ul class="list-unstyled mt-4">
+                <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                    <strong>Cene Private:</strong> Serate esclusive per piccoli gruppi, con menù degustazione studiati ad hoc.
+                </li>
+                <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                    <strong>Pranzi in Famiglia:</strong> La tradizione della cucina casalinga rivisitata con un tocco gourmet, per sentirsi a casa.
+                </li>
+                <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                    <strong>Aperitivi Rinforzati:</strong> Un modo conviviale per stare insieme, con una selezione di creazioni salate e dolci.
+                </li>
+            </ul>
+
+            <div class="mt-5">
+                <p>Vuoi scoprire cosa possiamo creare per il prossimo evento?</p>
+                <a href="{% url 'contatti:contatti' %}" class="btn btn-danger btn-lg">Richiedi Informazioni</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
