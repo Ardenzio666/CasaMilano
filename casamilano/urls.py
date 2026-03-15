@@ -25,6 +25,7 @@ urlpatterns = [
     path('contatti/', include('contatti.urls', namespace='contatti')),
     path('dovetrovarci/', include('dovetrovarci.urls', namespace='dovetrovarci')),
     path('menu/', include('menu.urls', namespace='menu')),
+    path('eventi/', include('eventi.urls', namespace='eventi')),
     path('', include('homepage.urls', namespace='homepage')),
 ]
 if settings.DEBUG:

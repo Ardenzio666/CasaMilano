@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'chisiamo.apps.ChisiamoConfig',
     'contatti.apps.ContattiConfig',
     'dovetrovarci.apps.DovetrovarciConfig',
-    'menu.apps.MenuConfig'
+    'menu.apps.MenuConfig',
+    'eventi.apps.EventiConfig'
 ]
 
 MIDDLEWARE = [
