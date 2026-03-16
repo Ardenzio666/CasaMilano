@@ -4,3 +4,7 @@
     max-height: 100%;
     height: auto;
 }
+
+#bottom_menu {
+    background: var(--primary-red);
+}

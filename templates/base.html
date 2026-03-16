@@ -18,6 +18,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   <link rel="stylesheet" href="{% static 'menu/css/menu.css' %}">
   <link rel="stylesheet" href="{% static 'dovetrovarci/css/dovetrovarci.css' %}">
   <link rel="stylesheet" href="{% static 'contatti/css/contatti.css' %}">
+  <link rel="stylesheet" href="{% static 'eventi/css/eventi.css' %}">
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -43,13 +44,13 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             <a href="{% url 'menu:menu' %}" class="nav-link text-dark">I nostri menù</a>
           </li>
           <li class="nav-item">
+            <a href="{% url 'eventi:eventi' %}" class="nav-link text-dark">Eventi</a>
+          </li>
+          <li class="nav-item">
             <a href="{% url 'dovetrovarci:dovetrovarci' %}" class="nav-link text-dark">Dove trovarci</a>
           </li>
           <li class="nav-item">
             <a href="{% url 'contatti:contatti' %}" class="nav-link text-dark">Contatti</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'eventi:eventi' %}" class="nav-link text-dark">Eventi</a>
           </li>
         </ul>
       </div>

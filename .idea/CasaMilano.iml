@@ -44,6 +44,7 @@
         <option value="$MODULE_DIR$/dovetrovarci/templates" />
         <option value="$MODULE_DIR$/menu/templates" />
         <option value="$MODULE_DIR$/contatti/templates" />
+        <option value="$MODULE_DIR$/eventi/templates" />
       </list>
     </option>
   </component>

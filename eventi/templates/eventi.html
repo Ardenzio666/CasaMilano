@@ -1,8 +1,130 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Chi Siamo - Casa Milano{% endblock %}
+{% block title %}Eventi Speciali - Casa Milano{% endblock %}
 
 {% block content %}
-<h1>Eventi template</h1>
+    <div class="container my-auto">
+        <div class="row text-center mb-5">
+            <div class="col-lg-12 mx-auto my-auto">
+                <div class="card h-100 border-0 shadow-custom text-center">
+                    <div class="card-body">
+                        <h1 class="display-4 font-weight-bold mb-3">I Tuoi Eventi</h1>
+                        <div class="bottom_line mx-auto" style="width: 270px; height: 2.5px;"></div>
+                        <p class="lead text-muted mt-4">
+                            Da Casa Milano non offriamo solo cene, ma creiamo ricordi. Che sia una ricorrenza speciale,
+                            un incontro di lavoro informale o una serata a tema organizzata da noi, la nostra casa è la
+                            cornice
+                            ideale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tipologie di Eventi Privati (Servizi offerti) -->
+        <div class="row mb-5">
+            <div class="col-12 text-center mb-4">
+                <h2 class="font-weight-bold h3">Cosa Organizziamo</h2>
+                <div class="bottom_line mx-auto" style="width: 250px; height: 2.5px;"></div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-custom text-center p-4">
+                    <div class="card-body">
+                        <i class="bi bi-balloon-heart-fill text-primary display-4 mb-3"></i>
+                        <h4 class="card-title">Feste Private</h4>
+                        <p class="card-text text-muted">Compleanni, lauree, anniversari o addii al nubilato/celibato.
+                            Festeggia in un ambiente intimo e riservato solo per te e i tuoi ospiti.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-custom text-center p-4">
+                    <div class="card-body">
+                        <i class="bi bi-briefcase-fill text-primary display-4 mb-3"></i>
+                        <h4 class="card-title">Incontri Aziendali</h4>
+                        <p class="card-text text-muted">Pranzi di lavoro, cene per team building o incontri con i
+                            clienti in un'atmosfera rilassata che favorisce la conversazione.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-custom text-center p-4">
+                    <div class="card-body">
+                        <i class="bi bi-stars text-primary display-4 mb-3"></i>
+                        <h4 class="card-title">Cene a Tema</h4>
+                        <p class="card-text text-muted">Organizziamo serate speciali aperte a tutti: degustazioni di
+                            vini, cene regionali o serate con delitto. Un'occasione perfetta per socializzare!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prossimi Eventi (Social Dining) -->
+        <div class="row mb-5 bg-light p-5 rounded-3 shadow-sm">
+            <div class="col-12 mb-4">
+                <h2 class="h3 font-weight-bold text-center">Prossimi Eventi in Programma</h2>
+                <div class="bottom_line mx-auto" style="width: 255px; height: 2.5px;"></div>
+                <p class="text-center text-muted mt-4">Unisciti alla nostra tavola condivisa. Prenota il tuo posto per le
+                    nostre serate speciali.</p>
+            </div>
+
+            <!-- Evento Card 1 -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow">
+                    <!-- Immagine placeholder evento -->
+                    <img src="https://placehold.co/600x400/f8f9fa/495057?text=Cena+Degustazione" class="card-img-top"
+                         alt="Locandina Evento">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary">Social Dining</span>
+                            <small class="text-muted"><i class="bi bi-calendar-event me-1"></i> 15 Novembre 2024</small>
+                        </div>
+                        <h5 class="card-title">Serata Tartufa e Vini Molisani</h5>
+                        <p class="card-text">Un percorso enogastronomico alla scoperta dei sapori del nostro territorio,
+                            con abbinamento vini selezionato dai nostri esperti.</p>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <strong>€ 45,00 a persona</strong>
+                            <a href="#" class="btn btn-outline-warning btn-sm">Prenota un Posto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento Card 2 -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow">
+                    <!-- Immagine placeholder evento -->
+                    <img src="https://placehold.co/600x400/f8f9fa/495057?text=Serata+Paella" class="card-img-top"
+                         alt="Locandina Evento">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-success">Nuovo</span>
+                            <small class="text-muted"><i class="bi bi-calendar-event me-1"></i> 28 Novembre 2024</small>
+                        </div>
+                        <h5 class="card-title">Noche Española: Paella & Sangria</h5>
+                        <p class="card-text">Portiamo i colori e i sapori della Spagna a Isernia. Una serata all'insegna
+                            della convivialità, tapas, paella mista e fiumi di sangria.</p>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <strong>€ 35,00 a persona</strong>
+                            <a href="#" class="btn btn-outline-warning btn-sm">Prenota un Posto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Finale -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h3 class="font-weight-bold mb-3">Vuoi organizzare un evento privato?</h3>
+                <p class="lead mb-4">Raccontaci la tua idea e creeremo una proposta su misura per te, dalla scelta del
+                    menù all'allestimento della tavola.</p>
+                <a href="/contatti/" class="btn btn-warning btn-lg px-4 py-2 shadow">Richiedi un Preventivo Gratuito</a>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

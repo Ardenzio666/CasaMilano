@@ -3,20 +3,26 @@
 {% block title %}Dove Trovarci - Casa Milano{% endblock %}
 
 {% block content %}
-    <div class="container my-5">
+    <div class="container my-auto">
         <div class="row text-center mb-5">
             <div class="col-12">
-                <h1 class="display-4 mb-3">Dove Trovarci</h1>
-                <p class="lead">
-                    Ci troviamo nel quartiere San Lazzaro di Isernia, situato nella parte nord della città.<br>
-                    Venite a trovarci nel nostro accogliente home restaurant.
-                </p>
+                <div class="card h-100 border-0 shadow-custom text-center">
+                    <div class="card-body">
+                        <h1 class="display-4 font-weight-bold">Dove Trovarci</h1>
+                        <div class="bottom_line mx-auto" style="width: 270px; height: 2.5px;"></div>
+                        <p class="lead text-muted mt-4">
+                            Ci troviamo nel quartiere San Lazzaro di Isernia, situato nella parte nord della città.<br>
+                            Venite a trovarci nel nostro accogliente home restaurant.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row mb-5">
             <div class="col-md-5 mb-4 mb-md-0">
-                <h3 class="mt-5 mb-4">Posizione</h3>
+                <h3 class="font-weight-bold mt-5 mb-2">Posizione</h3>
+                <div class="bottom_line mb-4" style="margin-left: 0 !important; width: 130px; height: 2.5px;"></div>
                 <ul class="list-unstyled fs-5">
                     <li class="mb-3">
                         <i class="bi bi-geo-alt-fill text-primary me-2"></i>
@@ -26,7 +32,8 @@
                     </li>
                 </ul>
 
-                <h4 class="mt-5 mb-3">Orari di Apertura</h4>
+                <h4 class="font-weight-bold mt-5 mb-3">Orari di Apertura</h4>
+                <div class="bottom_line mb-4" style="margin-left: 0 !important; width: 192px; height: 2.5px;"></div>
                 <p>Essendo un home restaurant, riceviamo <strong>esclusivamente su prenotazione</strong>.<br>Contattateci
                     per concordare la data e l'orario del vostro evento o della vostra cena.</p>
             </div>
@@ -34,7 +41,7 @@
             <div class="col-md-7">
                 <!-- Mappa OpenStreetMap gratuita -->
                 <div class="card shadow-sm border-0">
-                    <div class="card-body p-1">
+                    <div class="card-body shadow-custom p-1">
                         <iframe
                                 width="100%"
                                 height="450"
@@ -42,7 +49,8 @@
                                 scrolling="no"
                                 marginheight="0"
                                 marginwidth="0"
-                                src="https://www.openstreetmap.org/export/embed.html?bbox=14.236588776111605%2C41.61059540317711%2C14.237476587295534%2C41.61153593897294&amp;layer=mapnik&amp;marker=41.61106670350294%2C14.237034039019704"                                style="border: 1px solid #dee2e6; border-radius: 0.25rem;">
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=14.236588776111605%2C41.61059540317711%2C14.237476587295534%2C41.61153593897294&amp;layer=mapnik&amp;marker=41.61106670350294%2C14.237034039019704"
+                                style="border: 1px solid #dee2e6; border-radius: 0.25rem;">
                         </iframe>
                         <div class="text-center mt-2">
                             <small>
@@ -53,15 +61,15 @@
                             </small>
                         </div>
                         <iframe class="mt-2"
-                                src="https://www.google.com/maps/embed?pb=!4v1773559951568!6m8!1m7!1sNWUSbG_mPu2V9FFKy9DDXA!2m2!1d41.61104375971124!2d14.23682406471693!3f109.67846808336753!4f2.8903121099048406!5f1.0886364439206178"
+                                src="https://www.google.com/maps/embed?pb=!4v1773670320230!6m8!1m7!1sNWUSbG_mPu2V9FFKy9DDXA!2m2!1d41.61104375971124!2d14.23682406471693!3f111.93372698039474!4f15.654224500560886!5f1.9967592265779586"
                                 width="100%"
                                 height="450"
                                 style="border:0;"
                                 scrolling="no"
                                 marginheight="0"
                                 marginwidth="0"
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
