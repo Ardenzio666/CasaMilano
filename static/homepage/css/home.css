@@ -6,9 +6,345 @@
 
 .swiper {
     padding-bottom: 40px !important;
+}
 
-    .card-body {
-        min-height: 100px;
-        max-height: 125px;
-    }
+.swiper .card-body {
+    min-height: 100px;
+    max-height: 125px;
+}
+/* =========================
+   HOME PAGE - CASA MILANO
+   ========================= */
+
+:root {
+  --cm-bg: #fcf8f3;
+  --cm-surface: #fffdf9;
+  --cm-surface-2: #f8f1e7;
+  --cm-text: #3b2f2a;
+  --cm-text-soft: #7a685c;
+  --cm-accent: #b88746;
+  --cm-accent-dark: #9f7238;
+  --cm-accent-soft: #f3e4d0;
+  --cm-border: rgba(90, 62, 43, 0.08);
+  --cm-shadow: 0 14px 34px rgba(58, 36, 24, 0.08);
+  --cm-shadow-hover: 0 18px 38px rgba(58, 36, 24, 0.14);
+}
+
+body {
+  background: linear-gradient(to bottom, #fffdf9 0%, #fcf8f3 100%);
+  color: var(--cm-text);
+}
+
+/* container principale più elegante */
+.container.py-4,
+.container.py-5 {
+  position: relative;
+}
+
+/* tipografia */
+h1, h2, h3, h4, .hero-title, .section-title {
+  font-family: 'Playfair Display', serif;
+  color: #2f241d;
+}
+
+p {
+  color: var(--cm-text-soft);
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+
+/* ombra globale più raffinata */
+.shadow-custom {
+  box-shadow: var(--cm-shadow) !important;
+}
+
+/* linee decorative */
+.bottom_line {
+  width: 10rem;
+  height: 3px;
+  background: linear-gradient(90deg, #d8b07a 0%, #b88746 100%);
+  border-radius: 999px;
+  margin: 0 auto;
+}
+
+/* pulsante principale */
+.btn-home-primary {
+  background: linear-gradient(135deg, var(--cm-accent) 0%, #d0a064 100%);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 12px 24px rgba(184, 135, 70, 0.22);
+  transition: all 0.28s ease;
+}
+
+.btn-home-primary:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(184, 135, 70, 0.28);
+  background: linear-gradient(135deg, var(--cm-accent-dark) 0%, #be8f55 100%);
+}
+
+/* HERO */
+.home-hero .hero-card {
+  background: radial-gradient(circle at top left, #fffaf4 0%, #f9f1e6 100%);
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.hero-card .card-body {
+  padding: 4rem 2rem !important;
+}
+
+.home-hero img {
+  filter: drop-shadow(0 12px 24px rgba(58, 36, 24, 0.08));
+}
+
+.home-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: 0.01em;
+}
+
+.home-hero .lead {
+  font-size: 1rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cm-accent) !important;
+  font-weight: 700;
+}
+
+.home-hero p.mx-auto {
+  font-size: 1.08rem;
+  max-width: 760px;
+}
+
+/* IMMAGINE HERO GRANDE */
+.hero-image-card {
+  border-radius: 26px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.image-overlay-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.main-hero-image {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.image-overlay-wrap:hover .main-hero-image {
+  transform: scale(1.04);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(33, 21, 14, 0.48), rgba(33, 21, 14, 0.12), rgba(33, 21, 14, 0.02));
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 2rem;
+}
+
+.hero-image-caption {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  max-width: 480px;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+/* SEZIONI GENERALI */
+section {
+  position: relative;
+}
+
+section .card {
+  border-radius: 24px;
+  background: var(--cm-surface);
+}
+
+section .card-body {
+  background: transparent;
+}
+
+/* Filosofia */
+.philosophy-card,
+.home-philosophy .card {
+  background: linear-gradient(180deg, #fffdf9 0%, #fbf5ec 100%);
+}
+
+/* FEATURE CARDS */
+.feature-card {
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fffdfb 0%, #f8f2ea 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.feature-card .card-body {
+  padding: 2rem 1.5rem;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--cm-shadow-hover) !important;
+}
+
+.feature-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f6e7d3 0%, #edd0a9 100%);
+  color: var(--cm-accent-dark);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.08);
+  box-shadow: 0 10px 24px rgba(184, 135, 70, 0.18);
+}
+
+.feature-title {
+  margin-bottom: 0.85rem;
+  color: #2f241d;
+}
+
+/* SUGGESTIONI / SWIPER */
+.swiper {
+  padding-bottom: 56px !important;
+}
+
+.swiper-slide {
+  height: auto;
+}
+
+.suggestion-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--cm-shadow-hover);
+}
+
+.carousel-img-fixed,
+.suggestion-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.8s ease, filter 0.4s ease;
+}
+
+.suggestion-card:hover .carousel-img-fixed,
+.suggestion-card:hover .suggestion-image {
+  transform: scale(1.05);
+  filter: saturate(1.05);
+}
+
+.suggestion-card .card-body {
+  min-height: 120px;
+  max-height: none;
+  padding: 1rem 1rem 1.25rem;
+  background: linear-gradient(180deg, #fffdfb 0%, #f9f4ec 100%);
+}
+
+/* bullets swiper */
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+  background: #d9c4aa;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--cm-accent);
+  transform: scale(1.15);
+}
+
+/* CTA finale */
+.final-cta-card {
+  background: linear-gradient(135deg, #fffaf3 0%, #f4e7d6 100%) !important;
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.final-cta-card .card-body {
+  padding: 3.5rem 2rem !important;
+}
+
+.final-cta-card h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.cta-text {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* immagini più morbide */
+img {
+  border-radius: 0;
+}
+
+/* responsive */
+@media (max-width: 991px) {
+  .hero-card .card-body,
+  .final-cta-card .card-body {
+    padding: 3rem 1.5rem !important;
+  }
+
+  .main-hero-image {
+    max-height: 420px;
+  }
+
+  .carousel-img-fixed,
+  .suggestion-image {
+    height: 240px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .home-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-card .card-body {
+    padding: 2.5rem 1.25rem !important;
+  }
+
+  .feature-card .card-body {
+    padding: 1.6rem 1.2rem;
+  }
+
+  .hero-image-overlay {
+    padding: 1.25rem;
+  }
+
+  .main-hero-image {
+    max-height: 320px;
+  }
+
+  .carousel-img-fixed,
+  .suggestion-image {
+    height: 220px;
+  }
 }

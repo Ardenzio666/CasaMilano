@@ -22,42 +22,55 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top py-1 shadow" id="main-nav">
-    <div class="container">
+  <nav class="navbar navbar-expand-md fixed-top" id="main-nav">
+  <div class="container">
 
-      <a href="{% url 'homepage:home' %}" class="navbar-brand d-flex align-items-center">
-        <img src="{% static 'homepage/img/logo.png' %}" alt="Casa Milano" height="40" class="mr-2">
-        <span class="font-weight-bold">Casa Milano</span>
-      </a>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-              aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a href="{% url 'chisiamo:chisiamo' %}" class="nav-link text-dark">Chi siamo</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'menu:menu' %}" class="nav-link text-dark">I nostri menù</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'eventi:eventi' %}" class="nav-link text-dark">Eventi</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'dovetrovarci:dovetrovarci' %}" class="nav-link text-dark">Dove trovarci</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'contatti:contatti' %}" class="nav-link text-dark">Contatti</a>
-          </li>
-        </ul>
+    <a href="{% url 'homepage:home' %}" class="navbar-brand d-flex align-items-center">
+      <img src="{% static 'homepage/img/logo.png' %}" alt="Casa Milano" class="nav-logo mr-2">
+      <div class="brand-text-wrap">
+        <span class="brand-title">Casa Milano</span>
+        <span class="brand-subtitle">Home Restaurant</span>
       </div>
+    </a>
 
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto align-items-md-center">
+        <li class="nav-item">
+          <a href="{% url 'chisiamo:chisiamo' %}" 
+          class="nav-link {% if request.resolver_match.url_name == 'chisiamo' %}active{% endif %}">
+          Chi siamo</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'menu:menu' %}" 
+          class="nav-link {% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
+            I nostri menù</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'eventi:eventi' %}" 
+          class="nav-link {% if request.resolver_match.url_name == 'eventi' %}active{% endif %}">
+            Eventi</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'dovetrovarci:dovetrovarci' %}" 
+          class="nav-link {% if request.resolver_match.url_name == 'dovetrovarci' %}active{% endif %}">
+          Dove trovarci</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'contatti:contatti' %}" 
+          class="nav-link {% if request.resolver_match.url_name == 'contatti' %}active{% endif %}">
+          Contatti</a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <div class="container py-5 mt-5">
+
+  </div>
+</nav>
+  <div class="container py-4">
   {% block content %}
   {% endblock content %}
   </div>

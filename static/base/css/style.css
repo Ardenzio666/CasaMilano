@@ -59,7 +59,7 @@ input[type=number] {
 }
 
 body {
-  margin-top: 64px;
+  margin-top: 88px;
 }
 
 .shadow-custom {
@@ -722,4 +722,133 @@ body {
 
 #main-nav {
     background-color: #ffffff;
+}
+
+/* =========================
+   NAVBAR CASA MILANO
+   ========================= */
+
+:root {
+  --nav-bg: rgba(255, 252, 248, 0.96);
+  --nav-border: rgba(90, 62, 43, 0.08);
+  --nav-shadow: 0 8px 24px rgba(40, 8, 5, 0.08);
+  --nav-text: #3f3128;
+  --nav-text-soft: #7a685c;
+  --nav-accent: #b88746;
+  --nav-accent-soft: #f5e7d4;
+}
+
+#main-nav {
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: var(--nav-shadow);
+  padding: 0.75rem 0;
+  z-index: 1030;
+}
+
+#main-nav .navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+#main-nav .nav-logo {
+  height: 46px !important;
+  width: auto !important;
+  max-height: 46px !important;
+  max-width: 100% !important;
+  object-fit: contain;
+  display: block;
+}
+
+#main-nav .brand-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+#main-nav .brand-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #2f241d;
+}
+
+#main-nav .brand-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--nav-text-soft);
+  margin-top: 0.2rem;
+}
+
+#main-nav .navbar-nav {
+  gap: 0.35rem;
+}
+
+#main-nav .nav-link {
+  color: var(--nav-text) !important;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.7rem 1rem !important;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+#main-nav .nav-link:hover {
+  color: var(--nav-accent) !important;
+  background-color: var(--nav-accent-soft);
+}
+
+#main-nav .nav-cta {
+  background: var(--nav-accent);
+  color: #fff !important;
+}
+
+#main-nav .nav-cta:hover {
+  background: #a87635;
+  color: #fff !important;
+}
+
+#main-nav .custom-toggler {
+  border: 1px solid rgba(184, 135, 70, 0.25);
+  border-radius: 10px;
+  background: #fffaf5;
+}
+
+#main-nav .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+body {
+  margin-top: 95px;
+}
+
+@media (max-width: 767.98px) {
+  #main-nav .navbar-collapse {
+    margin-top: 1rem;
+    background: #fffdf9;
+    border: 1px solid rgba(90, 62, 43, 0.08);
+    border-radius: 18px;
+    padding: 0.75rem;
+    box-shadow: 0 12px 30px rgba(40, 8, 5, 0.08);
+  }
+
+  #main-nav .brand-title {
+    font-size: 1.2rem;
+  }
+
+  #main-nav .brand-subtitle {
+    font-size: 0.64rem;
+  }
+
+  #main-nav .nav-logo {
+    height: 40px !important;
+    max-height: 40px !important;
+  }
 }
