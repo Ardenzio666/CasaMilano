@@ -4,72 +4,115 @@
 
 {% block content %}
 
-    <!-- HERO / INTRO -->
-    <section class="home-hero mb-5">
-    <div class="card border-0 shadow-custom hero-card">
-            <div class="card-body text-center py-5">
+    <!-- HERO -->
+    <section class="home-hero mb-5 reveal-section">
+        <div class="hero-banner shadow-custom">
+            <img src="{% static 'homepage/img/homepage/hero.jpeg' %}"
+                 alt="Atmosfera Casa Milano"
+                 class="hero-banner-image">
 
-                <!-- LOGO PRINCIPALE -->
-                <div class="mb-4">
-                    <img src="{% static 'homepage/img/logo.png' %}"
-                         alt="Logo Casa Milano"
-                         class="img-fluid"
-                         style="max-width: 280px; height: auto;">
+            <div class="hero-banner-overlay">
+                <div class="hero-banner-content text-center text-md-left">
+                    <p class="hero-eyebrow mb-2">Home Restaurant</p>
+                    <h1 class="hero-title mb-3">Casa Milano</h1>
+                    <p class="hero-subtitle mb-4">
+                        Un’esperienza intima, curata e conviviale, dove la cucina italiana
+                        incontra il piacere di sentirsi davvero accolti.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="{% url 'eventi:eventi' %}" class="btn btn-home-primary btn-lg mr-2 mb-2">
+                            Scopri gli eventi
+                        </a>
+                        <a href="{% url 'contatti:contatti' %}" class="btn btn-home-secondary btn-lg mb-2">
+                            Contattaci
+                        </a>
+                    </div>
                 </div>
-
-                <h1 class="font-weight-bold mb-3">Casa Milano</h1>
-                <p class="lead text-muted mb-4">
-                    Home Restaurant
-                </p>
-
-                <p class="mx-auto" style="max-width: 760px;">
-                    Un luogo intimo dove la convivialità della cucina italiana incontra
-                    il desiderio di sperimentare, condividere e stare bene insieme.
-                    Casa Milano nasce per accogliere, sorprendere e far sentire ogni ospite a casa.
-                </p>
-
-                <a href="{% url 'chisiamo:chisiamo' %}" class="btn btn-home-primary btn-lg mt-3">
-                    Scopri la nostra esperienza
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- SEZIONE IMMAGINE PRINCIPALE -->
-    <section class="mb-5">
-    <div class="card border-0 shadow-custom hero-image-card overflow-hidden">
-        <div class="image-overlay-wrap">
-            <img src="{% static 'homepage/img/homepage/hero.jpeg' %}"
-                 alt="Atmosfera Casa Milano"
-                 class="img-fluid w-100 main-hero-image">
-            <div class="hero-image-overlay">
-                <div class="hero-image-caption">
-                    Un'atmosfera intima, calda, autentica
+    <!-- INTRO / MANIFESTO -->
+    <section class="mb-5 reveal-section">
+        <div class="card border-0 shadow-custom intro-card">
+            <div class="card-body text-center py-5 px-4 px-md-5">
+                <div class="mb-4">
+                    <img src="{% static 'homepage/img/logo.png' %}"
+                         alt="Logo Casa Milano"
+                         class="intro-logo img-fluid">
+                </div>
+
+                <h2 class="section-title mb-3">Più di una cena, un momento da vivere</h2>
+                <div class="bottom_line mx-auto mb-4"></div>
+
+                <p class="intro-text mx-auto">
+                    Casa Milano nasce dal desiderio di riportare al centro il piacere della tavola:
+                    il tempo condiviso, la cura dei dettagli, la bellezza di un ambiente raccolto,
+                    il calore di un’accoglienza autentica.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPERIENZA -->
+    <section class="mb-5 reveal-section">
+        <div class="card border-0 shadow-custom experience-card overflow-hidden">
+            <div class="row no-gutters align-items-stretch">
+                <div class="col-lg-6">
+                    <div class="experience-text-wrap h-100 d-flex flex-column justify-content-center">
+                        <p class="section-kicker mb-2">L’esperienza</p>
+                        <h2 class="section-title mb-3">Una cucina che accoglie</h2>
+                        <p class="mb-3">
+                            Ogni serata è pensata per essere un piccolo rito di ospitalità:
+                            pochi posti, atmosfera raccolta, piatti curati e il piacere di
+                            condividere un momento speciale lontano dai ritmi impersonali
+                            della ristorazione tradizionale.
+                        </p>
+                        <p class="mb-4">
+                            Non è solo questione di menù, ma di ritmo, luce, ascolto e presenza.
+                            Vogliamo che ogni ospite si senta atteso, accolto e parte di qualcosa.
+                        </p>
+
+                        <div>
+                            <a href="{% url 'chisiamo:chisiamo' %}" class="btn btn-home-primary">
+                                Scopri chi siamo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="experience-image-wrap">
+                        <img src="{% static 'homepage/img/homepage/tavola.jpeg' %}"
+                             alt="Tavola apparecchiata Casa Milano"
+                             class="experience-image">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- FILOSOFIA -->
-    <section class="mb-5">
-        <div class="card border-0 shadow-custom">
-            <div class="card-body py-5">
+    <section class="mb-5 reveal-section">
+        <div class="card border-0 shadow-custom philosophy-card">
+            <div class="card-body py-5 px-4 px-md-5">
                 <div class="text-center mb-4">
-                    <h2 class="font-weight-bold">La nostra filosofia</h2>
-                    <div class="bottom_line mx-auto" style="width: 270px; height: 2.5px;"></div>
+                    <p class="section-kicker mb-2">La nostra filosofia</p>
+                    <h2 class="section-title">Tradizione, intimità, creatività</h2>
+                    <div class="bottom_line mx-auto mt-3"></div>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <p class="text-center">
-                            Casa Milano nasce da un'idea semplice: recuperare il gusto autentico
+                            Casa Milano nasce da un’idea semplice: recuperare il gusto autentico
                             dello stare insieme a tavola, in uno spazio raccolto e curato, senza
                             rinunciare alla creatività.
                         </p>
                         <p class="text-center mb-0">
-                            La tradizione, per noi, non è qualcosa di fermo: è un fuoco da mantenere vivo,
-                            da reinterpretare con sensibilità, attenzione e piacere per il dettaglio.
+                            Per noi la tradizione non è qualcosa di fermo, ma un linguaggio vivo:
+                            da rispettare, reinterpretare e raccontare con sensibilità.
                         </p>
                     </div>
                 </div>
@@ -77,54 +120,55 @@
         </div>
     </section>
 
-    <!-- COSA OFFRIAMO -->
-    <section class="mb-5">
+    <!-- COSA TROVERAI -->
+    <section class="mb-5 reveal-section">
         <div class="text-center mb-4">
-            <h2 class="font-weight-bold">Cosa troverai</h2>
-            <div class="bottom_line mx-auto" style="width: 195px; height: 2.5px;"></div>
+            <p class="section-kicker mb-2">Cosa troverai</p>
+            <h2 class="section-title">Un’esperienza fatta di dettagli</h2>
+            <div class="bottom_line mx-auto mt-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-4 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card h-100 border-0 shadow-custom text-center feature-card">
                     <div class="card-body">
-                        <div class="mb-3 feature-icon">
-                            <i class="fas fa-utensils fa-2x"></i>
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-utensils"></i>
                         </div>
-                        <h4 class="font-weight-bold feature-title">Cucina</h4>
+                        <h4 class="feature-title">Cucina</h4>
                         <p class="text-muted mb-0">
-                        Piatti ispirati alla tradizione italiana, con attenzione alla stagionalità
-                        e spazio per reinterpretazioni personali.
+                            Piatti ispirati alla tradizione italiana, stagionali e curati,
+                            con spazio per reinterpretazioni sensibili e personali.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-custom text-center feature-card">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-custom text-center feature-card feature-card-offset">
                     <div class="card-body">
-                        <div class="mb-3 feature-icon">
-                            <i class="fas fa-home fa-2x"></i>
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-home"></i>
                         </div>
-                        <h4 class="font-weight-bold feature-title">Atmosfera</h4>
+                        <h4 class="feature-title">Atmosfera</h4>
                         <p class="text-muted mb-0">
-                            Un ambiente raccolto, conviviale e curato, pensato per far vivere
-                            un'esperienza più intima di quella di un ristorante tradizionale.
+                            Un ambiente raccolto, conviviale e curato, pensato per far sentire
+                            ogni ospite a proprio agio fin dal primo momento.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <div class="col-md-12 col-lg-4 mb-4">
                 <div class="card h-100 border-0 shadow-custom text-center feature-card">
                     <div class="card-body">
-                        <div class="mb-3 feature-icon">
-                            <i class="fas fa-glass-cheers fa-2x"></i>
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-glass-cheers"></i>
                         </div>
-                        <h4 class="font-weight-bold feature-title">Condivisione</h4>
+                        <h4 class="feature-title">Condivisione</h4>
                         <p class="text-muted mb-0">
-                            Non solo una cena, ma un momento da vivere con calma, dialogo,
-                            gusto e senso di accoglienza.
+                            Non solo una cena, ma un tempo da vivere con calma, dialogo,
+                            bellezza e senso di accoglienza.
                         </p>
                     </div>
                 </div>
@@ -132,14 +176,15 @@
         </div>
     </section>
 
-    <!-- CAROSELLO IMMAGINI !-->
-    <section class="mb-5 container">
+    <!-- SUGGESTIONI -->
+    <section class="mb-5 reveal-section">
         <div class="text-center mb-4">
-            <h2 class="font-weight-bold">Suggestioni</h2>
-            <div class="bottom_line mx-auto" style="width: 175px; height: 2.5px;"></div>
+            <p class="section-kicker mb-2">Suggestioni</p>
+            <h2 class="section-title">Atmosfere, dettagli, tavola</h2>
+            <div class="bottom_line mx-auto mt-3"></div>
         </div>
 
-        <div class="card h-100 border-0 shadow-custom text-center">
+        <div class="card border-0 shadow-custom suggestion-wrapper">
             <div class="card-body">
                 <div class="swiper suggestioniSwiper">
                     <div class="swiper-wrapper">
@@ -147,24 +192,39 @@
                         <div class="swiper-slide">
                             <div class="card border-0 suggestion-card">
                                 <img src="{% static 'homepage/img/homepage/tavola.jpeg' %}"
-                                     alt="Placeholder tavola apparecchiata"
+                                     alt="Tavola apparecchiata"
                                      class="card-img-top carousel-img-fixed suggestion-image">
+                                <div class="card-body">
+                                    <p class="mb-0 text-muted small">
+                                        Tavole curate, luce calda e dettagli che preparano l’esperienza ancora prima del primo assaggio.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="swiper-slide">
                             <div class="card border-0 suggestion-card">
                                 <img src="{% static 'homepage/img/homepage/piatto.jpeg' %}"
-                                     alt="Placeholder piatto firmato Casa Milano"
+                                     alt="Piatto Casa Milano"
                                      class="card-img-top carousel-img-fixed suggestion-image">
+                                <div class="card-body">
+                                    <p class="mb-0 text-muted small">
+                                        Piatti pensati per unire equilibrio, gusto e una presentazione essenziale ma curata.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="swiper-slide">
                             <div class="card border-0 suggestion-card">
                                 <img src="{% static 'homepage/img/homepage/pane.jpeg' %}"
-                                     alt="Placeholder ambiente interno"
+                                     alt="Dettagli dell'ambiente"
                                      class="card-img-top carousel-img-fixed suggestion-image">
+                                <div class="card-body">
+                                    <p class="mb-0 text-muted small">
+                                        Un’atmosfera raccolta e autentica, dove la convivialità diventa parte del menù.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -177,17 +237,24 @@
     </section>
 
     <!-- CTA FINALE -->
-    <section class="mb-4">
+    <section class="mb-4 reveal-section">
         <div class="card border-0 shadow-custom final-cta-card">
-            <div class="card-body text-center py-5">
-                <h2 class="font-weight-bold mb-3">Casa Milano ti aspetta</h2>
+            <div class="card-body text-center py-5 px-4">
+                <p class="section-kicker mb-2">Prenota la tua esperienza</p>
+                <h2 class="section-title mb-3">Casa Milano ti aspetta</h2>
                 <p class="cta-text mb-4">
-                    Questa è una prima bozza della nostra casa digitale.
-                    Presto qui troverai eventi, menù, serate speciali e tutte le informazioni utili.
+                    Scopri i prossimi eventi, contattaci per informazioni o lasciati guidare
+                    nella scoperta della nostra idea di ospitalità.
                 </p>
-                <a href="#" class="btn btn-home-primary">
-                    Contattaci
-                </a>
+
+                <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+                    <a href="{% url 'eventi:eventi' %}" class="btn btn-home-primary mr-md-3 mb-2 mb-md-0">
+                        Vai agli eventi
+                    </a>
+                    <a href="{% url 'contatti:contatti' %}" class="btn btn-home-secondary">
+                        Scrivici
+                    </a>
+                </div>
             </div>
         </div>
     </section>

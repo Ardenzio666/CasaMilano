@@ -60,3 +60,27 @@ function getSumOfElements(elementName){
 
     return sum;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const revealSections = document.querySelectorAll('.reveal-section');
+
+    if (!('IntersectionObserver' in window)) {
+        revealSections.forEach(section => section.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    revealSections.forEach(section => {
+        observer.observe(section);
+    });
+});

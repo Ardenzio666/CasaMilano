@@ -35,14 +35,10 @@ body {
   color: var(--cm-text);
 }
 
-/* container principale più elegante */
-.container.py-4,
-.container.py-5 {
-  position: relative;
-}
-
-/* tipografia */
-h1, h2, h3, h4, .hero-title, .section-title {
+h1, h2, h3, h4,
+.hero-title,
+.section-title,
+.feature-title {
   font-family: 'Playfair Display', serif;
   color: #2f241d;
 }
@@ -50,15 +46,12 @@ h1, h2, h3, h4, .hero-title, .section-title {
 p {
   color: var(--cm-text-soft);
   line-height: 1.75;
-  font-size: 1.02rem;
 }
 
-/* ombra globale più raffinata */
 .shadow-custom {
   box-shadow: var(--cm-shadow) !important;
 }
 
-/* linee decorative */
 .bottom_line {
   width: 10rem;
   height: 3px;
@@ -67,7 +60,15 @@ p {
   margin: 0 auto;
 }
 
-/* pulsante principale */
+.section-kicker,
+.hero-eyebrow {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--cm-accent);
+  font-weight: 700;
+}
+
 .btn-home-primary {
   background: linear-gradient(135deg, var(--cm-accent) 0%, #d0a064 100%);
   color: #fff;
@@ -88,99 +89,117 @@ p {
   background: linear-gradient(135deg, var(--cm-accent-dark) 0%, #be8f55 100%);
 }
 
-/* HERO */
-.home-hero .hero-card {
-  background: radial-gradient(circle at top left, #fffaf4 0%, #f9f1e6 100%);
-  border-radius: 26px;
-  overflow: hidden;
-}
-
-.hero-card .card-body {
-  padding: 4rem 2rem !important;
-}
-
-.home-hero img {
-  filter: drop-shadow(0 12px 24px rgba(58, 36, 24, 0.08));
-}
-
-.home-hero h1 {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  letter-spacing: 0.01em;
-}
-
-.home-hero .lead {
-  font-size: 1rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--cm-accent) !important;
-  font-weight: 700;
-}
-
-.home-hero p.mx-auto {
-  font-size: 1.08rem;
-  max-width: 760px;
-}
-
-/* IMMAGINE HERO GRANDE */
-.hero-image-card {
-  border-radius: 26px;
-  overflow: hidden;
+.btn-home-secondary {
   background: transparent;
+  color: var(--cm-text);
+  border: 1px solid rgba(184, 135, 70, 0.35);
+  border-radius: 999px;
+  padding: 0.9rem 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all 0.28s ease;
 }
 
-.image-overlay-wrap {
+.btn-home-secondary:hover {
+  text-decoration: none;
+  color: var(--cm-accent-dark);
+  background: var(--cm-accent-soft);
+  border-color: rgba(184, 135, 70, 0.45);
+  transform: translateY(-2px);
+}
+
+/* HERO */
+.hero-banner {
   position: relative;
   overflow: hidden;
+  border-radius: 28px;
+  min-height: 640px;
 }
 
-.main-hero-image {
-  display: block;
+.hero-banner-image {
   width: 100%;
-  max-height: 560px;
+  height: 640px;
   object-fit: cover;
-  transition: transform 1.2s ease;
+  display: block;
+  transform: scale(1.02);
 }
 
-.image-overlay-wrap:hover .main-hero-image {
-  transform: scale(1.04);
-}
-
-.hero-image-overlay {
+.hero-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(33, 21, 14, 0.48), rgba(33, 21, 14, 0.12), rgba(33, 21, 14, 0.02));
+  background:
+    linear-gradient(90deg, rgba(30, 19, 12, 0.70) 0%, rgba(30, 19, 12, 0.42) 40%, rgba(30, 19, 12, 0.10) 100%);
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 2rem;
+  align-items: center;
 }
 
-.hero-image-caption {
+.hero-banner-content {
+  max-width: 640px;
+  padding: 2rem 2rem 2rem 4rem;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6vw, 5rem);
   color: #fff;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.4rem, 2vw, 2rem);
-  max-width: 480px;
-  line-height: 1.2;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  line-height: 1;
 }
 
-/* SEZIONI GENERALI */
-section {
-  position: relative;
+.hero-subtitle {
+  font-size: 1.12rem;
+  color: rgba(255,255,255,0.9);
+  max-width: 560px;
 }
 
-section .card {
+.hero-actions .btn {
+  min-width: 200px;
+}
+
+/* INTRO */
+.intro-card {
   border-radius: 24px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f9f2e8 100%);
+}
+
+.intro-logo {
+  max-width: 180px;
+}
+
+.intro-text {
+  max-width: 760px;
+  font-size: 1.06rem;
+}
+
+/* EXPERIENCE */
+.experience-card {
+  border-radius: 26px;
   background: var(--cm-surface);
 }
 
-section .card-body {
-  background: transparent;
+.experience-text-wrap {
+  padding: 3rem 2.4rem;
 }
 
-/* Filosofia */
-.philosophy-card,
-.home-philosophy .card {
+.experience-image-wrap {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.experience-image {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  transition: transform 0.9s ease;
+}
+
+.experience-card:hover .experience-image {
+  transform: scale(1.04);
+}
+
+/* FILOSOFIA */
+.philosophy-card {
+  border-radius: 24px;
   background: linear-gradient(180deg, #fffdf9 0%, #fbf5ec 100%);
 }
 
@@ -201,6 +220,10 @@ section .card-body {
   box-shadow: var(--cm-shadow-hover) !important;
 }
 
+.feature-card-offset {
+  margin-top: 20px;
+}
+
 .feature-icon {
   width: 76px;
   height: 76px;
@@ -210,6 +233,7 @@ section .card-body {
   place-items: center;
   background: linear-gradient(135deg, #f6e7d3 0%, #edd0a9 100%);
   color: var(--cm-accent-dark);
+  font-size: 1.5rem;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -221,10 +245,14 @@ section .card-body {
 
 .feature-title {
   margin-bottom: 0.85rem;
-  color: #2f241d;
 }
 
-/* SUGGESTIONI / SWIPER */
+/* SWIPER / SUGGESTIONI */
+.suggestion-wrapper {
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f8f1e8 100%);
+}
+
 .swiper {
   padding-bottom: 56px !important;
 }
@@ -248,7 +276,7 @@ section .card-body {
 .carousel-img-fixed,
 .suggestion-image {
   width: 100%;
-  height: 280px;
+  height: 290px;
   object-fit: cover;
   transition: transform 0.8s ease, filter 0.4s ease;
 }
@@ -260,13 +288,11 @@ section .card-body {
 }
 
 .suggestion-card .card-body {
-  min-height: 120px;
-  max-height: none;
-  padding: 1rem 1rem 1.25rem;
+  min-height: 126px;
+  padding: 1rem 1rem 1.2rem;
   background: linear-gradient(180deg, #fffdfb 0%, #f9f4ec 100%);
 }
 
-/* bullets swiper */
 .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
@@ -279,7 +305,7 @@ section .card-body {
   transform: scale(1.15);
 }
 
-/* CTA finale */
+/* CTA FINALE */
 .final-cta-card {
   background: linear-gradient(135deg, #fffaf3 0%, #f4e7d6 100%) !important;
   border-radius: 26px;
@@ -290,30 +316,43 @@ section .card-body {
   padding: 3.5rem 2rem !important;
 }
 
-.final-cta-card h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
 .cta-text {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* immagini più morbide */
-img {
-  border-radius: 0;
+/* REVEAL ANIMATION */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* responsive */
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
 @media (max-width: 991px) {
-  .hero-card .card-body,
-  .final-cta-card .card-body {
-    padding: 3rem 1.5rem !important;
+  .hero-banner,
+  .hero-banner-image {
+    min-height: 560px;
+    height: 560px;
   }
 
-  .main-hero-image {
-    max-height: 420px;
+  .hero-banner-content {
+    padding: 2rem;
+    max-width: 100%;
+  }
+
+  .experience-text-wrap {
+    padding: 2.2rem 1.6rem;
+  }
+
+  .feature-card-offset {
+    margin-top: 0;
   }
 
   .carousel-img-fixed,
@@ -323,28 +362,49 @@ img {
 }
 
 @media (max-width: 767.98px) {
-  .home-hero h1 {
-    font-size: 2.5rem;
+  .hero-banner,
+  .hero-banner-image {
+    min-height: 520px;
+    height: 520px;
   }
 
-  .hero-card .card-body {
-    padding: 2.5rem 1.25rem !important;
+  .hero-banner-overlay {
+    background:
+      linear-gradient(to top, rgba(30, 19, 12, 0.74) 0%, rgba(30, 19, 12, 0.44) 45%, rgba(30, 19, 12, 0.15) 100%);
+    align-items: flex-end;
   }
 
-  .feature-card .card-body {
-    padding: 1.6rem 1.2rem;
+  .hero-banner-content {
+    padding: 1.4rem;
   }
 
-  .hero-image-overlay {
-    padding: 1.25rem;
+  .hero-title {
+    font-size: 2.7rem;
   }
 
-  .main-hero-image {
-    max-height: 320px;
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .intro-logo {
+    max-width: 140px;
+  }
+
+  .experience-image {
+    min-height: 300px;
   }
 
   .carousel-img-fixed,
   .suggestion-image {
     height: 220px;
+  }
+
+  .final-cta-card .card-body {
+    padding: 2.5rem 1.25rem !important;
   }
 }
