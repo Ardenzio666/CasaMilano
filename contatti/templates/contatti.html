@@ -3,103 +3,162 @@
 {% block title %}Contatti - Casa Milano{% endblock %}
 
 {% block content %}
-    <div class="container py-auto">
-        <div class="row mb-5">
-            <div class="col-lg-8 mx-auto text-center">
-                <div class="card h-100 border-0 shadow-custom text-center">
-                    <div class="card-body">
-                        <h1 class="display-4 font-weight-bold">Contattaci</h1>
-                        <div class="bottom_line mx-auto" style="width: 255px; height: 2.5px;"></div>
-                        <p class="lead text-muted mt-4">Siamo a tua disposizione per qualsiasi domanda o per
-                            organizzare il tuo prossimo evento.</p>
+
+<section class="contact-section py-5">
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-custom contact-hero-card">
+                    <div class="card-body p-4 p-md-5">
+                        <span class="section-kicker">Casa Milano</span>
+                        <h1 class="display-5 font-weight-bold mb-3">Contattaci</h1>
+                        <div class="bottom_line mx-auto" style="width: 220px;"></div>
+                        <p class="lead text-muted mt-4 mb-0">
+                            Siamo a tua disposizione per informazioni, prenotazioni
+                            o per organizzare un’esperienza su misura.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Proprietari -->
-    <div class="row mb-5 text-center">
-        <div class="col-12">
-            <h2 class="font-weight-bold mb-2">I Tuoi Host</h2>
+        <!-- HOST -->
+        <div class="text-center mb-4">
+            <h2 class="font-weight-bold">I Tuoi Host</h2>
             <div class="bottom_line mx-auto"></div>
         </div>
-        <!-- Proprietario 1 -->
-        <div class="col-md-6 mt-4 mb-4">
-            <div class="card h-100 border-0 shadow-custom">
-                <div class="card-body">
-                    <h4 class="card-title font-weight-bold mb-3">Tiziano Pacifico</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <i class="bi bi-envelope-fill text-primary me-2"></i>
-                            <a href="mailto:email1@example.com" class="text-decoration-underline text-body">email1@example.com</a>
-                        </li>
-                        <li>
-                            <i class="bi bi-telephone-fill text-primary me-2"></i>
-                            <a href="tel:+393808939568" class="text-decoration-underline text-body">+39 333 111 2233</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- Proprietario 2 -->
-        <div class="col-md-6 mt-4 mb-4">
-            <div class="card h-100 border-0 shadow-custom">
-                <div class="card-body">
-                    <h4 class="card-title font-weight-bold mb-3">Nome Proprietario 2</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <i class="bi bi-envelope-fill text-primary me-2"></i>
-                            <a href="mailto:email2@example.com" class="text-decoration-underline text-body">email2@example.com</a>
-                        </li>
-                        <li>
-                            <i class="bi bi-telephone-fill text-primary me-2"></i>
-                            <a href="tel:+393334445566" class="text-decoration-underline text-body">+39 333 444 5566</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Form di Contatto -->
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-custom">
-                <div class="card-body p-4 p-md-5">
+        <div class="row g-4 mb-5">
+
+            <!-- HOST 1 -->
+            <div class="col-md-6">
+                <div class="contact-card h-100 text-center">
+                    <div class="contact-avatar mb-3">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <h4 class="font-weight-bold">Tiziano Pacifico</h4>
+
+                    <ul class="list-unstyled mt-3 contact-list">
+                        <li>
+                            <i class="bi bi-envelope-fill"></i>
+                            <a href="mailto:email1@example.com">email1@example.com</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill"></i>
+                            <a href="tel:+393808939568">+39 333 111 2233</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- HOST 2 -->
+            <div class="col-md-6">
+                <div class="contact-card h-100 text-center">
+                    <div class="contact-avatar mb-3">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <h4 class="font-weight-bold">Nome Proprietario 2</h4>
+
+                    <ul class="list-unstyled mt-3 contact-list">
+                        <li>
+                            <i class="bi bi-envelope-fill"></i>
+                            <a href="mailto:email2@example.com">email2@example.com</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill"></i>
+                            <a href="tel:+393334445566">+39 333 444 5566</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FORM -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form-card">
                     <h3 class="text-center font-weight-bold mb-2">Invia un Messaggio</h3>
-                    <div class="bottom_line mx-auto mb-5" style="width: 250px; height: 2.5px;"></div>
-                    <!-- NOTA: L'attributo 'action' e il metodo 'method' del form andranno configurati nel backend -->
+                    <div class="bottom_line mx-auto mb-4" style="width: 200px;"></div>
+
                     <form action="#" method="POST">
-                        {% csrf_token %} <!-- Token di sicurezza per Django -->
+                        {% csrf_token %}
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="form_name" class="form-label">Nome Completo</label>
-                                <input id="form_name" type="text" name="name" class="form-control"
+                                <label>Nome Completo</label>
+                                <input type="text" name="name" class="form-control"
                                        placeholder="Mario Rossi" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="form_email" class="form-label">La tua Email</label>
-                                <input id="form_email" type="email" name="email" class="form-control"
-                                       placeholder="mario.rossi@email.com" required>
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control"
+                                       placeholder="mario@email.com" required>
                             </div>
                         </div>
+
                         <div class="mb-3">
-                            <label for="form_subject" class="form-label">Oggetto</label>
-                            <input id="form_subject" type="text" name="subject" class="form-control"
-                                   placeholder="Richiesta informazioni per cena" required>
+                            <label>Oggetto</label>
+                            <input type="text" name="subject" class="form-control"
+                                   placeholder="Richiesta informazioni" required>
                         </div>
+
                         <div class="mb-4">
-                            <label for="form_message" class="form-label">Messaggio</label>
-                            <textarea id="form_message" name="message" class="form-control"
-                                      placeholder="Scrivi qui il tuo messaggio..." rows="5" required></textarea>
+                            <label>Messaggio</label>
+                            <textarea name="message" class="form-control"
+                                      rows="5" placeholder="Scrivi qui..." required></textarea>
                         </div>
+
                         <div class="text-center">
-                            <button type="submit" class="btn btn-warning btn-lg shadow">Invia Messaggio</button>
+                            <button type="submit" class="btn btn-warning contact-btn">
+                                Invia Messaggio
+                            </button>
                         </div>
                     </form>
+                    <div class="row justify-content-center mt-5">
+                    <div class="col-lg-8">
+                        <div class="contact-social-card text-center">
+                            <span class="section-kicker">Casa Milano</span>
+                            <h3 class="font-weight-bold mb-2">Seguici e contattaci</h3>
+                            <div class="bottom_line mx-auto mb-4" style="width: 220px;"></div>
+
+                            <p class="text-muted mb-4">
+                                Seguici sui nostri canali social oppure scrivici direttamente su WhatsApp
+                                per informazioni, prenotazioni ed eventi.
+                            </p>
+
+                            <div class="contact-social-large">
+                                <a href="https://wa.me/393331112233" target="_blank" class="whatsapp" aria-label="WhatsApp Casa Milano">
+                                    <i class="bi bi-whatsapp"></i>
+                                </a>
+                                <a href="https://instagram.com/tuoprofiloattivita" target="_blank" class="instagram" aria-label="Instagram Casa Milano">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                                <a href="https://facebook.com/tuapaginaattivita" target="_blank" class="facebook" aria-label="Facebook Casa Milano">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                            </div>
+
+                            <div class="mt-4">
+                                <a href="https://wa.me/393331112233" class="btn btn-success whatsapp-btn" target="_blank">
+                                    <i class="bi bi-whatsapp me-2"></i>
+                                    Scrivici su WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
+
     </div>
-{% endblock content %}
+</section>
+
+{% endblock %}

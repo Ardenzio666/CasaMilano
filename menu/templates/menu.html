@@ -1,63 +1,203 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}I Nostri Menù - Casa Milano{% endblock %}
-
 {% block content %}
-    <div class="container my-auto">
-        <div class="row text-center mb-5">
-            <div class="col-12">
-                <div class="card h-100 border-0 shadow-custom text-center">
-                    <div class="card-body">
-                        <h1 class="display-4 font-weight-bold mb-3">I Nostri Menù</h1>
-                        <div id="bottom_menu" class="bottom_line mx-auto" style="width: 270px; height: 2.5px;"></div>
-                        <p class="lead text-muted mt-4">
-                            A Casa Milano, crediamo che ogni evento meriti un'esperienza culinaria unica e
-                            personalizzata.
-                            Per questo motivo, non abbiamo un menù fisso, ma creiamo proposte su misura in base alla
-                            tipologia di evento organizzato.
+
+<!-- I NOSTRI MENU' -->
+<section class="menu-hero-section">
+    <div class="container">
+        <div class="card border-0 shadow-custom menu-hero-card">
+            <div class="card-body text-center py-5 px-4 px-lg-5">
+                <span class="menu-eyebrow">Casa Milano</span>
+                <h1 class="display-4 font-weight-bold mb-3">I nostri menù</h1>
+                <div class="bottom_line mx-auto" style="width: 250px; height: 2.5px;"></div>
+
+                <p class="lead text-muted mt-4 mb-3 mx-auto menu-hero-lead">
+                    Ogni esperienza nasce da una tavola pensata con cura,
+                    da un’atmosfera da costruire e da un racconto da servire portata dopo portata.
+                </p>
+
+                <p class="menu-hero-text mx-auto mb-0">
+                    A Casa Milano non proponiamo un menù fisso, ma percorsi gastronomici ispirati
+                    alla stagione, all’occasione e al tipo di convivialità che vogliamo creare.
+                    Ogni proposta può essere personalizzata, adattata e costruita insieme.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- LA NOSTRA FORMULA -->
+<section class="menu-experience-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-kicker">La nostra formula</span>
+            <h2 class="font-weight-bold">Un menù pensato per rendere ogni cena un'esperienza</h2>
+            <div id="bottom_menu" class="bottom_line mx-auto" style="width: 240px; height: 2.5px;"></div>
+        </div>
+
+        <div class="card border-0 shadow-custom menu-experience-card mb-5">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-5">
+                    <div class="menu-card-image-wrap">
+                        <img src="{% static 'menu/img/menu-intima.jpg' %}"
+                             alt="Placeholder: piatti raffinati per cena intima"
+                             class="img-fluid menu-card-image">
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="card-body p-4 p-lg-5">
+                        <h3 class="font-weight-bold mb-3">Cucina Intima</h3>
+                        <div id="bottom_menu" class="bottom_line mb-4"
+                             style="margin-left: 0 !important; width: 190px; height: 2.5px;"></div>
+
+                        <p>
+                            Un percorso pensato per serate raccolte, conversazioni lente e tavole curate nei dettagli.
+                            La cucina si fa elegante ma mai distante: piatti delicati, sapori riconoscibili,
+                            texture equilibrate e una sensazione generale di comfort raffinato.
                         </p>
+
+                        <p>
+                            È il menù ideale per una cena privata, un anniversario, un incontro speciale
+                            o per chi desidera vivere Casa Milano nel suo lato più intimo e narrativo.
+                        </p>
+
+                        <div class="menu-detail-box mt-4">
+                            <h4 class="h6 font-weight-bold mb-3">Esempio di percorso</h4>
+                            <ul class="list-unstyled mb-0 menu-custom-list">
+                                <li><strong>Benvenuto:</strong> calice e piccolo amuse-bouche stagionale</li>
+                                <li><strong>Antipasto:</strong> entrée delicata con verdure, crema e croccante</li>
+                                <li><strong>Primo:</strong> pasta fresca o risotto dal profilo morbido e avvolgente</li>
+                                <li><strong>Secondo:</strong> portata principale elegante con contorno di stagione</li>
+                                <li><strong>Dessert:</strong> chiusura leggera e raffinata con nota agrumata o cremosa</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+</section>
 
-        <div class="row align-items-center mb-5">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <img src="{% static 'menu/img/menu.png' %}" alt="Esempio Menù Evento" class="img-fluid rounded shadow">
-            </div>
-            <div class="col-md-6">
-                <h2 class="font-weight-bold mb-3">Cucina Intima</h2>
-                <div id="bottom_menu" class="bottom_line mb-4"
-                     style="margin-left: 0 !important; width: 210px; height: 2.5px;"></div>
-                <p>
-                    Essendo un home restaurant, offriamo un'esperienza più personale e raccolta. Ogni menù è il frutto
-                    di una chiacchierata con voi, per capire i vostri gusti e creare un percorso gastronomico che parli
-                    di voi e della vostra occasione speciale.
-                </p>
-                <ul class="list-unstyled mt-4">
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
-                        <strong>Cene Private:</strong> Serate esclusive per piccoli gruppi, con menù degustazione
-                        studiati ad hoc.
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
-                        <strong>Pranzi in Famiglia:</strong> La tradizione della cucina casalinga rivisitata con un
-                        tocco gourmet, per sentirsi a casa.
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
-                        <strong>Aperitivi Rinforzati:</strong> Un modo conviviale per stare insieme, con una selezione
-                        di creazioni salate e dolci.
-                    </li>
-                </ul>
+<!-- COME NASCE UN MENU' -->
+<section class="menu-process-section">
+    <div class="container">
+        <div class="card border-0 shadow-custom menu-process-card">
+            <div class="card-body p-4 p-lg-5">
+                <div class="text-center mb-5">
+                    <span class="section-kicker">Come nasce un menù</span>
+                    <h2 class="font-weight-bold">Dal dialogo all’esperienza</h2>
+                    <div id="bottom_menu" class="bottom_line mx-auto" style="width: 220px; height: 2.5px;"></div>
+                </div>
 
-                <div class="text-center mt-5">
-                    <p class="font-weight-bold">Vuoi scoprire cosa possiamo creare per il prossimo evento?</p>
-                    <a href="{% url 'contatti:contatti' %}" class="btn btn-danger btn-lg px-4 py-2 shadow">Richiedi
-                        Informazioni</a>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="menu-step-card h-100">
+                            <div class="menu-step-number">01</div>
+                            <h3 class="h5 font-weight-bold mb-3">Ascolto</h3>
+                            <p class="text-muted mb-0">
+                                Partiamo dall’occasione, dal numero degli ospiti, dai gusti e dall’atmosfera desiderata.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="menu-step-card h-100">
+                            <div class="menu-step-number">02</div>
+                            <h3 class="h5 font-weight-bold mb-3">Proposta</h3>
+                            <p class="text-muted mb-0">
+                                Elaboriamo un percorso coerente con la stagione e con lo stile dell’esperienza.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="menu-step-card h-100">
+                            <div class="menu-step-number">03</div>
+                            <h3 class="h5 font-weight-bold mb-3">Personalizzazione</h3>
+                            <p class="text-muted mb-0">
+                                Adattiamo portate, ritmo e dettagli per rendere il menù davvero vostro.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="menu-step-card h-100">
+                            <div class="menu-step-number">04</div>
+                            <h3 class="h5 font-weight-bold mb-3">Accoglienza</h3>
+                            <p class="text-muted mb-0">
+                                Portiamo in tavola un’esperienza completa, fatta di gusto, atmosfera e cura.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<!-- SEZIONE MENU' -->
+{% for menu in menus %}
+    <div class="card border-0 shadow-custom menu-experience-card mb-5">
+        <div class="row g-0 align-items-center {% if menu.layout_reverse %}flex-lg-row-reverse{% endif %}">
+            <div class="col-lg-5">
+                <div class="menu-card-image-wrap">
+                    <img src="{{ menu.image.url }}" alt="{{ menu.title }}" class="img-fluid menu-card-image">
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="card-body p-4 p-lg-5">
+                    <h3 class="font-weight-bold mb-3">{{ menu.title }}</h3>
+                    <div id="bottom_menu" class="bottom_line mb-4"
+                         style="margin-left: 0 !important; width: 220px; height: 2.5px;"></div>
+
+                    {% if menu.short_intro %}
+                        <p class="font-weight-bold text-muted">{{ menu.short_intro }}</p>
+                    {% endif %}
+
+                    <p>{{ menu.description }}</p>
+
+                    {% if menu.experience_text %}
+                        <p>{{ menu.experience_text }}</p>
+                    {% endif %}
+
+                    {% if menu.courses.all %}
+                        <div class="menu-detail-box mt-4">
+                            <h4 class="h6 font-weight-bold mb-3">Percorso</h4>
+                            <ul class="list-unstyled mb-0 menu-custom-list">
+                                {% for course in menu.courses.all %}
+                                    <li>
+                                        <strong>{{ course.title }}:</strong> {{ course.description }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+<section class="menu-cta-section">
+    <div class="container">
+        <div class="card border-0 shadow-custom menu-cta-card">
+            <div class="card-body text-center py-5 px-4">
+                <span class="section-kicker">Richiedi informazioni</span>
+                <h2 class="font-weight-bold mb-3">Immaginiamo insieme il tuo menù</h2>
+                <p class="text-muted mb-4 mx-auto menu-cta-text">
+                    Raccontaci il tipo di evento che hai in mente: costruiremo una proposta capace
+                    di riflettere i tuoi gusti, l’occasione e lo stile di Casa Milano.
+                </p>
+                <a href="{% url 'contatti:contatti' %}" class="btn btn-danger btn-lg px-4 py-2 shadow menu-cta-btn">
+                    Richiedi informazioni
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock content %}

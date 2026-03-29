@@ -1,0 +1,115 @@
+/* =========================
+   DOVE TROVARCI
+========================= */
+
+.location-hero {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 235, 0.65) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.location-hero-card {
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.section-kicker {
+  display: inline-block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #d39b18;
+  margin-bottom: 0.8rem;
+}
+
+.location-info-card,
+.location-map-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
+  padding: 2rem;
+  height: 100%;
+}
+
+.location-info-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.location-icon {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fff3cd 0%, #ffe082 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9c6a00;
+  font-size: 1.35rem;
+  box-shadow: 0 6px 18px rgba(255, 193, 7, 0.22);
+}
+
+.location-line {
+  margin-left: 0 !important;
+  width: 110px;
+  height: 2.5px;
+}
+
+.map-frame-wrap {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.map-frame-wrap iframe {
+  display: block;
+  width: 100%;
+}
+
+.location-link {
+  color: #9c6a00;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.location-link:hover {
+  color: #c98900;
+  text-decoration: none;
+}
+
+.location-cta-btn {
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(255, 193, 7, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.location-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(255, 193, 7, 0.34);
+}
+
+@media (max-width: 991px) {
+  .location-info-card,
+  .location-map-card {
+    padding: 1.4rem;
+    border-radius: 18px;
+  }
+
+  .location-info-block {
+    gap: 0.8rem;
+  }
+
+  .location-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    font-size: 1.2rem;
+    border-radius: 14px;
+  }
+}

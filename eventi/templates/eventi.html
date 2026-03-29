@@ -1,130 +1,303 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Eventi Speciali - Casa Milano{% endblock %}
+{% block title %}Eventi - Casa Milano{% endblock %}
 
 {% block content %}
-    <div class="container my-auto">
-        <div class="row text-center mb-5">
-            <div class="col-lg-12 mx-auto my-auto">
-                <div class="card h-100 border-0 shadow-custom text-center">
-                    <div class="card-body">
-                        <h1 class="display-4 font-weight-bold mb-3">I Tuoi Eventi</h1>
-                        <div class="bottom_line mx-auto" style="width: 270px; height: 2.5px;"></div>
-                        <p class="lead text-muted mt-4">
-                            Da Casa Milano non offriamo solo cene, ma creiamo ricordi. Che sia una ricorrenza speciale,
-                            un incontro di lavoro informale o una serata a tema organizzata da noi, la nostra casa è la
-                            cornice
-                            ideale.
+<section class="events-hero-section">
+    <div class="container">
+        <div class="card border-0 shadow-custom events-hero-card text-center">
+            <div class="card-body py-5 px-4 px-lg-5">
+                <span class="events-eyebrow">Casa Milano</span>
+                <h1 class="display-4 font-weight-bold mb-3">I tuoi eventi</h1>
+                <div class="bottom_line mx-auto" style="width: 250px; height: 2.5px;"></div>
+                <p class="lead text-muted mt-4 mb-3 mx-auto events-hero-lead">
+                    Non organizziamo solo cene: costruiamo atmosfere, occasioni da condividere e ricordi da portare con sé.
+                </p>
+                <p class="events-hero-text mx-auto mb-0">
+                    Che si tratti di una ricorrenza privata, di un incontro più formale o di una serata speciale aperta agli ospiti,
+                    Casa Milano offre uno spazio raccolto e curato, dove gusto e accoglienza diventano parte della stessa esperienza.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="events-types-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-kicker">Cosa organizziamo</span>
+            <h2 class="font-weight-bold h3">Esperienze pensate per occasioni diverse</h2>
+            <div class="bottom_line mx-auto" style="width: 250px; height: 2.5px;"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-custom text-center events-type-card">
+                    <div class="card-body p-4">
+                        <div class="events-icon-wrap">
+                            <i class="bi bi-balloon-heart-fill"></i>
+                        </div>
+                        <h4 class="card-title font-weight-bold">Feste Private</h4>
+                        <p class="card-text text-muted mb-0">
+                            Compleanni, anniversari, lauree o piccoli momenti da celebrare in un ambiente intimo,
+                            elegante e riservato solo a te e ai tuoi ospiti.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-custom text-center events-type-card">
+                    <div class="card-body p-4">
+                        <div class="events-icon-wrap">
+                            <i class="bi bi-briefcase-fill"></i>
+                        </div>
+                        <h4 class="card-title font-weight-bold">Incontri Aziendali</h4>
+                        <p class="card-text text-muted mb-0">
+                            Pranzi di lavoro, cene di team building o incontri con clienti in una cornice più calda,
+                            rilassata e adatta alla conversazione.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-custom text-center events-type-card">
+                    <div class="card-body p-4">
+                        <div class="events-icon-wrap">
+                            <i class="bi bi-stars"></i>
+                        </div>
+                        <h4 class="card-title font-weight-bold">Cene a Tema</h4>
+                        <p class="card-text text-muted mb-0">
+                            Degustazioni, serate regionali, percorsi gastronomici e occasioni conviviali pensate
+                            per sorprendere e far incontrare persone attorno alla tavola.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Tipologie di Eventi Privati (Servizi offerti) -->
-        <div class="row mb-5">
-            <div class="col-12 text-center mb-4">
-                <h2 class="font-weight-bold h3">Cosa Organizziamo</h2>
-                <div class="bottom_line mx-auto" style="width: 250px; height: 2.5px;"></div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-custom text-center p-4">
-                    <div class="card-body">
-                        <i class="bi bi-balloon-heart-fill text-primary display-4 mb-3"></i>
-                        <h4 class="card-title">Feste Private</h4>
-                        <p class="card-text text-muted">Compleanni, lauree, anniversari o addii al nubilato/celibato.
-                            Festeggia in un ambiente intimo e riservato solo per te e i tuoi ospiti.</p>
-                    </div>
+<!-- PROSSIMI EVENTI -->
+{% for event in upcoming_events %}
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100 border-0 shadow-sm events-program-card">
+            <img src="{{ event.image.url }}" class="card-img-top events-card-img" alt="{{ event.title }}">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                    <span class="events-badge events-badge-warm">{{ event.get_event_type_display }}</span>
+                    <small class="text-muted">
+                        {{ event.event_date|date:"d F Y" }}
+                    </small>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-custom text-center p-4">
-                    <div class="card-body">
-                        <i class="bi bi-briefcase-fill text-primary display-4 mb-3"></i>
-                        <h4 class="card-title">Incontri Aziendali</h4>
-                        <p class="card-text text-muted">Pranzi di lavoro, cene per team building o incontri con i
-                            clienti in un'atmosfera rilassata che favorisce la conversazione.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-custom text-center p-4">
-                    <div class="card-body">
-                        <i class="bi bi-stars text-primary display-4 mb-3"></i>
-                        <h4 class="card-title">Cene a Tema</h4>
-                        <p class="card-text text-muted">Organizziamo serate speciali aperte a tutti: degustazioni di
-                            vini, cene regionali o serate con delitto. Un'occasione perfetta per socializzare!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Prossimi Eventi (Social Dining) -->
-        <div class="row mb-5 bg-light p-5 rounded-3 shadow-sm">
-            <div class="col-12 mb-4">
-                <h2 class="h3 font-weight-bold text-center">Prossimi Eventi in Programma</h2>
-                <div class="bottom_line mx-auto" style="width: 255px; height: 2.5px;"></div>
-                <p class="text-center text-muted mt-4">Unisciti alla nostra tavola condivisa. Prenota il tuo posto per le
-                    nostre serate speciali.</p>
-            </div>
+                <h5 class="card-title font-weight-bold">{{ event.title }}</h5>
+                <p class="card-text text-muted">{{ event.description }}</p>
 
-            <!-- Evento Card 1 -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 border-0 shadow">
-                    <!-- Immagine placeholder evento -->
-                    <img src="https://placehold.co/600x400/f8f9fa/495057?text=Cena+Degustazione" class="card-img-top"
-                         alt="Locandina Evento">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="badge bg-primary">Social Dining</span>
-                            <small class="text-muted"><i class="bi bi-calendar-event me-1"></i> 15 Novembre 2024</small>
-                        </div>
-                        <h5 class="card-title">Serata Tartufa e Vini Molisani</h5>
-                        <p class="card-text">Un percorso enogastronomico alla scoperta dei sapori del nostro territorio,
-                            con abbinamento vini selezionato dai nostri esperti.</p>
-                        <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <strong>€ 45,00 a persona</strong>
-                            <a href="#" class="btn btn-outline-warning btn-sm">Prenota un Posto</a>
-                        </div>
+                {% if event.atmosphere or event.ideal_for %}
+                    <div class="events-info-box">
+                        {% if event.atmosphere %}
+                            <p class="mb-2"><strong>Atmosfera:</strong> {{ event.atmosphere }}</p>
+                        {% endif %}
+                        {% if event.ideal_for %}
+                            <p class="mb-0"><strong>Ideale per:</strong> {{ event.ideal_for }}</p>
+                        {% endif %}
                     </div>
-                </div>
-            </div>
+                {% endif %}
 
-            <!-- Evento Card 2 -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 border-0 shadow">
-                    <!-- Immagine placeholder evento -->
-                    <img src="https://placehold.co/600x400/f8f9fa/495057?text=Serata+Paella" class="card-img-top"
-                         alt="Locandina Evento">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="badge bg-success">Nuovo</span>
-                            <small class="text-muted"><i class="bi bi-calendar-event me-1"></i> 28 Novembre 2024</small>
-                        </div>
-                        <h5 class="card-title">Noche Española: Paella & Sangria</h5>
-                        <p class="card-text">Portiamo i colori e i sapori della Spagna a Isernia. Una serata all'insegna
-                            della convivialità, tapas, paella mista e fiumi di sangria.</p>
-                        <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <strong>€ 35,00 a persona</strong>
-                            <a href="#" class="btn btn-outline-warning btn-sm">Prenota un Posto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <hr>
 
-        <!-- Call to Action Finale -->
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <h3 class="font-weight-bold mb-3">Vuoi organizzare un evento privato?</h3>
-                <p class="lead mb-4">Raccontaci la tua idea e creeremo una proposta su misura per te, dalla scelta del
-                    menù all'allestimento della tavola.</p>
-                <a href="/contatti/" class="btn btn-warning btn-lg px-4 py-2 shadow">Richiedi un Preventivo Gratuito</a>
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    {% if event.price %}
+                        <strong class="events-price">€ {{ event.price }}</strong>
+                    {% endif %}
+
+                    {% if event.booking_url %}
+                        <a href="{{ event.booking_url }}" class="btn btn-outline-warning btn-sm events-btn-outline">
+                            {{ event.cta_text|default:"Prenota un posto" }}
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
+{% empty %}
+    <div class="col-12 text-center">
+        <p class="text-muted mb-0">Al momento non ci sono eventi in programma.</p>
+    </div>
+{% endfor %}
+
+
+<section class="events-upcoming-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-kicker">In programma</span>
+            <h2 class="h3 font-weight-bold">Eventi prossimi</h2>
+            <div class="bottom_line mx-auto" style="width: 220px; height: 2.5px;"></div>
+            <p class="text-muted mt-4 mb-0">
+                Scopri le prossime serate speciali e prenota il tuo posto a tavola.
+            </p>
+        </div>
+
+        <div class="row">
+            {% for event in upcoming_events %}
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm events-program-card">
+                        <img src="{{ event.image.url }}" class="card-img-top events-card-img" alt="{{ event.title }}">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                                <span class="events-badge events-badge-warm">{{ event.get_event_type_display }}</span>
+                                <small class="text-muted">
+                                    {{ event.event_date|date:"d F Y" }}
+                                </small>
+                            </div>
+
+                            <h5 class="card-title font-weight-bold">{{ event.title }}</h5>
+                            <p class="card-text text-muted">{{ event.description }}</p>
+
+                            {% if event.atmosphere or event.ideal_for %}
+                                <div class="events-info-box">
+                                    {% if event.atmosphere %}
+                                        <p class="mb-2"><strong>Atmosfera:</strong> {{ event.atmosphere }}</p>
+                                    {% endif %}
+                                    {% if event.ideal_for %}
+                                        <p class="mb-0"><strong>Ideale per:</strong> {{ event.ideal_for }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            <hr>
+
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                {% if event.price %}
+                                    <strong class="events-price">€ {{ event.price }}</strong>
+                                {% endif %}
+
+                                {% if event.booking_url %}
+                                    <a href="{{ event.booking_url }}" class="btn btn-outline-warning btn-sm events-btn-outline">
+                                        {{ event.cta_text|default:"Prenota un posto" }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p class="text-muted mb-0">Al momento non ci sono eventi in programma.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- EVENTI FUURI -->
+<section class="events-past-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-kicker">Archivio eventi</span>
+            <h2 class="h3 font-weight-bold">Eventi passati</h2>
+            <div class="bottom_line mx-auto" style="width: 220px; height: 2.5px;"></div>
+            <p class="text-muted mt-4 mb-0">
+                Alcune delle esperienze già vissute a Casa Milano.
+            </p>
+        </div>
+
+        <div class="row">
+            {% for event in past_events %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-custom h-100 events-past-card">
+                        <img src="{{ event.image.url }}" class="card-img-top events-past-img" alt="{{ event.title }}">
+                        <div class="card-body p-4">
+                            <span class="events-past-tag">{{ event.get_event_type_display }}</span>
+                            <h5 class="font-weight-bold mt-2">{{ event.title }}</h5>
+                            <p class="text-muted small mb-3">{{ event.event_date|date:"F Y" }}</p>
+                            <p class="text-muted mb-0">{{ event.short_description|default:event.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p class="text-muted mb-0">Nessun evento passato da mostrare.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- EVENTI FUTURI -->
+<section class="events-process-section">
+    <div class="container">
+        <div class="card border-0 shadow-custom events-process-card">
+            <div class="card-body p-4 p-lg-5">
+                <div class="text-center mb-5">
+                    <span class="section-kicker">Come lavoriamo</span>
+                    <h2 class="h3 font-weight-bold">Dall’idea all’evento</h2>
+                    <div class="bottom_line mx-auto" style="width: 190px; height: 2.5px;"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="events-step-card h-100">
+                            <div class="events-step-number">01</div>
+                            <h3 class="h5 font-weight-bold mb-3">Ascolto</h3>
+                            <p class="text-muted mb-0">
+                                Partiamo dall’occasione, dal numero degli ospiti e dal tipo di atmosfera desiderata.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="events-step-card h-100">
+                            <div class="events-step-number">02</div>
+                            <h3 class="h5 font-weight-bold mb-3">Proposta</h3>
+                            <p class="text-muted mb-0">
+                                Immaginiamo insieme menu, allestimento e ritmo dell’esperienza.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="events-step-card h-100">
+                            <div class="events-step-number">03</div>
+                            <h3 class="h5 font-weight-bold mb-3">Personalizzazione</h3>
+                            <p class="text-muted mb-0">
+                                Adattiamo i dettagli per rendere ogni evento coerente con chi lo vive.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="events-step-card h-100">
+                            <div class="events-step-number">04</div>
+                            <h3 class="h5 font-weight-bold mb-3">Accoglienza</h3>
+                            <p class="text-muted mb-0">
+                                Mettiamo in scena una serata curata, elegante e autentica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="events-cta-section">
+    <div class="container">
+        <div class="card border-0 shadow-custom events-cta-card">
+            <div class="card-body text-center py-5 px-4">
+                <span class="section-kicker">Organizza il tuo evento</span>
+                <h2 class="font-weight-bold mb-3">Raccontaci la tua idea</h2>
+                <p class="lead mb-4 text-muted mx-auto events-cta-text">
+                    Creeremo una proposta su misura, dalla tavola al menù, per trasformare un’occasione speciale in un’esperienza memorabile.
+                </p>
+                <a href="/contatti/" class="btn btn-warning btn-lg px-4 py-2 shadow events-cta-btn">
+                    Richiedi un preventivo gratuito
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
