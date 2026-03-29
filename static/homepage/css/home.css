@@ -90,7 +90,7 @@ p {
 }
 
 .btn-home-secondary {
-  background: transparent;
+  background: var(--cm-accent-soft);
   color: var(--cm-text);
   border: 1px solid rgba(184, 135, 70, 0.35);
   border-radius: 999px;
@@ -103,7 +103,6 @@ p {
 .btn-home-secondary:hover {
   text-decoration: none;
   color: var(--cm-accent-dark);
-  background: var(--cm-accent-soft);
   border-color: rgba(184, 135, 70, 0.45);
   transform: translateY(-2px);
 }
@@ -162,6 +161,11 @@ p {
 
 .intro-logo {
   max-width: 180px;
+}
+
+#logo {
+  width: 512px;
+  height: 512px;
 }
 
 .intro-text {
@@ -389,10 +393,6 @@ p {
   .hero-actions .btn {
     width: 100%;
     min-width: auto;
-  }
-
-  .intro-logo {
-    max-width: 140px;
   }
 
   .experience-image {
