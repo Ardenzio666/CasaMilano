@@ -267,3 +267,22 @@
     transform: translateY(-6px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
+
+.event-card-link::after {
+  content: "Scopri di più →";
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-size: 0.9rem;
+  color: #ffc107;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.event-card-link:hover::after {
+  opacity: 1;
+}
+
+.event-card-link {
+  position: relative;
+}

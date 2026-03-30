@@ -50,4 +50,21 @@ class Event(models.Model):
         return self.event_date >= timezone.localdate()
 
     def get_absolute_url(self):
-        return reverse("events:detail", kwargs={"slug": self.slug})
+        return reverse("eventi:event_detail", kwargs={"slug": self.slug})
+
+
+class EventImage(models.Model):
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE,
+        related_name="images"
+    )
+    image = models.ImageField(upload_to="events/gallery/")
+    alt_text = models.CharField(max_length=255, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"Image for {self.event.title}"
+
+    class Meta:
+        ordering = ["order"]

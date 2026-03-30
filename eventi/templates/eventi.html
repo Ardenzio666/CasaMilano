@@ -80,56 +80,7 @@
     </div>
 </section>
 
-<!-- PROSSIMI EVENTI -->
-{% for event in upcoming_events %}
-    <div class="col-lg-6 mb-4">
-        <div class="card h-100 border-0 shadow-sm events-program-card">
-            <img src="{{ event.image.url }}" class="card-img-top events-card-img" alt="{{ event.title }}">
-            <div class="card-body p-4">
-                <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-                    <span class="events-badge events-badge-warm">{{ event.get_event_type_display }}</span>
-                    <small class="text-muted">
-                        {{ event.event_date|date:"d F Y" }}
-                    </small>
-                </div>
-
-                <h5 class="card-title font-weight-bold">{{ event.title }}</h5>
-                <p class="card-text text-muted">{{ event.description }}</p>
-
-                {% if event.atmosphere or event.ideal_for %}
-                    <div class="events-info-box">
-                        {% if event.atmosphere %}
-                            <p class="mb-2"><strong>Atmosfera:</strong> {{ event.atmosphere }}</p>
-                        {% endif %}
-                        {% if event.ideal_for %}
-                            <p class="mb-0"><strong>Ideale per:</strong> {{ event.ideal_for }}</p>
-                        {% endif %}
-                    </div>
-                {% endif %}
-
-                <hr>
-
-                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                    {% if event.price %}
-                        <strong class="events-price">€ {{ event.price }}</strong>
-                    {% endif %}
-
-                    {% if event.booking_url %}
-                        <a href="{{ event.booking_url }}" class="btn btn-outline-warning btn-sm events-btn-outline">
-                            {{ event.cta_text|default:"Prenota un posto" }}
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-{% empty %}
-    <div class="col-12 text-center">
-        <p class="text-muted mb-0">Al momento non ci sono eventi in programma.</p>
-    </div>
-{% endfor %}
-
-
+<!-- EVENTI FUTURI -->
 <section class="events-upcoming-section">
     <div class="container">
         <div class="text-center mb-5">
@@ -140,49 +91,50 @@
                 Scopri le prossime serate speciali e prenota il tuo posto a tavola.
             </p>
         </div>
-
         <div class="row">
             {% for event in upcoming_events %}
                 <div class="col-lg-6 mb-4">
-                    <div class="card h-100 border-0 shadow-sm events-program-card">
-                        <img src="{{ event.image.url }}" class="card-img-top events-card-img" alt="{{ event.title }}">
-                        <div class="card-body p-4">
-                            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-                                <span class="events-badge events-badge-warm">{{ event.get_event_type_display }}</span>
-                                <small class="text-muted">
-                                    {{ event.event_date|date:"d F Y" }}
-                                </small>
-                            </div>
+                    <a href="{{ event.get_absolute_url }}" class="event-card-link"></a>
+                        <div class="card h-100 border-0 shadow-sm events-program-card">
+                            <img src="{{ event.image.url }}" class="card-img-top events-card-img" alt="{{ event.title }}">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                                    <span class="events-badge events-badge-warm">{{ event.get_event_type_display }}</span>
+                                    <small class="text-muted">
+                                        {{ event.event_date|date:"d F Y" }}
+                                    </small>
+                                </div>
 
-                            <h5 class="card-title font-weight-bold">{{ event.title }}</h5>
-                            <p class="card-text text-muted">{{ event.description }}</p>
+                                <h5 class="card-title font-weight-bold">{{ event.title }}</h5>
+                                <p class="card-text text-muted">{{ event.description }}</p>
 
-                            {% if event.atmosphere or event.ideal_for %}
-                                <div class="events-info-box">
-                                    {% if event.atmosphere %}
-                                        <p class="mb-2"><strong>Atmosfera:</strong> {{ event.atmosphere }}</p>
+                                {% if event.atmosphere or event.ideal_for %}
+                                    <div class="events-info-box">
+                                        {% if event.atmosphere %}
+                                            <p class="mb-2"><strong>Atmosfera:</strong> {{ event.atmosphere }}</p>
+                                        {% endif %}
+                                        {% if event.ideal_for %}
+                                            <p class="mb-0"><strong>Ideale per:</strong> {{ event.ideal_for }}</p>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                <hr>
+
+                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    {% if event.price %}
+                                        <strong class="events-price">€ {{ event.price }}</strong>
                                     {% endif %}
-                                    {% if event.ideal_for %}
-                                        <p class="mb-0"><strong>Ideale per:</strong> {{ event.ideal_for }}</p>
+
+                                    {% if event.booking_url %}
+                                        <a href="{{ event.booking_url }}" class="btn btn-outline-warning btn-sm events-btn-outline">
+                                            {{ event.cta_text|default:"Prenota un posto" }}
+                                        </a>
                                     {% endif %}
                                 </div>
-                            {% endif %}
-
-                            <hr>
-
-                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                                {% if event.price %}
-                                    <strong class="events-price">€ {{ event.price }}</strong>
-                                {% endif %}
-
-                                {% if event.booking_url %}
-                                    <a href="{{ event.booking_url }}" class="btn btn-outline-warning btn-sm events-btn-outline">
-                                        {{ event.cta_text|default:"Prenota un posto" }}
-                                    </a>
-                                {% endif %}
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% empty %}
                 <div class="col-12 text-center">
@@ -193,7 +145,7 @@
     </div>
 </section>
 
-<!-- EVENTI FUURI -->
+<!-- EVENTI PASSATI -->
 <section class="events-past-section">
     <div class="container">
         <div class="text-center mb-5">
@@ -204,19 +156,20 @@
                 Alcune delle esperienze già vissute a Casa Milano.
             </p>
         </div>
-
         <div class="row">
             {% for event in past_events %}
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card border-0 shadow-custom h-100 events-past-card">
-                        <img src="{{ event.image.url }}" class="card-img-top events-past-img" alt="{{ event.title }}">
-                        <div class="card-body p-4">
-                            <span class="events-past-tag">{{ event.get_event_type_display }}</span>
-                            <h5 class="font-weight-bold mt-2">{{ event.title }}</h5>
-                            <p class="text-muted small mb-3">{{ event.event_date|date:"F Y" }}</p>
-                            <p class="text-muted mb-0">{{ event.short_description|default:event.description }}</p>
+                    <a href="{{ event.get_absolute_url }}" class="event-card-link">
+                        <div class="card border-0 shadow-custom h-100 events-past-card">
+                            <img src="{{ event.image.url }}" class="card-img-top events-past-img" alt="{{ event.title }}">
+                            <div class="card-body p-4">
+                                <span class="events-past-tag">{{ event.get_event_type_display }}</span>
+                                <h5 class="font-weight-bold mt-2">{{ event.title }}</h5>
+                                <p class="text-muted small mb-3">{{ event.event_date|date:"F Y" }}</p>
+                                <p class="text-muted mb-0">{{ event.short_description|default:event.description }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% empty %}
                 <div class="col-12 text-center">
@@ -227,7 +180,7 @@
     </div>
 </section>
 
-<!-- EVENTI FUTURI -->
+
 <section class="events-process-section">
     <div class="container">
         <div class="card border-0 shadow-custom events-process-card">

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 from .models import Event
 
@@ -24,3 +24,10 @@ def eventi(request):
         'eventi.html',
         context
     )
+
+def event_detail(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+
+    return render(request, 'event_details.html', {
+        'event': event
+    })
