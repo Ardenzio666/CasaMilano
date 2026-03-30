@@ -3,24 +3,24 @@
 {% block title %}Dove Trovarci - Casa Milano{% endblock %}
 
 {% block content %}
-<section class="location-hero py-5">
+<section class="menu-hero-section mb-5">
     <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-10">
-                <div class="card border-0 shadow-custom location-hero-card">
-                    <div class="card-body p-4 p-md-5">
-                        <span class="section-kicker">Casa Milano</span>
-                        <h1 class="display-5 font-weight-bold mb-3">Dove Trovarci</h1>
-                        <div class="bottom_line mx-auto" style="width: 220px; height: 2.5px;"></div>
-                        <p class="lead text-muted mt-4 mb-0">
-                            Ci troviamo nel quartiere San Lazzaro di Isernia, in un contesto tranquillo e accogliente,
-                            ideale per vivere un’esperienza intima, riservata e autentica.
-                        </p>
-                    </div>
-                </div>
+        <div class="card border-0 shadow-custom menu-hero-card">
+            <div class="card-body text-center py-5 px-4 px-lg-5">
+                <span class="section-kicker">Casa Milano</span>
+                <h1 class="display-4 font-weight-bold mb-3">Dove trovarci</h1>
+                <div class="bottom_line mx-auto" style="width: 250px; height: 2.5px;"></div>
+
+                <p class="lead text-muted mt-4 mb-3 mx-auto menu-hero-lead">
+                    Ci troviamo nel quartiere San Lazzaro di Isernia, in un contesto tranquillo e accogliente,
+                    ideale per vivere un’esperienza intima, riservata e autentica.
+                </p>
             </div>
         </div>
+    </div>
+</section>
 
+    <div class="card border-0 shadow-custom location-hero-card">
         <div class="row g-4 align-items-stretch">
             <div class="col-lg-4">
                 <div class="location-info-card h-100">
@@ -30,7 +30,7 @@
                         </div>
                         <div>
                             <h3 class="font-weight-bold mb-2">Indirizzo</h3>
-                            <div class="bottom_line mb-3 location-line"></div>
+                            <div class="bottom_line mb-3 location-line", style="width: 116px"></div>
                             <p class="mb-1"><strong>Via Luca Signorelli, 1</strong></p>
                             <p class="mb-0 text-muted">86170 Isernia (IS)</p>
                         </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div>
                             <h4 class="font-weight-bold mb-2">Ricevimento</h4>
-                            <div class="bottom_line mb-3 location-line"></div>
+                            <div class="bottom_line mb-3 location-line", style="width: 135px"></div>
                             <p class="mb-0 text-muted">
                                 Essendo un home restaurant, riceviamo
                                 <strong>esclusivamente su prenotazione</strong>.
@@ -57,7 +57,7 @@
                         </div>
                         <div>
                             <h4 class="font-weight-bold mb-2">Come arrivare</h4>
-                            <div class="bottom_line mb-3 location-line"></div>
+                            <div class="bottom_line mb-3 location-line", style="width: 160px"></div>
                             <p class="mb-0 text-muted">
                                 La zona è facilmente raggiungibile dal centro città.
                                 Potete usare la mappa per orientarvi e visualizzare l’ingresso o il punto più vicino.
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="location-cta-wrap mt-4">
-                        <a href="{% url 'contatti:contatti' %}" class="btn btn-warning px-4 py-2 location-cta-btn">
+                        <a href="{% url 'contatti:contatti' %}" class="btn btn-home-primary px-4 py-2 location-cta-btn">
                             Prenota o chiedi informazioni
                         </a>
                     </div>

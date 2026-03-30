@@ -6,7 +6,7 @@
 }
 
 #bottom_menu {
-    background: var(--primary-red);
+    background: var(--nav-accent);
 }
 
 /* =========================
@@ -167,7 +167,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--primary-red);
+    background: var(--nav-accent);
     box-shadow: 0 0 0 4px rgba(244, 67, 54, 0.12);
 }
 
@@ -192,7 +192,7 @@
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f44336, #ff7b6f);
+    background: var(--nav-accent);
     color: #fff;
     font-weight: 800;
     display: flex;
@@ -242,7 +242,7 @@
 }
 
 #bottom_menu {
-    background: var(--primary-red);
+    background: var(--nav-accent);
 }
 
 /* responsive */

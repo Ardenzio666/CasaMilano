@@ -804,6 +804,11 @@ body {
   background-color: var(--nav-accent-soft);
 }
 
+#main-nav .nav-link-evidence:hover {
+  color: var(--nav-accent-soft) !important;
+  background-color: rgba(194, 75, 65, 0.5)
+}
+
 #main-nav .nav-cta {
   background: var(--nav-accent);
   color: #fff !important;

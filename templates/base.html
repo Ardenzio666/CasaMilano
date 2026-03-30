@@ -23,7 +23,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-md fixed-top" id="main-nav">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top" id="main-nav">
   <div class="container">
 
     <a href="{% url 'homepage:home' %}" class="navbar-brand d-flex align-items-center">
@@ -34,7 +34,8 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       </div>
     </a>
 
-    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    <button class="navbar-toggler custom-toggler mr-3"
+            type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

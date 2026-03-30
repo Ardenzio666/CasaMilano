@@ -11,6 +11,14 @@
   background: var(--nav-accent-soft);
 }
 
+#main-nav .nav-link-evidence.active {
+  background-color: rgba(194, 75, 65, 0.85);
+  color: var(--nav-accent-soft) !important;
+  border-radius: 999px; /* Garantisce l'effetto arrotondato ai lati */
+  padding-left: 1.25rem !important;  /* Aumenta lo spazio orizzontale della pillola */
+  padding-right: 1.25rem !important;
+}
+
 #main-nav .nav-link.active::after {
   transform: scaleX(1);
 }

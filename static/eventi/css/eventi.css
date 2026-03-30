@@ -193,7 +193,7 @@
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff9800, #ffc84d);
+    background: linear-gradient(135deg, #ff9800, var(--nav-accent));
     color: #fff;
     font-weight: 800;
     display: flex;
