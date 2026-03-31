@@ -4,6 +4,7 @@
 
 .event-detail-page {
   background: linear-gradient(180deg, rgba(255, 248, 235, 0.55) 0%, #ffffff 100%);
+  border-radius: 22px;
 }
 
 /* -------------------------
@@ -125,7 +126,7 @@
 }
 
 .event-title {
-  font-size: clamp(2rem, 3vw, 3rem);
+  overflow-wrap: break-word;
   font-weight: 900;
   color: #280805;
   line-height: 1.1;

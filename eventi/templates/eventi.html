@@ -94,7 +94,7 @@
         <div class="row">
             {% for event in upcoming_events %}
                 <div class="col-lg-6 mb-4">
-                    <a href="{{ event.get_absolute_url }}" class="event-card-link"></a>
+                    <a href="{{ event.get_absolute_url }}" class="event-card-link text-decoration-none">
                         <div class="card h-100 border-0 shadow-sm events-program-card">
                             <img src="{{ event.image.url }}" class="card-img-top events-card-img" alt="{{ event.title }}">
                             <div class="card-body p-4">
@@ -105,11 +105,11 @@
                                     </small>
                                 </div>
 
-                                <h5 class="card-title font-weight-bold">{{ event.title }}</h5>
+                                <h5 class="card-title font-weight-bold text-dark">{{ event.title }}</h5>
                                 <p class="card-text text-muted">{{ event.description }}</p>
 
                                 {% if event.atmosphere or event.ideal_for %}
-                                    <div class="events-info-box">
+                                    <div class="events-info-box text-dark">
                                         {% if event.atmosphere %}
                                             <p class="mb-2"><strong>Atmosfera:</strong> {{ event.atmosphere }}</p>
                                         {% endif %}
@@ -123,13 +123,13 @@
 
                                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                                     {% if event.price %}
-                                        <strong class="events-price">€ {{ event.price }}</strong>
+                                        <strong class="events-price text-dark">€ {{ event.price }}</strong>
                                     {% endif %}
 
                                     {% if event.booking_url %}
-                                        <a href="{{ event.booking_url }}" class="btn btn-outline-warning btn-sm events-btn-outline">
+                                        <object><a href="{{ event.booking_url }}" class="btn btn-outline-warning btn-sm events-btn-outline">
                                             {{ event.cta_text|default:"Prenota un posto" }}
-                                        </a>
+                                        </a></object>
                                     {% endif %}
                                 </div>
                             </div>
@@ -159,12 +159,12 @@
         <div class="row">
             {% for event in past_events %}
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="{{ event.get_absolute_url }}" class="event-card-link">
+                    <a href="{{ event.get_absolute_url }}" class="event-card-link text-decoration-none">
                         <div class="card border-0 shadow-custom h-100 events-past-card">
                             <img src="{{ event.image.url }}" class="card-img-top events-past-img" alt="{{ event.title }}">
                             <div class="card-body p-4">
                                 <span class="events-past-tag">{{ event.get_event_type_display }}</span>
-                                <h5 class="font-weight-bold mt-2">{{ event.title }}</h5>
+                                <h5 class="font-weight-bold mt-2 text-dark">{{ event.title }}</h5>
                                 <p class="text-muted small mb-3">{{ event.event_date|date:"F Y" }}</p>
                                 <p class="text-muted mb-0">{{ event.short_description|default:event.description }}</p>
                             </div>

@@ -4,242 +4,247 @@
 {% block title %}{{ event.title }} - Casa Milano{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/event_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/event_detail.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="event-detail-page py-5">
-    <div class="container">
+    <section class="event-detail-page py-5">
+        <div class="container">
 
-        <!-- HERO -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-xl-11">
-                <div class="event-hero-card shadow-custom">
-                    <div class="row g-0 align-items-stretch">
+            <!-- HERO -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-xl-11">
+                    <div class="event-hero-card shadow-custom">
+                        <div class="row g-0 align-items-stretch">
 
-                        <div class="col-lg-7">
-                            <div class="event-hero-image-wrap">
-                                {% if event.image %}
-                                    <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-hero-image">
-                                {% endif %}
+                            <div class="col-lg-7">
+                                <div class="event-hero-image-wrap">
+                                    {% if event.image %}
+                                        <img src="{{ event.image.url }}" alt="{{ event.title }}"
+                                             class="event-hero-image">
+                                    {% endif %}
 
-                                <div class="event-hero-overlay">
+                                    <div class="event-hero-overlay">
                                     <span class="event-badge">
                                         {{ event.get_event_type_display }}
                                     </span>
 
-                                    {% if event.is_featured %}
-                                        <span class="event-badge event-badge-featured">
+                                        {% if event.is_featured %}
+                                            <span class="event-badge event-badge-featured">
                                             In evidenza
                                         </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="event-hero-content">
+                                    <a href="{% url 'eventi:eventi' %}" class="event-back-link">
+                                        <i class="bi bi-arrow-left"></i> Torna agli eventi
+                                    </a>
+
+                                    <span class="event-kicker">Esperienza Casa Milano</span>
+                                    <h2 class="event-title">{{ event.title }}</h2>
+                                    <div class="bottom_line event-line"></div>
+
+                                    {% if event.short_description %}
+                                        <p class="event-lead">
+                                            {{ event.short_description }}
+                                        </p>
+                                    {% endif %}
+
+                                    <div class="event-meta-list">
+                                        <div class="event-meta-item">
+                                            <div class="event-meta-icon">
+                                                <i class="bi bi-calendar-event-fill"></i>
+                                            </div>
+                                            <div>
+                                                <span class="event-meta-label">Data</span>
+                                                <div class="event-meta-value">{{ event.event_date|date:"d F Y" }}</div>
+                                            </div>
+                                        </div>
+
+                                        {% if event.price %}
+                                            <div class="event-meta-item">
+                                                <div class="event-meta-icon">
+                                                    <i class="bi bi-cash-stack"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="event-meta-label">Prezzo</span>
+                                                    <div class="event-meta-value">€ {{ event.price }}</div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        {% if event.atmosphere %}
+                                            <div class="event-meta-item">
+                                                <div class="event-meta-icon">
+                                                    <i class="bi bi-stars"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="event-meta-label">Atmosfera</span>
+                                                    <div class="event-meta-value">{{ event.atmosphere }}</div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        {% if event.ideal_for %}
+                                            <div class="event-meta-item">
+                                                <div class="event-meta-icon">
+                                                    <i class="bi bi-heart-fill"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="event-meta-label">Ideale per</span>
+                                                    <div class="event-meta-value">{{ event.ideal_for }}</div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    {% if event.booking_url %}
+                                        <div class="event-cta-wrap">
+                                            <a href="{{ event.booking_url }}" target="_blank"
+                                               class="btn btn-warning event-cta-btn">
+                                                {{ event.cta_text|default:"Prenota un posto" }}
+                                            </a>
+                                        </div>
                                     {% endif %}
                                 </div>
                             </div>
+
                         </div>
-
-                        <div class="col-lg-5">
-                            <div class="event-hero-content">
-                                <a href="{% url 'eventi:eventi' %}" class="event-back-link">
-                                    <i class="bi bi-arrow-left"></i> Torna agli eventi
-                                </a>
-
-                                <span class="event-kicker">Esperienza Casa Milano</span>
-                                <h1 class="event-title">{{ event.title }}</h1>
-                                <div class="bottom_line event-line"></div>
-
-                                {% if event.short_description %}
-                                    <p class="event-lead">
-                                        {{ event.short_description }}
-                                    </p>
-                                {% endif %}
-
-                                <div class="event-meta-list">
-                                    <div class="event-meta-item">
-                                        <div class="event-meta-icon">
-                                            <i class="bi bi-calendar-event-fill"></i>
-                                        </div>
-                                        <div>
-                                            <span class="event-meta-label">Data</span>
-                                            <div class="event-meta-value">{{ event.event_date|date:"d F Y" }}</div>
-                                        </div>
-                                    </div>
-
-                                    {% if event.price %}
-                                        <div class="event-meta-item">
-                                            <div class="event-meta-icon">
-                                                <i class="bi bi-cash-stack"></i>
-                                            </div>
-                                            <div>
-                                                <span class="event-meta-label">Prezzo</span>
-                                                <div class="event-meta-value">€ {{ event.price }}</div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    {% if event.atmosphere %}
-                                        <div class="event-meta-item">
-                                            <div class="event-meta-icon">
-                                                <i class="bi bi-stars"></i>
-                                            </div>
-                                            <div>
-                                                <span class="event-meta-label">Atmosfera</span>
-                                                <div class="event-meta-value">{{ event.atmosphere }}</div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    {% if event.ideal_for %}
-                                        <div class="event-meta-item">
-                                            <div class="event-meta-icon">
-                                                <i class="bi bi-heart-fill"></i>
-                                            </div>
-                                            <div>
-                                                <span class="event-meta-label">Ideale per</span>
-                                                <div class="event-meta-value">{{ event.ideal_for }}</div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                </div>
-
-                                {% if event.booking_url %}
-                                    <div class="event-cta-wrap">
-                                        <a href="{{ event.booking_url }}" target="_blank" class="btn btn-warning event-cta-btn">
-                                            {{ event.cta_text|default:"Prenota un posto" }}
-                                        </a>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- DESCRIZIONE + SIDEBAR -->
-        <div class="row g-4 mb-5">
-            <div class="col-lg-8">
-                <div class="event-content-card shadow-custom">
-                    <span class="event-section-kicker">L’esperienza</span>
-                    <h2 class="event-section-title">Dettagli dell’evento</h2>
-                    <div class="bottom_line event-line-left"></div>
-
-                    <div class="event-description mt-4">
-                        {{ event.description|linebreaks }}
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <div class="event-side-card shadow-custom">
-                    <span class="event-section-kicker">Informazioni</span>
-                    <h3 class="event-side-title">In breve</h3>
-                    <div class="bottom_line event-line-left event-line-small"></div>
+            <!-- DESCRIZIONE + SIDEBAR -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-8">
+                    <div class="event-content-card shadow-custom">
+                        <span class="event-section-kicker">L’esperienza</span>
+                        <h2 class="event-section-title">Dettagli dell’evento</h2>
+                        <div class="bottom_line event-line-left"></div>
 
-                    <ul class="event-side-list">
-                        <li>
-                            <i class="bi bi-tag-fill"></i>
-                            <span><strong>Tipologia:</strong> {{ event.get_event_type_display }}</span>
-                        </li>
-                        <li>
-                            <i class="bi bi-calendar2-check-fill"></i>
-                            <span><strong>Quando:</strong> {{ event.event_date|date:"d/m/Y" }}</span>
-                        </li>
+                        <div class="event-description mt-4">
+                            {{ event.description|linebreaks }}
+                        </div>
+                    </div>
+                </div>
 
-                        {% if event.price %}
+                <div class="col-lg-4">
+                    <div class="event-side-card shadow-custom">
+                        <span class="event-section-kicker">Informazioni</span>
+                        <h3 class="event-side-title">In breve</h3>
+                        <div class="bottom_line event-line-left event-line-small"></div>
+
+                        <ul class="event-side-list">
                             <li>
-                                <i class="bi bi-wallet2"></i>
-                                <span><strong>Prezzo:</strong> € {{ event.price }}</span>
+                                <i class="bi bi-tag-fill"></i>
+                                <span><strong>Tipologia:</strong> {{ event.get_event_type_display }}</span>
                             </li>
-                        {% endif %}
-
-                        {% if event.atmosphere %}
                             <li>
-                                <i class="bi bi-moon-stars-fill"></i>
-                                <span><strong>Atmosfera:</strong> {{ event.atmosphere }}</span>
+                                <i class="bi bi-calendar2-check-fill"></i>
+                                <span><strong>Quando:</strong> {{ event.event_date|date:"d/m/Y" }}</span>
                             </li>
-                        {% endif %}
 
-                        {% if event.ideal_for %}
-                            <li>
-                                <i class="bi bi-people-fill"></i>
-                                <span><strong>Ideale per:</strong> {{ event.ideal_for }}</span>
-                            </li>
-                        {% endif %}
-                    </ul>
+                            {% if event.price %}
+                                <li>
+                                    <i class="bi bi-wallet2"></i>
+                                    <span><strong>Prezzo:</strong> € {{ event.price }}</span>
+                                </li>
+                            {% endif %}
 
-                    {% if event.booking_url %}
-                        <a href="{{ event.booking_url }}" target="_blank" class="btn btn-warning w-100 event-side-btn">
-                            {{ event.cta_text|default:"Prenota un posto" }}
-                        </a>
-                    {% endif %}
+                            {% if event.atmosphere %}
+                                <li>
+                                    <i class="bi bi-moon-stars-fill"></i>
+                                    <span><strong>Atmosfera:</strong> {{ event.atmosphere }}</span>
+                                </li>
+                            {% endif %}
+
+                            {% if event.ideal_for %}
+                                <li>
+                                    <i class="bi bi-people-fill"></i>
+                                    <span><strong>Ideale per:</strong> {{ event.ideal_for }}</span>
+                                </li>
+                            {% endif %}
+                        </ul>
+
+                        {% if event.booking_url %}
+                            <a href="{{ event.booking_url }}" target="_blank"
+                               class="btn btn-warning w-100 event-side-btn">
+                                {{ event.cta_text|default:"Prenota un posto" }}
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- GALLERIA -->
-        {% if event.images.all %}
-            <div class="row justify-content-center">
+            <!-- GALLERIA -->
+            {% if event.images.all %}
+                <div class="row justify-content-center">
                 <div class="col-xl-11">
-                    <div class="event-gallery-card shadow-custom">
-                        <div class="text-center mb-4">
-                            <span class="event-section-kicker">Galleria</span>
-                            <h2 class="event-section-title">Atmosfera dell’evento</h2>
-                            <div class="bottom_line mx-auto"></div>
-                            <p class="event-gallery-intro">
-                                Alcuni scorci dell’esperienza, della tavola e dell’atmosfera che rendono ogni evento unico.
-                            </p>
-                        </div>
+                <div class="event-gallery-card shadow-custom">
+                    <div class="text-center mb-4">
+                        <span class="event-section-kicker">Galleria</span>
+                        <h2 class="event-section-title">Atmosfera dell’evento</h2>
+                        <div class="bottom_line mx-auto"></div>
+                        <p class="event-gallery-intro">
+                            Alcuni scorci dell’esperienza, della tavola e dell’atmosfera che rendono ogni evento unico.
+                        </p>
+                    </div>
 
-                        <div class="event-gallery-grid">
-                            {% for img in event.images.all %}
-                                <button
+                    <div class="event-gallery-grid">
+                        {% for img in event.images.all %}
+                            <button
                                     type="button"
                                     class="event-gallery-item js-gallery-item"
                                     data-image-url="{{ img.image.url }}"
                                     data-image-alt="{{ img.alt_text|default:event.title }}"
                                     data-index="{{ forloop.counter0 }}"
                                     aria-label="Apri immagine {{ forloop.counter }}"
-                                >
-                                    <div class="event-gallery-image-wrapper">
-                                        <img src="{{ img.image.url }}"
-                                            alt="{{ img.alt_text|default:event.title }}">
-                                    </div>
+                            >
+                                <div class="event-gallery-image-wrapper">
+                                    <img src="{{ img.image.url }}"
+                                         alt="{{ img.alt_text|default:event.title }}">
+                                </div>
 
-                                    <div class="event-gallery-overlay">
-                                        <i class="bi bi-arrows-fullscreen"></i>
-                                    </div>
-                                </button>
-                            {% endfor %}
+                                <div class="event-gallery-overlay">
+                                    <i class="bi bi-arrows-fullscreen"></i>
+                                </div>
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- LIGHTBOX -->
+                <div class="event-lightbox" id="eventLightbox" aria-hidden="true">
+                    <div class="event-lightbox-backdrop"></div>
+
+                    <div class="event-lightbox-dialog" role="dialog" aria-modal="true"
+                         aria-label="Galleria immagini evento">
+                        <button type="button" class="event-lightbox-close" id="lightboxClose"
+                                aria-label="Chiudi galleria">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+
+                        <button type="button" class="event-lightbox-nav event-lightbox-prev" id="lightboxPrev"
+                                aria-label="Immagine precedente">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+
+                        <div class="event-lightbox-content">
+                            <img id="lightboxImage" src="" alt="">
                         </div>
+
+                        <button type="button" class="event-lightbox-nav event-lightbox-next" id="lightboxNext"
+                                aria-label="Immagine successiva">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
-            </div>
-
-            <!-- LIGHTBOX -->
-            <div class="event-lightbox" id="eventLightbox" aria-hidden="true">
-                <div class="event-lightbox-backdrop"></div>
-
-                <div class="event-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Galleria immagini evento">
-                    <button type="button" class="event-lightbox-close" id="lightboxClose" aria-label="Chiudi galleria">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
-
-                    <button type="button" class="event-lightbox-nav event-lightbox-prev" id="lightboxPrev" aria-label="Immagine precedente">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
-
-                    <div class="event-lightbox-content">
-                        <img id="lightboxImage" src="" alt="">
-                    </div>
-
-                    <button type="button" class="event-lightbox-nav event-lightbox-next" id="lightboxNext" aria-label="Immagine successiva">
-                        <i class="bi bi-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
             {% endif %}
 
-    </div>
-</section>
+            </div>
+    </section>
 {% endblock %}
