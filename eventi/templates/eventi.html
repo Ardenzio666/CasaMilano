@@ -94,7 +94,7 @@
         <div class="row">
             {% for event in upcoming_events %}
                 <div class="col-lg-6 mb-4">
-                    <a href="{{ event.get_absolute_url }}" class="event-card-link text-decoration-none">
+                    <a href="{{ event.get_absolute_url }}" class="event-card-link">
                         <div class="card h-100 border-0 shadow-sm events-program-card">
                             <img src="{{ event.image.url }}" class="card-img-top events-card-img" alt="{{ event.title }}">
                             <div class="card-body p-4">
