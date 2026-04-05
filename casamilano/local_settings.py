@@ -24,3 +24,12 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
+
+#Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.libero.it'  # Replace with your SMTP host
+EMAIL_HOST_USER = "casamilano69@libero.it"  # Your email address
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")  # Your email password
+EMAIL_PORT = 465  # SMTP port
+EMAIL_USE_SSL = True  # Use SSL for secure connection
+CONTACT_RECEIVER_EMAIL = 'casamilano69@libero.it'
