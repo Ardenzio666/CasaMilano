@@ -73,7 +73,17 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 
   </div>
 </nav>
-  <div class="container py-4">
+{% if messages %}
+<div class="messages-container">
+    {% for message in messages %}
+        <div class="custom-message {{ message.tags }}">
+            <span>{{ message }}</span>
+            <button type="button" class="message-close" aria-label="Chiudi">&times;</button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+<div class="container py-4">
   {% block content %}
   {% endblock content %}
   </div>
@@ -89,7 +99,6 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
  <script src="{% static 'homepage/js/script.js' %}"></script>
  <script src="{% static 'eventi/js/script.js' %}"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
@@ -111,6 +120,37 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       }
     });
   });
+</script>
+<!-- MESAGES -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // 🔹 Auto-dismiss dopo 5 secondi
+    document.querySelectorAll(".custom-message").forEach(function (messageBox) {
+        setTimeout(function () {
+            messageBox.style.opacity = "0";
+            messageBox.style.transform = "translateY(-5px)";
+            setTimeout(function () {
+                messageBox.remove();
+            }, 400);
+        }, 5000);
+    });
+
+    // 🔹 Chiusura manuale
+    document.querySelectorAll(".message-close").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const messageBox = button.closest(".custom-message");
+            if (messageBox) {
+                messageBox.style.opacity = "0";
+                messageBox.style.transform = "translateY(-5px)";
+                setTimeout(function () {
+                    messageBox.remove();
+                }, 300);
+            }
+        });
+    });
+
+});
 </script>
 </body>
 </html>

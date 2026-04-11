@@ -6,26 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuovo messaggio contatti</title>
 </head>
-<body>
-    <div class="main-container">
-        <div class="container">
-            <div class="header">
-                <img src="{{ base_uri }}{% static 'homepage/img/logo.png' %}" alt="Logo">
-            </div>
+    <body>
+        <div class="main-container">
+            <div class="container">
+                <div class="header">
+                    <img src="{{ base_uri }}{% static 'homepage/img/logo.png' %}" alt="Logo">
+                </div>
 
-            <div class="content">
-                <h2>Nuovo messaggio dal form contatti</h2>
+                <div class="content">
+                    <h2>Nuovo messaggio dal form contatti</h2>
 
-                <p><strong>Nome:</strong> {{ name }}</p>
-                <p><strong>Email:</strong> {{ email }}</p>
-                <p><strong>Messaggio:</strong></p>
-                <p>{{ message|linebreaks }}</p>
-            </div>
+                    <p><strong>Nome:</strong> {{ name }}</p>
+                    <p><strong>Email:</strong> {{ email }}</p>
+                    <p><strong>Messaggio:</strong></p>
+                    <p>{{ message|linebreaks }}</p>
+                </div>
 
-            <div class="footer">
-                <p>Messaggio inviato dal sito Casa Milano</p>
+                <div class="footer">
+                    <p>Messaggio inviato dal sito Casa Milano</p>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grazie per averci contattato</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f6f1eb; font-family: Georgia, 'Times New Roman', serif; color:#2f2a26;">
+
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#f6f1eb; margin:0; padding:30px 0;">
+        <tr>
+            <td align="center">
+
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:640px; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 18px rgba(0,0,0,0.08);">
+
+                    <!-- Header -->
+                    <tr>
+                        <td align="center" style="background-color:#e9ddd0; padding:32px 20px 24px 20px;">
+                            <img src="{{ base_uri }}{% static 'homepage/img/logo.png' %}"
+                                 alt="Casa Milano"
+                                 style="display:block; max-width:140px; width:100%; height:auto; margin:0 auto 18px auto;">
+
+                            <p style="margin:0; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#7a5c43;">
+                                Casa Milano
+                            </p>
+
+                            <h1 style="margin:14px 0 0 0; font-size:30px; line-height:1.2; font-weight:normal; color:#2f2a26;">
+                                Grazie per averci contattato
+                            </h1>
+                        </td>
+                    </tr>
+
+                    <!-- Body -->
+                    <tr>
+                        <td style="padding:40px 36px 24px 36px; font-size:16px; line-height:1.8; color:#3d352f;">
+
+                            <p style="margin:0 0 18px 0;">
+                                Gentile {{ name }},
+                            </p>
+
+                            <p style="margin:0 0 18px 0;">
+                                ti ringraziamo per averci scritto e per l’interesse verso <strong>Casa Milano</strong>.
+                                Abbiamo ricevuto correttamente il tuo messaggio e ti risponderemo al più presto con tutta l’attenzione che merita.
+                            </p>
+
+                            <p style="margin:0 0 18px 0;">
+                                Per noi ogni contatto è un’occasione per accogliere, ascoltare e creare un’esperienza speciale,
+                                che si tratti di una cena, di un evento o di una semplice richiesta di informazioni.
+                            </p>
+
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:28px 0; background-color:#faf6f2; border-left:4px solid #b08a67; border-radius:8px;">
+                                <tr>
+                                    <td style="padding:20px 22px;">
+                                        <p style="margin:0 0 10px 0; font-size:14px; text-transform:uppercase; letter-spacing:1px; color:#7a5c43;">
+                                            Il tuo messaggio
+                                        </p>
+                                        <div style="font-size:15px; line-height:1.7; color:#4a413a;">
+                                            {{ message|linebreaks }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="margin:0 0 18px 0;">
+                                Nel frattempo, ti invitiamo a continuare a seguirci per scoprire i nostri eventi,
+                                le nostre proposte e l’atmosfera di Casa Milano.
+                            </p>
+
+                            <p style="margin:0;">
+                                A presto,<br>
+                                <strong>Il team di Casa Milano</strong>
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Divider -->
+                    <tr>
+                        <td style="padding:0 36px;">
+                            <div style="height:1px; background-color:#eee4d9;"></div>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding:24px 36px 34px 36px; text-align:center; font-size:13px; line-height:1.7; color:#8a7b6d;">
+                            <p style="margin:0 0 8px 0;">
+                                Questa email è una conferma automatica di ricezione del tuo messaggio.
+                            </p>
+                            <p style="margin:0;">
+                                © Casa Milano — Home Restaurant
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

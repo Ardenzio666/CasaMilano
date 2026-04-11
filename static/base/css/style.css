@@ -857,3 +857,73 @@ body {
     max-height: 40px !important;
   }
 }
+
+/* =========================
+   MESSAGES CASA MILANO
+   ========================= */
+
+.messages-container {
+    max-width: 700px;
+    margin: 24px auto;
+    padding: 0 16px;
+    z-index: 1000;
+}
+
+.custom-message {
+    position: relative;
+    padding: 16px 48px 16px 20px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    line-height: 1.6;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+/* 🎯 Stili per tipo */
+.custom-message.success {
+    background-color: #edf7ed;
+    color: #2e7d32;
+    border-color: #c8e6c9;
+}
+
+.custom-message.error {
+    background-color: #fdecea;
+    color: #c62828;
+    border-color: #f5c6cb;
+}
+
+.custom-message.warning {
+    background-color: #fff8e1;
+    color: #8d6e63;
+    border-color: #f0e0b6;
+}
+
+.custom-message.info {
+    background-color: #eef5fb;
+    color: #1f5f8b;
+    border-color: #cfe2f3;
+}
+
+/* ❌ Bottone chiusura */
+.message-close {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.message-close:hover {
+    opacity: 1;
+}
