@@ -265,3 +265,15 @@
     gap: 10px;
   }
 }
+
+/* =========================
+   AVATAR
+========================= */
+
+.contact-avatar-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;   /* rende l'immagine tonda */
+    object-fit: cover;    /* evita deformazioni */
+    border: 2px solid #eee;
+}
