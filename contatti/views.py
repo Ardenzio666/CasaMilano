@@ -13,8 +13,7 @@ def contatti(request):
         if form.is_valid():
             print("Form received")
             try:
-                base_uri = request.build_absolute_uri("/").rstrip("/")
-                send_mail_async.delay(form.cleaned_data, base_uri)
+                send_mail_async.delay(form.cleaned_data)
                 messages.success(request, "Abbiamo ricevuto il tuo messaggio. Ti risponderemo presto. Se non vedi la nostra mail, per favore controlla nello spam. Grazie per averci contattato!!")
             except Exception as e:
                 messages.error(
