@@ -14,6 +14,18 @@
   overflow: hidden;
 }
 
+.display-custom {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 500px) {
+    .display-custom {
+      font-size: 3rem;
+    }
+}
+
 /* KICKER */
 .section-kicker {
   display: inline-block;
@@ -23,6 +35,19 @@
   font-weight: 700;
   color: #d39b18;
   margin-bottom: 0.8rem;
+}
+
+.row-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+@media screen and (max-width: 500px) {
+    .row-custom {
+      gap: 30px;
+    }
 }
 
 /* HOST CARD */

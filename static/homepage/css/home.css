@@ -168,6 +168,13 @@ p {
   height: 512px;
 }
 
+@media screen and (max-width: 500px) {
+    #logo {
+      width: 320px;
+      height: 320px;
+    }
+}
+
 .intro-text {
   max-width: 760px;
   font-size: 1.06rem;
