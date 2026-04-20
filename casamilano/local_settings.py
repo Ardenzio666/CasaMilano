@@ -1,12 +1,18 @@
 import os
 from dotenv import load_dotenv
 
+def str_to_bool(value: str) -> bool:
+    if value is None:
+        return False
+    
+    return value.strip().lower() in ("true", "1", "yes", "y", "on")
+
 load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY","")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = str_to_bool(os.environ.get("DEBUG","False"))
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost","167.71.52.149", "casamilano69.it","www.casamilano69.it"]
 
