@@ -29,6 +29,7 @@
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="swiper" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="bootstrap-icons" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
