@@ -6,9 +6,7 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.utils.html import strip_tags
 from casamilano import settings
-#import logging
-
-#logger = logging.getLogger(__name__)
+import logging
 import base64
 import mimetypes
 from pathlib import Path
@@ -29,7 +27,7 @@ from sendgrid.helpers.mail import (
     ReplyTo,
 )
 
-
+mail_logger = logging.getLogger("mail_logger")
 def _ensure_list(value):
     if not value:
         return []
@@ -38,29 +36,35 @@ def _ensure_list(value):
     return [value]
 
 
-def _build_file_attachment(file_path: str, disposition: str = "attachment", content_id: str | None = None) -> Attachment:
+def _build_file_attachment(file_path: str, disposition: str = "attachment", content_id: str | None = None) -> Attachment | None:
+    mail_logger.info("_build_file_attachment function")
+    mail_logger.info(f"file path: {file_path}")
     path = Path(file_path)
 
-    with path.open("rb") as f:
-        encoded_file = base64.b64encode(f.read()).decode()
+    try:
+        with path.open("rb") as f:
+            encoded_file = base64.b64encode(f.read()).decode()
 
-    mime_type, _ = mimetypes.guess_type(path.name)
-    mime_type = mime_type or "application/octet-stream"
+        mime_type, _ = mimetypes.guess_type(path.name)
+        mime_type = mime_type or "application/octet-stream"
 
-    attachment = Attachment(
-        FileContent(encoded_file),
-        FileName(path.name),
-        FileType(mime_type),
-        Disposition(disposition),
-    )
+        attachment = Attachment(
+            FileContent(encoded_file),
+            FileName(path.name),
+            FileType(mime_type),
+            Disposition(disposition),
+        )
 
-    if content_id:
-        attachment.content_id = ContentId(content_id)
-
+        if content_id:
+            attachment.content_id = ContentId(content_id)
+    except Exception as e:
+        mail_logger.exception("Prolem in building file attachment")
+        return None
+    mail_logger.info("file attachment successfully built")
     return attachment
 
 
-def _build_tuple_attachment(attachment_data) -> Attachment:
+def _build_tuple_attachment(attachment_data) -> Attachment | None:
     """
     Supporta attachment nel formato:
     (filename, content, mime_type)
@@ -69,29 +73,36 @@ def _build_tuple_attachment(attachment_data) -> Attachment:
     - str
     - bytes
     """
-    if len(attachment_data) != 3:
-        raise ValueError(
-            "Gli attachment come tuple/list devono avere formato: (filename, content, mime_type)"
+    mail_logger.info("Entering the _build_tuple_attachment function")
+    try:
+        if len(attachment_data) != 3:
+            raise ValueError(
+                "Gli attachment come tuple/list devono avere formato: (filename, content, mime_type)"
+            )
+
+        filename, content, mime_type = attachment_data
+
+        if isinstance(content, str):
+            content = content.encode("utf-8")
+
+        encoded_file = base64.b64encode(content).decode()
+        mime_type = mime_type or "application/octet-stream"
+
+        attachment = Attachment(
+            FileContent(encoded_file),
+            FileName(filename),
+            FileType(mime_type),
+            Disposition("attachment"),
         )
-
-    filename, content, mime_type = attachment_data
-
-    if isinstance(content, str):
-        content = content.encode("utf-8")
-
-    encoded_file = base64.b64encode(content).decode()
-    mime_type = mime_type or "application/octet-stream"
-
-    return Attachment(
-        FileContent(encoded_file),
-        FileName(filename),
-        FileType(mime_type),
-        Disposition("attachment"),
-    )
-
+    except Exception as e:
+        mail_logger.exception("Problem builnding attachment")
+        return None
+    
+    return attachment
 
 def send_email_sendgrid(html_template, context):
-    print("SENDGRID")
+    mail_logger.info("Entering function send_email_sendgrid")
+
     from_email = settings.DEFAULT_FROM_EMAIL
     subject = context.get("subject")
     to_email = context.get("to_email")
@@ -100,6 +111,15 @@ def send_email_sendgrid(html_template, context):
     attachments = context.get("attachments", [])
     reply_to = context.get("reply_to", [])
     logo_path = context.get("logo_path", "")
+
+    mail_logger.info(f"from_email: {from_email}")
+    mail_logger.info(f"subject: {subject}")
+    mail_logger.info(f"to_email: {to_email}")
+    mail_logger.info(f"cc: {cc}")
+    mail_logger.info(f"bcc: {bcc}")
+    mail_logger.info(f"attachments: {attachments}")
+    mail_logger.info(f"reply_to: {reply_to}")
+    mail_logger.info(f"logo_path: {logo_path}")
 
     if not to_email:
         raise ValueError("The 'to_email' address must be provided and cannot be empty.")
@@ -144,20 +164,19 @@ def send_email_sendgrid(html_template, context):
                     content_id="logo",
                 )
             )
-
+        mail_logger.info("Sending mail with SENDGRID api client")
         sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
         response = sg.send(message)
 
-        print(f"RESULT: {response.status_code}")
-        print(response.body)
-        print(response.headers)
+        mail_logger.info(f"RESULT: {response.status_code}")
+        mail_logger.info(response.body)
+        mail_logger.info(response.headers)
 
         return response.status_code
 
     except Exception as e:
-        print("Problemi invio mail")
-        print(e)
-        raise
+        mail_logger.exception("Problemi invio mail")
+        raise e
 
 def send_email(html_template, context):
     from_email = settings.DEFAULT_FROM_EMAIL
@@ -213,9 +232,8 @@ def send_email(html_template, context):
 
 
 def email_handler(form_data):
-    print("Email handler")
+    mail_logger.info("Entering function: Email handler")
     template = 'mails/mail_template.html'
-    print(settings.CONTACT_RECEIVER_EMAIL)
     context = {
         'subject': f"[Contatti] {form_data['subject']}",
         'to_email': settings.CONTACT_RECEIVER_EMAIL,  # TU
@@ -224,10 +242,10 @@ def email_handler(form_data):
         'email': form_data['email'],
         'message': form_data['message'],
     }
-
+    mail_logger.info("Sending mail to casa milano")
     send_email_sendgrid(template, context)
     logo_path = Path(settings.BASE_DIR) / "static/homepage/img/logo.png"
-    logo_b64 = load_img_data_uri(logo_path)
+    mail_logger.info("Sending mail to client")
     send_email_sendgrid(
         html_template='mails/reply_mail_template.html',
         context={

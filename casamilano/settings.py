@@ -23,6 +23,97 @@ except ImportError:
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+
+
+# Logs settings
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+
+    "formatters": {
+        "verbose": {
+            "format": "{asctime} | {levelname:<8} | {name} | {module}:{lineno} | {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{asctime} | {levelname:<8} | {message}",
+            "style": "{",
+        },
+    },
+
+    "handlers": {
+        "daily_file": {
+            "level": "INFO",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": str(LOG_DIR / "django.log"),
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 30,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+        },
+        "error_file": {
+            "level": "ERROR",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": str(LOG_DIR / "error.log"),
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 60,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+        },
+        "mail_file": {
+            "level": "INFO",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": str(LOG_DIR / "mail.log"),
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 30,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+        },
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+    },
+
+    "root": {
+        "handlers": ["daily_file", "console"],
+        "level": "INFO",
+    },
+
+    "loggers": {
+        "django": {
+            "handlers": ["daily_file", "error_file", "console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "django.request": {
+            "handlers": ["error_file", "console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+        "django.server": {
+            "handlers": ["daily_file", "error_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "casamilano": {   # metti qui il nome del tuo progetto/app principale
+            "handlers": ["daily_file", "error_file", "console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "mail_logger": {
+            "handlers": ["mail_file", "error_file", "console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
 
 
 # Quick-start development settings - unsuitable for production
