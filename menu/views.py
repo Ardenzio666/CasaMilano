@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from .models import Menu
+from .models import Dish, Menu
 import logging
 logger = logging.getLogger(__name__)
 
 def menu(request):
     logger.info("Rendering the MENU page")
-    menus = Menu.objects.filter(is_published=True).prefetch_related('courses')
+    dishes = Dish.objects.filter(is_published=True)
     return render(
         request,
         'menu.html',
-        {'menus': menus}
+        {'dishes': dishes}
     )
