@@ -53,14 +53,6 @@
                         <div class="card-body dish-card-body">
                             <h3 class="dish-card-title">{{ dish.title }}</h3>
 
-                            {% if dish.short_description %}
-                                <p class="dish-card-short mb-2">{{ dish.short_description }}</p>
-                            {% endif %}
-
-                            <p class="dish-card-description">
-                                {{ dish.description|truncatewords:20 }}
-                            </p>
-
                             <button
                                 type="button"
                                 class="btn btn-home-primary dish-card-btn mt-2"
