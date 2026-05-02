@@ -86,7 +86,16 @@
 
                     <form action="{% url 'contatti:contatti' %}" method="POST">
                         {% csrf_token %}
+                        <script
+                            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+                            async
+                            defer>
+                            </script>
 
+                            <div
+                            class="cf-turnstile"
+                            data-sitekey="{{ turnstile_site_key }}">
+                        </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label>Nome Completo</label>

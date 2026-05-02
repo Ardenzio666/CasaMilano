@@ -5,11 +5,26 @@ from contatti.forms import ContactForm
 from contatti.mail_utils import send_email
 from contatti.task import send_mail_async
 import logging
+
+from contatti.turnstile_helper import verify_turnstile_token
 logger = logging.getLogger(__name__)
 
 def contatti(request):
     logger.info("Entering CONTATTI views")
+    context = {
+        "turnstile_site_key": settings.CLOUDFLARE_TURNSTILE_SITE_KEY,
+    }
+
     if request.method == "POST":
+        turnstile_token = request.POST.get("cf-turnstile-response")
+        ip = request.META.get("REMOTE_ADDR")
+
+        if not verify_turnstile_token(turnstile_token, ip):
+            form.add_error(None, "Verifica anti-spam non riuscita. Riprova.")
+            return render(request, "contatti/contatti.html", {
+                "form": form,
+                "turnstile_site_key": settings.CLOUDFLARE_TURNSTILE_SITE_KEY,
+            })
         logger.info("request method is POST")
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -37,7 +52,8 @@ def contatti(request):
         form = ContactForm()
     return render(
         request,
-        'contatti.html'
+        'contatti.html',
+        context
     )
 
 

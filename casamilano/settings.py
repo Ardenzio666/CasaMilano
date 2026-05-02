@@ -23,11 +23,13 @@ except ImportError:
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-LOG_DIR = BASE_DIR / "logs"
-LOG_DIR.mkdir(exist_ok=True)
-
 
 # Logs settings
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+(LOG_DIR / "django").mkdir(parents=True, exist_ok=True)
+(LOG_DIR / "error").mkdir(parents=True, exist_ok=True)
+(LOG_DIR / "mail").mkdir(parents=True, exist_ok=True)
 
 LOGGING = {
     "version": 1,
@@ -48,7 +50,7 @@ LOGGING = {
         "daily_file": {
             "level": "INFO",
             "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": str(LOG_DIR / "django.log"),
+            "filename": str(LOG_DIR / "django/django.log"),
             "when": "midnight",
             "interval": 1,
             "backupCount": 30,
@@ -58,7 +60,7 @@ LOGGING = {
         "error_file": {
             "level": "ERROR",
             "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": str(LOG_DIR / "error.log"),
+            "filename": str(LOG_DIR / "error/error.log"),
             "when": "midnight",
             "interval": 1,
             "backupCount": 60,
@@ -68,7 +70,7 @@ LOGGING = {
         "mail_file": {
             "level": "INFO",
             "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": str(LOG_DIR / "mail.log"),
+            "filename": str(LOG_DIR / "mail/mail.log"),
             "when": "midnight",
             "interval": 1,
             "backupCount": 30,
