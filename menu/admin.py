@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Menu, MenuCourse
+from .models import DishComment, Menu, MenuCourse
 
 from .models import Dish
 
@@ -20,3 +20,10 @@ class MenuAdmin(admin.ModelAdmin):
 @admin.register(MenuCourse)
 class MenuCourseAdmin(admin.ModelAdmin):
     list_display = ('menu','title')
+
+@admin.register(DishComment)
+class DishCommentAdmin(admin.ModelAdmin):
+    list_display = ("id", "dish", "user", "text", "is_approved", "created_at")
+    list_filter = ("is_approved", "created_at")
+    search_fields = ("text", "dish__title", "user__username")
+    readonly_fields = ("created_at",)

@@ -77,6 +77,16 @@ LOGGING = {
             "formatter": "verbose",
             "encoding": "utf-8",
         },
+        "turnstile_file": {
+            "level": "INFO",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": str(LOG_DIR / "turnstile/turnstile.log"),
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 30,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+        },
         "console": {
             "class": "logging.StreamHandler",
             "formatter": "verbose",
@@ -114,6 +124,11 @@ LOGGING = {
             "level": "INFO",
             "propagate": False,
         },
+        "turnstile_logger": {
+            "handlers": ["turnstile_file"],
+            "level": "INFO",
+            "propagate": False
+        }
     },
 }
 

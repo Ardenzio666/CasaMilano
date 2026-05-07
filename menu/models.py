@@ -48,3 +48,40 @@ class Dish(models.Model):
 
     def __str__(self):
         return self.title
+    
+    @property
+    def approved_comments(self):
+        return self.comments.filter(is_approved=True)
+
+from django.conf import settings
+
+
+class DishComment(models.Model):
+    dish = models.ForeignKey(
+        Dish,
+        on_delete=models.CASCADE,
+        related_name="comments"
+    )
+
+    # Per ora può essere NULL perché non hai ancora gli account attivi.
+    # In futuro diventerà obbligatorio.
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="dish_comments",
+        null=True,
+        blank=True,
+    )
+
+    text = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Commento piatto"
+        verbose_name_plural = "Commenti piatti"
+
+    def __str__(self):
+        author = self.user.username if self.user else "Anonimo"
+        return f"Commento di {author} su {self.dish.title}"
