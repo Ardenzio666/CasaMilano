@@ -71,7 +71,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
                    href="#"
                    data-toggle="dropdown">
                     <i class="bi bi-person-circle mr-1"></i>
-                    {{ request.user.username }}
+                    {{ request.user.get_full_name|default:request.user.username }}
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">

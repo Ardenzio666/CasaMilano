@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registrazione completata - Casa Milano{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+
+                <div class="card border-0 shadow-custom login-card">
+                    <div class="card-body p-4 p-lg-5 text-center">
+
+                        <span class="section-kicker">Casa Milano</span>
+                        <h1 class="font-weight-bold mb-3">Registrazione completata</h1>
+                        <div class="bottom_line mx-auto" style="width: 140px; height: 2.5px;"></div>
+                        <h3 class="py-2 font-weight-bold text-grey">
+                            Benvenuto, {{ new_user.first_name }}
+                        </h3>
+                        <hr class="my-0">
+                        <p class="text-muted mt-4 mb-4">
+                            Il tuo account è stato creato correttamente.
+                            Ora puoi accedere e iniziare a usare il tuo spazio personale.
+                        </p>
+
+                        <a href="{% url 'accounts:login' %}" class="btn btn-login btn-block mt-4">
+                            Vai al login
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

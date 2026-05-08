@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registrati - Casa Milano{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+
+                <div class="card border-0 shadow-custom login-card">
+                    <div class="card-body p-4 p-lg-5">
+
+                        <div class="text-center mb-4">
+                            <span class="section-kicker">Casa Milano</span>
+                            <h1 class="font-weight-bold mb-3">Crea un account</h1>
+                            <div class="bottom_line mx-auto" style="width: 140px; height: 2.5px;"></div>
+
+                            <p class="text-muted mt-4 mb-0">
+                                Registrati per accedere a tutte le funzionalità degli utenti e vivere Casa Milano
+                                in modo più completo.
+                            </p>
+                        </div>
+
+                        <div class="text-center mt-4">
+
+                            <a href="{% url 'accounts:register_form' %}" class="btn btn-login btn-block">
+                                Vai alla registrazione
+                            </a>
+
+                        </div>
+
+                        <div class="login-footer text-center mt-4">
+                            <p class="mb-2 text-muted">
+                                Hai già un account?
+                            </p>
+                            <a href="{% url 'accounts:login' %}" class="login-link">
+                                Accedi
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

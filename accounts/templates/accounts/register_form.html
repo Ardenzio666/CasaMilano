@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registrati - Casa Milano{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+
+                <!-- 🔴 MESSAGES -->
+                {% if messages %}
+                <div class="shadow-custom custom-message error mb-4 text-center">
+                    {% for message in messages %}
+                        <div>{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- 🟡 CARD -->
+                <div class="card border-0 shadow-custom login-card">
+                    <div class="card-body p-4 p-lg-5">
+
+                        <!-- HEADER -->
+                        <div class="text-center mb-4">
+                            <span class="section-kicker">Casa Milano</span>
+                            <h1 class="font-weight-bold mb-3">Crea un account</h1>
+                            <div class="bottom_line mx-auto" style="width: 140px; height: 2.5px;"></div>
+
+                            <p class="text-muted mt-4 mb-0">
+                                Registrati per commentare i piatti e accedere
+                                al tuo spazio personale.
+                            </p>
+                        </div>
+
+                        <!-- FORM -->
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+
+                            <!-- First name -->
+                            <div class="form-group login-form-group">
+                                <label for="first_name">Nome</label>
+                                {{ user_form.first_name }}
+
+                                {% if user_form.first_name.errors %}
+                                    <div class="login-field-error">
+                                        {{ user_form.first_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Last name -->
+                            <div class="form-group login-form-group">
+                                <label for="last_name">Cognome</label>
+                                {{ user_form.last_name }}
+
+                                {% if user_form.last_name.errors %}
+                                    <div class="login-field-error">
+                                        {{ user_form.last_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group login-form-group">
+                                <label for="email">Email</label>
+                                {{ user_form.email }}
+
+                                {% if user_form.email.errors %}
+                                    <div class="login-field-error">
+                                        {{ user_form.email.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group login-form-group">
+                                <label for="password">Password</label>
+                                {{ user_form.password }}
+
+                                {% if user_form.password.errors %}
+                                    <div class="login-field-error">
+                                        {{ user_form.password.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Password2 -->
+                            <div class="form-group login-form-group">
+                                <label for="password2">Ripeti password</label>
+                                {{ user_form.password2 }}
+
+                                {% if user_form.password2.errors %}
+                                    <div class="login-field-error">
+                                        {{ user_form.password2.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- SUBMIT -->
+                            <button type="submit" class="btn btn-login btn-block mt-4">
+                                Registrati
+                            </button>
+                        </form>
+
+                        <!-- FOOTER -->
+                        <div class="login-footer text-center mt-4">
+                            <p class="mb-2 text-muted">
+                                Hai già un account?
+                            </p>
+                            <a href="{% url 'accounts:login' %}" class="login-link">
+                                Accedi
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

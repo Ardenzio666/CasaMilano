@@ -19,8 +19,7 @@
                             <div class="bottom_line mx-auto" style="width: 140px; height: 2.5px;"></div>
 
                             <p class="text-muted mt-4 mb-0">
-                                Entra nel tuo spazio personale per commentare i piatti
-                                e vivere Casa Milano in modo più completo.
+                                Entra nel tuo spazio personale per vivere Casa Milano in modo più completo.
                             </p>
                         </div>
                         <form method="post" novalidate>
@@ -36,7 +35,7 @@
 
                             <div class="form-group login-form-group">
                                 <label for="{{ form.email.id_for_label }}">Email</label>
-                                {{ form.username }}
+                                {{ form.email }}
 
                                 {% if form.email.errors %}
                                     <div class="login-field-error">
@@ -69,7 +68,7 @@
                             <p class="mb-2 text-muted">
                                 Non hai ancora un account?
                             </p>
-                            <a href="#" class="login-link">
+                            <a href="{% url 'accounts:register' %}" class="login-link">
                                 Crea un account
                             </a>
                         </div>
