@@ -1,0 +1,101 @@
+/* =========================
+   LOGIN CASA MILANO
+   ========================= */
+
+.login-section {
+  padding: 4rem 0 5rem;
+  background:
+    linear-gradient(rgba(255, 252, 248, 0.92), rgba(255, 252, 248, 0.92)),
+    #fffaf5;
+}
+
+.login-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.login-card h1 {
+  font-family: 'Playfair Display', serif;
+  color: #2f241d;
+}
+
+.login-form-group {
+  margin-bottom: 1.4rem;
+}
+
+.login-form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7a685c;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.login-form-group .form-control {
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid #d6c5b5;
+  padding: 12px 4px;
+  background: transparent;
+  color: #3f3128;
+}
+
+.login-form-group .form-control:focus {
+  box-shadow: none;
+  border-bottom-color: #b88746;
+}
+
+.btn-login {
+  background: #b88746;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
+}
+
+.btn-login:hover {
+  background: #a87635;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.login-field-error {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #c62828;
+}
+
+.login-footer {
+  border-top: 1px solid rgba(90, 62, 43, 0.08);
+  padding-top: 1.5rem;
+}
+
+.login-link {
+  color: #b88746;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  color: #a87635;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  border-radius: 12px;
+  border: 1px solid rgba(90, 62, 43, 0.08);
+  box-shadow: 0 10px 25px rgba(40, 8, 5, 0.08);
+}
+
+.dropdown-item {
+  font-weight: 600;
+  color: #3f3128;
+}
+
+.dropdown-item:hover {
+  background-color: #f5e7d4;
+  color: #b88746;
+}

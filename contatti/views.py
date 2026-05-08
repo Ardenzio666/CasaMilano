@@ -18,6 +18,7 @@ def contatti(request):
     if request.method == "POST":
         turnstile_token = request.POST.get("cf-turnstile-response")
         ip = request.META.get("REMOTE_ADDR")
+        form = ContactForm(request.POST)
 
         if not verify_turnstile_token(turnstile_token, ip):
             form.add_error(None, "Verifica anti-spam non riuscita. Riprova.")
@@ -26,7 +27,6 @@ def contatti(request):
                 "turnstile_site_key": settings.CLOUDFLARE_TURNSTILE_SITE_KEY,
             })
         logger.info("request method is POST")
-        form = ContactForm(request.POST)
         if form.is_valid():
             logger.info("Form is valid")
             try:

@@ -37,7 +37,7 @@ LOGGING = {
 
     "formatters": {
         "verbose": {
-            "format": "{asctime} | {levelname:<8} | {name} | {module}:{lineno} | {message}",
+            "format": "{asctime} | {levelname:<8} | user={user} | {method} {path} | req={request_id} | {name} | {module}:{lineno} | {message}",
             "style": "{",
         },
         "simple": {
@@ -45,7 +45,11 @@ LOGGING = {
             "style": "{",
         },
     },
-
+    "filters": {
+        "request_context": {
+            "()": "casamilano.logging_filters.RequestContextFilter",
+        },
+    },
     "handlers": {
         "daily_file": {
             "level": "INFO",
@@ -55,6 +59,7 @@ LOGGING = {
             "interval": 1,
             "backupCount": 30,
             "formatter": "verbose",
+            "filters": ["request_context"],
             "encoding": "utf-8",
         },
         "error_file": {
@@ -65,6 +70,7 @@ LOGGING = {
             "interval": 1,
             "backupCount": 60,
             "formatter": "verbose",
+            "filters": ["request_context"],
             "encoding": "utf-8",
         },
         "mail_file": {
@@ -75,20 +81,12 @@ LOGGING = {
             "interval": 1,
             "backupCount": 30,
             "formatter": "verbose",
-            "encoding": "utf-8",
-        },
-        "turnstile_file": {
-            "level": "INFO",
-            "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": str(LOG_DIR / "turnstile/turnstile.log"),
-            "when": "midnight",
-            "interval": 1,
-            "backupCount": 30,
-            "formatter": "verbose",
+            "filters": ["request_context"],
             "encoding": "utf-8",
         },
         "console": {
             "class": "logging.StreamHandler",
+            "filters": ["request_context"],
             "formatter": "verbose",
         },
     },
@@ -124,11 +122,6 @@ LOGGING = {
             "level": "INFO",
             "propagate": False,
         },
-        "turnstile_logger": {
-            "handlers": ["turnstile_file"],
-            "level": "INFO",
-            "propagate": False
-        }
     },
 }
 
@@ -142,6 +135,7 @@ LOGGING = {
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -153,7 +147,7 @@ INSTALLED_APPS = [
     'contatti.apps.ContattiConfig',
     'dovetrovarci.apps.DovetrovarciConfig',
     'menu.apps.MenuConfig',
-    'eventi.apps.EventiConfig'
+    'eventi.apps.EventiConfig',
 ]
 
 MIDDLEWARE = [
@@ -162,6 +156,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'casamilano.middleware.RequestLoggingContextMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -247,3 +242,8 @@ STORAGES = {
 }
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# LOGIN
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'homepage:home'
+LOGOUT_REDIRECT_URL = 'homepage:home'

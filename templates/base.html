@@ -21,6 +21,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   <link rel="stylesheet" href="{% static 'contatti/css/contatti.css' %}">
   <link rel="stylesheet" href="{% static 'eventi/css/eventi.css' %}">
   <link rel="stylesheet" href="{% static 'eventi/css/event_details.css' %}">
+  <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -42,36 +43,56 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     </button>
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav ml-auto align-items-md-center">
-        <li class="nav-item">
-          <a href="{% url 'chisiamo:chisiamo' %}" 
-          class="nav-link {% if request.resolver_match.url_name == 'chisiamo' %}active{% endif %}">
-          Chi siamo</a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'menu:menu' %}" 
-          class="nav-link {% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
-            I nostri piatti</a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'eventi:eventi' %}" 
-          class="nav-link {% if request.resolver_match.url_name == 'eventi' %}active{% endif %}">
-            Eventi</a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'dovetrovarci:dovetrovarci' %}" 
-          class="nav-link {% if request.resolver_match.url_name == 'dovetrovarci' %}active{% endif %}">
-          Dove trovarci</a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'contatti:contatti' %}" 
-          class="nav-link {% if request.resolver_match.url_name == 'contatti' %}active{% endif %}">
-          Contatti</a>
-        </li>
-      </ul>
-    </div>
 
-  </div>
+    <!-- MENU -->
+    <ul class="navbar-nav mx-auto align-items-md-center">
+        <li class="nav-item">
+            <a href="{% url 'chisiamo:chisiamo' %}" class="nav-link">Chi siamo</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'menu:menu' %}" class="nav-link">I nostri piatti</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'eventi:eventi' %}" class="nav-link">Eventi</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'dovetrovarci:dovetrovarci' %}" class="nav-link">Dove trovarci</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'contatti:contatti' %}" class="nav-link">Contatti</a>
+        </li>
+    </ul>
+
+    <!-- UTENTE -->
+    <ul class="navbar-nav ml-auto align-items-md-center user-nav">
+        {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle nav-cta"
+                   href="#"
+                   data-toggle="dropdown">
+                    <i class="bi bi-person-circle mr-1"></i>
+                    {{ request.user.username }}
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <form method="post" action="{% url 'accounts:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a href="{% url 'accounts:login' %}" class="nav-link nav-cta">
+                    Accedi
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+</div>
 </nav>
 {% if messages %}
 <div class="messages-container">

@@ -18,18 +18,20 @@ def add_dish_comment(request, dish_id):
     dish = get_object_or_404(Dish, id=dish_id, is_published=True)
 
     if request.method == "POST":
-        print("Commento ricevuto")
+        logger.info("Comment received")
         form = DishCommentForm(request.POST)
 
         if form.is_valid():
             comment = form.save(commit=False)
             comment.dish = dish
-            print(f"Commento per il piatto {comment.dish}")
+            logger.info(f"Dish id for comment:  {comment.dish}")
             if request.user.is_authenticated:
                 comment.user = request.user
-
+            logger.info("Saving comment")
             comment.save()
+            logger.info("Comment successfully saved")
         else:
-            print(form.errors)
+            logger.info("Error in saving the comment to DB")
+            logger.info(form.errors)
 
     return redirect("menu:menu")
