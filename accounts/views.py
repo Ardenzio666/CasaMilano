@@ -7,6 +7,7 @@ from .forms import CustomPasswordChangeForm, CustomPasswordResetForm, CustomSetP
 from django.contrib.auth.views import LogoutView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.views import PasswordChangeDoneView
+from django.contrib.auth.decorators import login_required
 import logging
 
 logger = logging.getLogger(__name__)
@@ -180,4 +181,13 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     def get(self, request, *args, **kwargs):
         logger.info("CustomPasswordResetCompleteView GET called")
         return super().get(request, *args, **kwargs)
+    
+@login_required
+def user_management(request):
+    logger.info("User management page requested")
+
+    return render(
+        request,
+        "accounts/user_management.html",
+    )
 

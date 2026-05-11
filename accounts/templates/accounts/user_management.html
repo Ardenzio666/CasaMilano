@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Il mio account | Casa Milano{% endblock %}
+
+{% block content %}
+
+<section class="account-page py-5">
+    <div class="container">
+
+        <div class="account-header text-center mb-5">
+            <span class="section-kicker">Area personale</span>
+            <h1 class="section-title">Il mio account</h1>
+            <p class="section-subtitle">
+                Gestisci le impostazioni del tuo profilo e le opzioni di sicurezza.
+            </p>
+        </div>
+
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-lg-4 mb-4">
+                <div class="account-sidebar shadow-sm">
+
+                    <div class="account-user-box text-center mb-4">
+                        <div class="account-avatar mx-auto mb-3">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+
+                        <h5 class="mb-1">
+                            {{ request.user.get_full_name|default:request.user.username }}
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            {{ request.user.email }}
+                        </p>
+                    </div>
+
+                    <div class="list-group account-menu">
+                        <a href="{% url 'accounts:password_change' %}" class="list-group-item list-group-item-action">
+                            <i class="bi bi-key mr-2"></i>
+                            Cambia password
+                        </a>
+
+                        <a href="#" class="list-group-item list-group-item-action text-danger">
+                            <i class="bi bi-trash mr-2"></i>
+                            Cancella account
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Contenuto principale -->
+            <div class="col-lg-8">
+                <div class="account-content shadow-sm">
+
+                    <h3 class="mb-3">Gestione account</h3>
+
+                    <p class="text-muted">
+                        Da questa sezione puoi gestire le principali impostazioni del tuo account.
+                        Al momento puoi modificare la password o richiedere la cancellazione del profilo.
+                    </p>
+
+                    <div class="account-action-card mt-4">
+                        <div>
+                            <h5>Cambia password</h5>
+                            <p>
+                                Aggiorna la password associata al tuo account.
+                            </p>
+                        </div>
+
+                        <a href="{% url 'accounts:password_change' %}" class="btn btn-account">
+                            Modifica password
+                        </a>
+                    </div>
+
+                    <div class="account-action-card danger mt-4">
+                        <div>
+                            <h5>Cancella account</h5>
+                            <p>
+                                Elimina definitivamente il tuo account dal sito.
+                            </p>
+                        </div>
+
+                        <a href="#" class="btn btn-outline-danger">
+                            Cancella account
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

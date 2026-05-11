@@ -99,3 +99,158 @@
   background-color: #f5e7d4;
   color: #b88746;
 }
+
+/* =========================
+   USER ACCOUNTS
+   ========================= */
+
+.account-page {
+    background: #fbf7f0;
+    min-height: 70vh;
+}
+
+.section-kicker {
+    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9c6b3f;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    color: #3b2a1f;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    color: #6f6258;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.account-sidebar,
+.account-content {
+    background: #fffaf3;
+    border-radius: 18px;
+    padding: 2rem;
+    border: 1px solid rgba(156, 107, 63, 0.15);
+}
+
+.account-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #efe1cf;
+    color: #8a5a32;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+}
+
+.account-menu .list-group-item {
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 0.4rem;
+    color: #3b2a1f;
+    font-weight: 500;
+}
+
+.account-menu .list-group-item:hover {
+    background: #efe1cf;
+    color: #3b2a1f;
+}
+
+.account-action-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(156, 107, 63, 0.15);
+}
+
+.account-action-card h5 {
+    color: #3b2a1f;
+    font-weight: 700;
+}
+
+.account-action-card p {
+    color: #6f6258;
+    margin-bottom: 0;
+}
+
+.btn-account {
+    background: #8a5a32;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.6rem 1.4rem;
+    white-space: nowrap;
+}
+
+.btn-account:hover {
+    background: #6f4524;
+    color: #fff;
+}
+
+.account-action-card.danger {
+    border-color: rgba(220, 53, 69, 0.25);
+}
+
+@media (max-width: 768px) {
+    .account-action-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.dropdown-menu {
+    background: #fffaf3;
+    border-radius: 12px;
+    border: 1px solid rgba(156, 107, 63, 0.15);
+}
+
+.dropdown-item {
+    color: #3b2a1f;
+    font-weight: 500;
+}
+
+.dropdown-item:hover {
+    background-color: #efe1cf;
+    color: #3b2a1f;
+}
+
+/* =========================
+   USER DROPDOWN NAVBAR FIX
+   ========================= */
+
+.user-nav .dropdown-menu {
+    background-color: #fffaf3;
+}
+
+.user-nav .dropdown-menu .dropdown-item,
+.user-nav .dropdown-menu button.dropdown-item {
+    color: #3b2a1f !important;
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.user-nav .dropdown-menu .dropdown-item i {
+    color: #8a5a32 !important;
+}
+
+.user-nav .dropdown-menu .dropdown-item:hover,
+.user-nav .dropdown-menu button.dropdown-item:hover {
+    background-color: #efe1cf;
+    color: #3b2a1f !important;
+}
+
+.user-nav .dropdown-menu .dropdown-item:hover i {
+    color: #8a5a32 !important;
+}
