@@ -70,3 +70,31 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'ArrowLeft') showPrev();
     });
 });
+
+document.querySelectorAll(".show-event-comment-form").forEach(function (button) {
+    button.addEventListener("click", function () {
+        const eventId = this.dataset.eventId;
+
+        const commentsList = document.getElementById("eventCommentsList" + eventId);
+        const commentForm = document.getElementById("eventCommentForm" + eventId);
+
+        if (commentsList && commentForm) {
+            commentsList.classList.add("d-none");
+            commentForm.classList.remove("d-none");
+        }
+    });
+});
+
+document.querySelectorAll(".hide-event-comment-form").forEach(function (button) {
+    button.addEventListener("click", function () {
+        const eventId = this.dataset.eventId;
+
+        const commentsList = document.getElementById("eventCommentsList" + eventId);
+        const commentForm = document.getElementById("eventCommentForm" + eventId);
+
+        if (commentsList && commentForm) {
+            commentForm.classList.add("d-none");
+            commentsList.classList.remove("d-none");
+        }
+    });
+});

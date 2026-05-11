@@ -10,4 +10,5 @@ def send_mail_async(self, form_data):
         email_handler(form_data)
     except Exception as e:
         mail_logger.exception("Email handler failed execution")
+        raise
     mail_logger.info("CELERY EXECUTED: email_handler")

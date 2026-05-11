@@ -3,6 +3,8 @@ from django.db import models
 from django.db import models
 from django.urls import reverse
 
+from django.conf import settings
+
 class Event(models.Model):
     EVENT_TYPE_CHOICES = [
         ("private", "Evento Privato"),
@@ -48,6 +50,10 @@ class Event(models.Model):
     def is_upcoming(self):
         from django.utils import timezone
         return self.event_date >= timezone.localdate()
+    
+    @property
+    def approved_comments(self):
+        return self.comments.filter(is_approved=True)
 
     def get_absolute_url(self):
         return reverse("eventi:event_detail", kwargs={"slug": self.slug})
@@ -68,3 +74,33 @@ class EventImage(models.Model):
 
     class Meta:
         ordering = ["order"]
+
+class EventComment(models.Model):
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE,
+        related_name="comments"
+    )
+
+    # Per ora può essere NULL perché non hai ancora gli account attivi.
+    # In futuro diventerà obbligatorio.
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="event_comments",
+        null=True,
+        blank=True,
+    )
+
+    text = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Commento evento"
+        verbose_name_plural = "Commenti eventi"
+
+    def __str__(self):
+        author = self.user.username if self.user else "Anonimo"
+        return f"Commento di {author} su {self.event.title}"

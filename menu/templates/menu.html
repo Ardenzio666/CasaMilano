@@ -100,8 +100,8 @@
                                                 <div id="commentsList{{ dish.id }}" class="dish-comments-list mt-4">
                                                     <h6 class="font-weight-bold mb-3">Commenti</h6>
 
-                                                    {% with comments=dish.dish.approved_comments %}
-                                                        {% if comments %}
+                                                    {% with comments=dish.approved_comments %}
+                                                        {% if comments.exists %}
                                                             {% for comment in comments %}
                                                                 <div class="dish-comment mb-3 pb-3 border-bottom">
                                                                     <p class="mb-1">{{ comment.text }}</p>

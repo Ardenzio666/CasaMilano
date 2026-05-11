@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Menu(models.Model):
     title = models.CharField(max_length=200)
@@ -53,7 +54,7 @@ class Dish(models.Model):
     def approved_comments(self):
         return self.comments.filter(is_approved=True)
 
-from django.conf import settings
+
 
 
 class DishComment(models.Model):

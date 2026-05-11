@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
-from .forms import CustomPasswordChangeForm, LoginForm, UserRegistrationForm
-from django.contrib.auth.views import LogoutView
+from .forms import CustomPasswordChangeForm, CustomPasswordResetForm, CustomSetPasswordForm, LoginForm, UserRegistrationForm
+from django.contrib.auth.views import LogoutView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.views import PasswordChangeDoneView
 import logging
@@ -105,7 +105,7 @@ def register_form(request):
         {'user_form': user_form}
     )
 
-
+#PASSWORD CHANGE
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = "registration/password_change.html"
     form_class = CustomPasswordChangeForm
@@ -129,4 +129,55 @@ class CustomPasswordChangeDoneView(PasswordChangeDoneView):
         if request.user.is_authenticated:
             logger.info(f"User {request.user.email} reached password_change_done page")
         return super().dispatch(request, *args, **kwargs)
+    
+
+#PASSWORD RESET
+class CustomPasswordResetView(PasswordResetView):
+    logger.info("Entering the CustomPasswordResetView")
+    form_class = CustomPasswordResetForm
+    template_name = "registration/password_reset_form.html"
+    email_template_name = "mails/password_reset_email.txt"
+    html_email_template_name = "mails/mail_template_reset_password.html"
+    subject_template_name = "mails/password_reset_subject.txt"
+    success_url = reverse_lazy("accounts:password_reset_done")
+    #success_url = reverse_lazy("homepage:home")
+
+    def form_valid(self, form):
+        logger.info("CustomPasswordResetView form_valid called")
+        return super().form_valid(form)
+
+class CustomPasswordResetDoneView(PasswordResetDoneView):
+    logger.info("Entering the CustomPasswordResetDoneView")
+
+    template_name = "registration/password_reset_done.html"
+
+    def get(self, request, *args, **kwargs):
+        logger.info("CustomPasswordResetDoneView GET called")
+        return super().get(request, *args, **kwargs)
+
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    logger.info("Entering the CustomPasswordResetConfirmView")
+
+    form_class = CustomSetPasswordForm
+    template_name = "registration/password_reset_confirm.html"
+    success_url = reverse_lazy("accounts:password_reset_complete")
+
+    def form_valid(self, form):
+        logger.info("CustomPasswordResetConfirmView form_valid called")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        logger.warning("CustomPasswordResetConfirmView form_invalid called")
+        logger.warning(f"Form errors: {form.errors}")
+        return super().form_invalid(form)
+    
+class CustomPasswordResetCompleteView(PasswordResetCompleteView):
+    logger.info("Entering the CustomPasswordResetCompleteView")
+
+    template_name = "registration/password_reset_complete.html"
+
+    def get(self, request, *args, **kwargs):
+        logger.info("CustomPasswordResetCompleteView GET called")
+        return super().get(request, *args, **kwargs)
 

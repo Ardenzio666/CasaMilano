@@ -573,3 +573,31 @@ body.lightbox-open {
     width: 100%;
   }
 }
+
+/* -------------------------
+   Sezione commenti
+------------------------- */
+
+.event-comments-list {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.event-comments-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.event-comments-list::-webkit-scrollbar-track {
+    background: #f4f4f4;
+    border-radius: 10px;
+}
+
+.event-comments-list::-webkit-scrollbar-thumb {
+    background: #c9a46a;
+    border-radius: 10px;
+}
+
+.event-comments-list::-webkit-scrollbar-thumb:hover {
+    background: #b88746;
+}
