@@ -178,58 +178,6 @@ def send_email_sendgrid(html_template, context):
         mail_logger.exception("Problemi invio mail")
         raise e
 
-def send_email(html_template, context):
-    from_email = settings.DEFAULT_FROM_EMAIL
-    subject = context.get('subject')
-    to_email = context.get('to_email')
-    cc = context.get('cc', [])
-    bcc = context.get('bcc', [])
-    attachments = context.get('attachments', [])
-    reply_to = context.get("reply_to", [])
-    logo_path = context.get('logo_path',"")
-
-    if not to_email:
-        raise ValueError("The 'to_email' address must be provided and cannot be empty.")
-    if not isinstance(to_email, list):
-        to_email = [to_email]
-
-    if not isinstance(to_email, list):
-        to_email = [to_email]
-
-    if cc and not isinstance(cc, list):
-        cc = [cc]
-
-    if bcc and not isinstance(bcc, list):
-        bcc = [bcc]
-
-    if reply_to and not isinstance(reply_to, list):
-        reply_to = [reply_to]
-    
-
-
-    try:
-        html_message = render_to_string(html_template, context)
-        text_message = strip_tags(html_message)
-        message = EmailMultiAlternatives(subject=subject, body=text_message, from_email=from_email, to=to_email, cc=cc, bcc=bcc, reply_to=reply_to)
-        message.content_subtype = 'html'
-        message.attach_alternative(html_message, "text/html")
-        for attachment in attachments:
-            message.attach(*attachment) if isinstance(attachment, (list, tuple)) else message.attach_file(attachment)
-        if logo_path:
-            with open(logo_path, "rb") as f:
-                img = MIMEImage(f.read())
-                img.add_header("Content-ID", "<logo>")
-                img.add_header("Content-Disposition", "inline", filename="logo.png")
-                message.attach(img)
-        result = message.send(fail_silently=False)
-        print(f"RESULT: {result}")
-        #logger.info(f"Sending email to {', '.join(to_email)} with subject: {subject} - Status {result}")
-    except Exception as e:
-        print("Problemi invio mail")
-        print(e)
-        #logger.info(f"Sending email to {', '.join(to_email)} with subject: {subject} - Status 0")
-        #logger.exception(e)
-
 
 def email_handler(form_data):
     mail_logger.info("Entering function: Email handler")
@@ -244,7 +192,6 @@ def email_handler(form_data):
     }
     mail_logger.info("Sending mail to casa milano")
     send_email_sendgrid(template, context)
-    logo_path = Path(settings.BASE_DIR) / "static/homepage/img/logo.png"
     mail_logger.info("Sending mail to client")
     send_email_sendgrid(
         html_template='mails/reply_mail_template.html',

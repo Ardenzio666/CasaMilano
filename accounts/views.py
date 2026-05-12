@@ -3,12 +3,26 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
+
+from accounts.task import send_activation_email_async
 from .forms import CustomPasswordChangeForm, CustomPasswordResetForm, CustomSetPasswordForm, LoginForm, UserRegistrationForm
 from django.contrib.auth.views import LogoutView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.views import PasswordChangeDoneView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_decode
+from django.utils.encoding import force_str
+from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
+from django.contrib import messages
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.urls import reverse
+from django.core.mail import send_mail
+from django.conf import settings
 import logging
 
 logger = logging.getLogger(__name__)
@@ -93,11 +107,40 @@ def register_form(request):
                 email=email,
                 password=password
             )
-            logger.info("User created")
+            new_user.is_active = False
+            new_user.save()
+            logger.info("Inactive User created")
+            uid = urlsafe_base64_encode(force_bytes(new_user.pk))
+            token = default_token_generator.make_token(new_user)
+
+            activation_path = reverse(
+                "accounts:activate_account",
+                kwargs={
+                    "uidb64": uid,
+                    "token": token,
+                }
+            )
+
+            activation_url = request.build_absolute_uri(activation_path)
+            logger.info(f"Activation url generated for user {new_user.email}")
+            form_data = {
+                "subject_template_name": "mails/activation_subject.txt",
+                "html_template": "mails/activation_email.html",
+                "to_email": new_user.email,
+                "context": {
+                    "first_name": new_user.first_name,
+                    "first_name": new_user.first_name,
+                    "activation_url": activation_url,
+                },
+            }
+
+            send_activation_email_async.delay(form_data)
+
+            logger.info(f"Activation email sent to {new_user.email}")
             return render(
                 request,
                 'accounts/register_done.html',
-                {'new_user': new_user}
+                {'new_user': new_user,}
             )
     else:
         user_form = UserRegistrationForm()
@@ -213,4 +256,36 @@ def delete_account(request):
     )
 
     return redirect("accounts:login")
+
+
+def activate_account(request, uidb64, token):
+    logger.info("Account activation request received")
+
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        logger.error("Invalid activation link")
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+
+        logger.info("User account activated")
+
+        messages.success(
+            request,
+            "Account attivato correttamente. Ora puoi effettuare il login."
+        )
+
+        return redirect("accounts:login")
+
+    logger.error("Invalid or expired activation token")
+
+    return render(
+        request,
+        "accounts/activation_invalid.html"
+    )
 

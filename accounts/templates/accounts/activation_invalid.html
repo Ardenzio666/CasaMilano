@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Link non valido - Casa Milano{% endblock %}
+
+{% block content %}
+<section class="login-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+                <div class="card border-0 shadow-custom login-card">
+                    <div class="card-body p-4 p-lg-5 text-center">
+
+                        <span class="section-kicker">Casa Milano</span>
+                        <h1 class="font-weight-bold mb-3">Link non valido</h1>
+
+                        <div class="bottom_line mx-auto" style="width: 140px; height: 2.5px;"></div>
+
+                        <p class="text-muted mt-4 mb-4">
+                            Il link di attivazione non è valido oppure è scaduto.
+                            Prova a registrarti nuovamente o richiedi un nuovo link di attivazione.
+                        </p>
+
+                        <a href="{% url 'accounts:login' %}" class="btn btn-login btn-block mt-4">
+                            Vai al login
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

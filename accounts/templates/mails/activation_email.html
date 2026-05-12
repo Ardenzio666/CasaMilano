@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Attiva il tuo account</title>
+</head>
+<body style="margin:0; padding:0; font-family: Georgia, 'Times New Roman', serif; background-color:#f8f5f2;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0;">
+        <tr>
+            <td align="center">
+
+                <table width="500" cellpadding="0" cellspacing="0" style="background:#ffffff; padding:40px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+
+                    <!-- HEADER -->
+                    <tr>
+                        <td align="center">
+                            <h2 style="margin:0; color:#2c2c2c;">Casa Milano</h2>
+                            <hr style="width:120px; border:1px solid #c5a47e; margin:20px auto;">
+                        </td>
+                    </tr>
+
+                    <!-- CONTENT -->
+                    <tr>
+                        <td style="color:#444; font-size:15px; line-height:1.6;">
+
+                            <p>Ciao <strong>{{ first_name }}</strong>,</p>
+
+                            <p>
+                                grazie per esserti registrato su <strong>Casa Milano</strong>.
+                            </p>
+
+                            <p>
+                                Per completare la registrazione e attivare il tuo account,
+                                clicca sul pulsante qui sotto:
+                            </p>
+
+                            <!-- BUTTON -->
+                            <div style="text-align:center; margin:30px 0;">
+                                <a href="{{ activation_url }}"
+                                   style="background-color:#c5a47e; color:#ffffff; padding:12px 24px; text-decoration:none; border-radius:4px; display:inline-block;">
+                                    Attiva il tuo account
+                                </a>
+                            </div>
+
+                            <p style="font-size:13px; color:#777;">
+                                Se il pulsante non funziona, copia e incolla questo link nel browser:
+                                <br>
+                                <a href="{{ activation_url }}">{{ activation_url }}</a>
+                            </p>
+
+                            <p style="font-size:13px; color:#777;">
+                                Se non hai richiesto tu questa registrazione, puoi ignorare questa email.
+                            </p>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
