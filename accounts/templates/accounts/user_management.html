@@ -42,10 +42,12 @@
                             Cambia password
                         </a>
 
-                        <a href="#" class="list-group-item list-group-item-action text-danger">
-                            <i class="bi bi-trash mr-2"></i>
-                            Cancella account
-                        </a>
+                        <button type="button"
+                            class="btn btn-outline-danger"
+                            data-toggle="modal"
+                            data-target="#deleteAccountModal">
+                        Cancella account
+                    </button>
                     </div>
 
                 </div>
@@ -94,5 +96,44 @@
         </div>
     </div>
 </section>
+<!-- MODALE CANCELLA ACCOUNT -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0 delete-account-modal">
 
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAccountModalLabel">
+                    Conferma cancellazione account
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    Sei sicuro di voler cancellare il tuo account?
+                </p>
+
+                <p class="text-muted mb-0">
+                    Questa azione è definitiva e non potrà essere annullata.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">
+                    Annulla
+                </button>
+
+                <form method="post" action="{% url 'accounts:delete_account' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        Sì, cancella account
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

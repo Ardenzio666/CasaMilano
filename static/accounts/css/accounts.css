@@ -254,3 +254,22 @@
 .user-nav .dropdown-menu .dropdown-item:hover i {
     color: #8a5a32 !important;
 }
+
+/* =========================
+   MODALE CANCELLA ACCOUNT
+   ========================= */
+.delete-account-modal {
+    border-radius: 18px;
+    background: #fffaf3;
+}
+
+.delete-account-modal .modal-title {
+    font-family: 'Playfair Display', serif;
+    color: #3b2a1f;
+    font-weight: 700;
+}
+
+.delete-account-modal .modal-header,
+.delete-account-modal .modal-footer {
+    border-color: rgba(156, 107, 63, 0.15);
+}

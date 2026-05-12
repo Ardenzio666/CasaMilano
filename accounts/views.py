@@ -8,6 +8,7 @@ from django.contrib.auth.views import LogoutView, PasswordResetCompleteView, Pas
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.views import PasswordChangeDoneView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 import logging
 
 logger = logging.getLogger(__name__)
@@ -190,4 +191,26 @@ def user_management(request):
         request,
         "accounts/user_management.html",
     )
+
+
+@login_required
+def delete_account(request):
+    if request.method != "POST":
+        logger.warning("Delete account called with non-POST method")
+        return redirect("accounts:user_management")
+
+    user = request.user
+    username = user.get_username()
+
+    logger.info("Deleting account for user=%s", username)
+
+    logout(request)
+    user.delete()
+
+    messages.success(
+        request,
+        "Il tuo account è stato cancellato correttamente."
+    )
+
+    return redirect("accounts:login")
 

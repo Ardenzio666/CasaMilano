@@ -50,6 +50,12 @@
                                 <label for="{{ form.password.id_for_label }}">Password</label>
                                 {{ form.password }}
 
+                                <div class="text-right mt-2">
+                                    <a href="{% url 'accounts:password_reset' %}" class="login-link small">
+                                        Hai dimenticato la password?
+                                    </a>
+                                </div>
+
                                 {% if form.password.errors %}
                                     <div class="login-field-error">
                                         {% for error in form.password.errors %}
