@@ -1,8 +1,6 @@
 import logging
 from django.conf import settings
 from django.template import loader
-from django.template.loader import render_to_string
-from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from contatti.mail_utils import send_email_sendgrid
 

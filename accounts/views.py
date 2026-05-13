@@ -129,7 +129,6 @@ def register_form(request):
                 "to_email": new_user.email,
                 "context": {
                     "first_name": new_user.first_name,
-                    "first_name": new_user.first_name,
                     "activation_url": activation_url,
                 },
             }

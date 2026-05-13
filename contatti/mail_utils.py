@@ -1,5 +1,4 @@
 import base64
-from email.mime.image import MIMEImage
 from pathlib import Path
 
 from django.template.loader import render_to_string

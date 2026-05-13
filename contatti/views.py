@@ -2,7 +2,6 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from casamilano import settings
 from contatti.forms import ContactForm
-from contatti.mail_utils import send_email
 from contatti.task import send_mail_async
 import logging
 
