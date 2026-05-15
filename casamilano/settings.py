@@ -148,6 +148,7 @@ INSTALLED_APPS = [
     'dovetrovarci.apps.DovetrovarciConfig',
     'menu.apps.MenuConfig',
     'eventi.apps.EventiConfig',
+    'legal.apps.LegalConfig'
 ]
 
 MIDDLEWARE = [

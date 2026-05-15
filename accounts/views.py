@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 
 from accounts.task import send_activation_email_async
+from legal.models import UserConsent
 from .forms import CustomPasswordChangeForm, CustomPasswordResetForm, CustomSetPasswordForm, LoginForm, UserRegistrationForm
 from django.contrib.auth.views import LogoutView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetView
 from django.contrib.auth.views import PasswordChangeView
@@ -71,45 +72,36 @@ class CustomLogoutView(LogoutView):
 
 
 def register_form(request):
-    logger.info("Register request receiced")
-    if request.method == 'POST':
+    logger.info("Register request received")
+
+    if request.method == "POST":
         user_form = UserRegistrationForm(request.POST)
+
         if user_form.is_valid():
             logger.info("Register form is valid")
-            cf = user_form.cleaned_data
-            email = cf['email']
-            password = cf['password']
-            password2 = cf['password2']
-            if password == password2:
-                logger.info("Passwords matcht")
-                if User.objects.filter(email=email).exists():
-                    logger.error("User email already exists")
-                    messages.error(request,
-                        'User with given email already exists')
-                    return render(
-                        request,
-                        'accounts/register_form.html',
-                        {'user_form': user_form}
-                    )
-            else:
-                logger.error("Passwords mismatch")
-                messages.error(request, 'Passwords don\'t match')
-                return render(
-                    request,
-                    'accounts/register_form.html',
-                    {'user_form': user_form}
-                )
-            # Create a new user object
-            new_user = User.objects.create_user(
-                first_name=cf['first_name'],
-                last_name=cf['last_name'],
-                username=email,
-                email=email,
-                password=password
-            )
+
+            new_user = user_form.save(commit=False)
             new_user.is_active = False
             new_user.save()
-            logger.info("Inactive User created")
+
+            logger.info("Inactive user created")
+
+            UserConsent.objects.create(
+                user=new_user,
+                consent_type=UserConsent.PRIVACY_POLICY,
+                accepted=True,
+                policy_version="1.0",
+            )
+
+            UserConsent.objects.create(
+                user=new_user,
+                consent_type=UserConsent.NEWSLETTER_EVENTS,
+                accepted=user_form.cleaned_data["newsletter_events"],
+                policy_version="1.0",
+            )
+
+            logger.info("User consents saved")
+
             uid = urlsafe_base64_encode(force_bytes(new_user.pk))
             token = default_token_generator.make_token(new_user)
 
@@ -122,7 +114,9 @@ def register_form(request):
             )
 
             activation_url = request.build_absolute_uri(activation_path)
+
             logger.info(f"Activation url generated for user {new_user.email}")
+
             form_data = {
                 "subject_template_name": "mails/activation_subject.txt",
                 "html_template": "mails/activation_email.html",
@@ -136,17 +130,20 @@ def register_form(request):
             send_activation_email_async.delay(form_data)
 
             logger.info(f"Activation email sent to {new_user.email}")
+
             return render(
                 request,
-                'accounts/register_done.html',
-                {'new_user': new_user,}
+                "accounts/register_done.html",
+                {"new_user": new_user}
             )
+
     else:
         user_form = UserRegistrationForm()
+
     return render(
         request,
-        'accounts/register_form.html',
-        {'user_form': user_form}
+        "accounts/register_form.html",
+        {"user_form": user_form}
     )
 
 #PASSWORD CHANGE
@@ -229,9 +226,25 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 def user_management(request):
     logger.info("User management page requested")
 
+    latest_newsletter_consent = (
+        request.user.consents
+        .filter(consent_type=UserConsent.NEWSLETTER_EVENTS)
+        .order_by("-accepted_at")
+        .first()
+    )
+
+    newsletter_enabled = (
+        latest_newsletter_consent is not None
+        and latest_newsletter_consent.accepted
+    )
+
     return render(
         request,
         "accounts/user_management.html",
+        {
+            "newsletter_enabled": newsletter_enabled,
+            "latest_newsletter_consent": latest_newsletter_consent,
+        }
     )
 
 

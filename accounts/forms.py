@@ -32,8 +32,22 @@ class CustomPasswordChangeForm(PasswordChangeForm):
 
 class UserRegistrationForm(forms.ModelForm):
     password2 = forms.CharField(
+        label="Ripeti password",
         widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
+
+    privacy_policy = forms.BooleanField(
+        required=True,
+        label="Ho letto e accetto la Privacy Policy",
+        widget=forms.CheckboxInput(attrs={"class": "form-check-input"})
+    )
+
+    newsletter_events = forms.BooleanField(
+        required=False,
+        label="Desidero ricevere comunicazioni sugli eventi di Casa Milano",
+        widget=forms.CheckboxInput(attrs={"class": "form-check-input"})
+    )
+
 
     class Meta:
         model = User
@@ -45,7 +59,25 @@ class UserRegistrationForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'password': forms.PasswordInput(attrs={'class': 'form-control'}),
         }
+    def clean_email(self):
+        email = self.cleaned_data["email"]
 
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Esiste già un account con questa email.")
+
+        return email
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        password = cleaned_data.get("password")
+        password2 = cleaned_data.get("password2")
+
+        if password and password2 and password != password2:
+            self.add_error("password2", "Le password non coincidono.")
+
+        return cleaned_data
+    
     # ✅ hashing password
     def save(self, commit=True):
         user = super().save(commit=False)

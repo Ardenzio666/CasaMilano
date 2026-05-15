@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cookie Policy | Casa Milano{% endblock %}
+
+{% block content %}
+
+<section class="legal-hero py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 text-center">
+                <p class="legal-eyebrow mb-2">Casa Milano</p>
+                <h1 class="legal-title mb-3">Cookie Policy</h1>
+                <p class="legal-subtitle mb-0">
+                    Informativa sull’utilizzo dei cookie e delle tecnologie simili presenti sul sito.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="legal-content-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+
+                <div class="legal-card">
+
+                    <div class="legal-meta mb-4">
+                        <p class="mb-1"><strong>Ultimo aggiornamento:</strong> 15 maggio 2026</p>
+                        <p class="mb-0"><strong>Versione:</strong> 1.0</p>
+                    </div>
+
+                    <div class="legal-alert mb-5">
+                        Questa Cookie Policy descrive l’utilizzo dei cookie da parte del sito Casa Milano.
+                        I cookie tecnici sono necessari al corretto funzionamento del sito, mentre eventuali
+                        cookie non tecnici saranno utilizzati solo previo consenso dell’utente.
+                    </div>
+
+                    <h2>1. Cosa sono i cookie</h2>
+                    <p>
+                        I cookie sono piccoli file di testo che i siti web possono salvare sul dispositivo
+                        dell’utente durante la navigazione. Consentono al sito di funzionare correttamente,
+                        ricordare alcune preferenze o raccogliere informazioni sull’utilizzo delle pagine.
+                    </p>
+
+                    <h2>2. Tipologie di cookie utilizzate</h2>
+                    <p>
+                        Il sito può utilizzare le seguenti categorie di cookie:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <strong>Cookie tecnici:</strong> necessari per il funzionamento del sito,
+                            la navigazione, la sicurezza e la gestione della sessione utente.
+                        </li>
+                        <li>
+                            <strong>Cookie funzionali:</strong> utilizzati per ricordare eventuali preferenze
+                            espresse dall’utente.
+                        </li>
+                        <li>
+                            <strong>Cookie analitici:</strong> utilizzati, se presenti, per comprendere
+                            in forma aggregata come viene utilizzato il sito.
+                        </li>
+                        <li>
+                            <strong>Cookie di profilazione o marketing:</strong> utilizzati, se presenti,
+                            per finalità promozionali o di tracciamento. Questi cookie richiedono consenso.
+                        </li>
+                    </ul>
+
+                    <h2>3. Cookie tecnici</h2>
+                    <p>
+                        I cookie tecnici sono indispensabili per consentire il corretto funzionamento
+                        del sito e non richiedono il consenso preventivo dell’utente.
+                    </p>
+                    <p>
+                        Rientrano in questa categoria, ad esempio, i cookie utilizzati per:
+                    </p>
+
+                    <ul>
+                        <li>gestire la sessione di navigazione;</li>
+                        <li>mantenere l’accesso dell’utente registrato;</li>
+                        <li>proteggere i form tramite token di sicurezza CSRF;</li>
+                        <li>garantire la sicurezza e l’integrità del sito.</li>
+                    </ul>
+
+                    <h2>4. Cookie analitici e strumenti di terze parti</h2>
+                    <p>
+                        Al momento il sito non utilizza cookie analitici o strumenti di tracciamento
+                        non tecnici, salvo diversa indicazione pubblicata su questa pagina.
+                    </p>
+                    <p>
+                        Qualora in futuro venissero integrati strumenti come servizi di analytics,
+                        pixel di tracciamento, mappe interattive o contenuti incorporati da piattaforme
+                        esterne, questa Cookie Policy sarà aggiornata e, ove necessario, sarà richiesto
+                        il consenso preventivo dell’utente.
+                    </p>
+
+                    <h2>5. Gestione del consenso</h2>
+                    <p>
+                        I cookie tecnici vengono utilizzati senza necessità di consenso, in quanto necessari
+                        al funzionamento del sito.
+                    </p>
+                    <p>
+                        Eventuali cookie non tecnici saranno installati solo dopo il consenso esplicito
+                        dell’utente, tramite apposito banner o sistema di gestione delle preferenze.
+                    </p>
+
+                    <h2>6. Come disabilitare i cookie dal browser</h2>
+                    <p>
+                        L’utente può gestire o disabilitare i cookie anche attraverso le impostazioni
+                        del proprio browser. La disabilitazione dei cookie tecnici può compromettere
+                        alcune funzionalità del sito, come l’accesso all’area utente o l’invio dei form.
+                    </p>
+
+                    <h2>7. Modifiche alla Cookie Policy</h2>
+                    <p>
+                        La presente Cookie Policy può essere aggiornata nel tempo, anche in seguito
+                        all’introduzione di nuovi strumenti o funzionalità. Le modifiche saranno pubblicate
+                        su questa pagina con indicazione della data di aggiornamento.
+                    </p>
+
+                    <div class="legal-footer-note mt-5">
+                        <p class="mb-0">
+                            Per informazioni relative all’utilizzo dei cookie o al trattamento dei dati personali,
+                            è possibile utilizzare la
+                            <a href="{% url 'contatti:contatti' %}">pagina contatti</a>.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

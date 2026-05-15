@@ -98,7 +98,43 @@
                                     </div>
                                 {% endif %}
                             </div>
+                            <!-- Privacy Policy -->
+                            <div class="login-consent-row mt-4">
+                                <div class="login-consent-check">
+                                    {{ user_form.privacy_policy }}
+                                </div>
 
+                                <label class="login-consent-label" for="{{ user_form.privacy_policy.id_for_label }}">
+                                    Ho letto e accetto la
+                                    <a href="{% url 'legal:privacy_policy' %}" target="_blank" class="login-link">
+                                        Privacy Policy
+                                    </a>.
+                                </label>
+                            </div>
+
+                            {% if user_form.privacy_policy.errors %}
+                                <div class="login-field-error">
+                                    {{ user_form.privacy_policy.errors }}
+                                </div>
+                            {% endif %}
+
+                            <!-- Newsletter eventi -->
+                            <div class="login-consent-row">
+                                <div class="login-consent-check">
+                                    {{ user_form.newsletter_events }}
+                                </div>
+
+                                <label class="login-consent-label" for="{{ user_form.newsletter_events.id_for_label }}">
+                                    Desidero ricevere comunicazioni via email sugli eventi,
+                                    le cene tematiche e le iniziative di Casa Milano.
+                                </label>
+                            </div>
+
+                            {% if user_form.newsletter_events.errors %}
+                                <div class="login-field-error">
+                                    {{ user_form.newsletter_events.errors }}
+                                </div>
+                            {% endif %}
                             <!-- SUBMIT -->
                             <button type="submit" class="btn btn-login btn-block mt-4">
                                 Registrati

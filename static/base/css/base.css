@@ -22,3 +22,69 @@
 #main-nav .nav-link.active::after {
   transform: scaleX(1);
 }
+
+/* FOOTER*/
+
+.site-footer {
+    background: linear-gradient(
+        180deg,
+        #2e241d 0%,
+        #241c16 100%
+    );
+
+    color: rgba(255,255,255,0.82);
+
+    padding-top: 60px;
+    padding-bottom: 28px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand h5 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #f1e4d6;
+    margin-bottom: 14px;
+}
+
+.footer-brand p {
+    line-height: 1.8;
+    color: rgba(255,255,255,0.72);
+    max-width: 320px;
+}
+
+.footer-heading {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.82rem;
+    color: #d6b899;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: #f3d4b3;
+    text-decoration: none;
+    padding-left: 4px;
+}
+
+.footer-divider {
+    border-color: rgba(255,255,255,0.08);
+    margin-top: 40px;
+    margin-bottom: 24px;
+}
+
+.footer-bottom p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.6);
+}

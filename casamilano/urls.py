@@ -28,6 +28,7 @@ urlpatterns = [
     path('menu/', include('menu.urls', namespace='menu')),
     path('eventi/', include('eventi.urls', namespace='eventi')),
     path('', include('homepage.urls', namespace='homepage')),
+    path("legal/", include("legal.urls", namespace="legal"))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

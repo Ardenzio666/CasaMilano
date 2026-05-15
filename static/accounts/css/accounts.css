@@ -273,3 +273,53 @@
 .delete-account-modal .modal-footer {
     border-color: rgba(156, 107, 63, 0.15);
 }
+
+/* =========================
+   PRIVACY
+   ========================= */
+
+.login-consent-group {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #5f5a55;
+    line-height: 1.5;
+}
+
+.login-consent-group .form-check-input {
+    margin-top: 0.25rem;
+}
+
+.login-consent-group .form-check-label {
+    padding-left: 0.35rem;
+}
+
+.login-consent-group a {
+    font-weight: 600;
+}
+
+.login-consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+    margin-bottom: 14px;
+}
+
+.login-consent-check {
+    flex: 0 0 auto;
+    padding-top: 3px;
+}
+
+.login-consent-check input[type="checkbox"] {
+    position: static;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.login-consent-label {
+    margin: 0;
+    color: #4f4944;
+    font-size: 0.92rem;
+    line-height: 1.55;
+}

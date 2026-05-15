@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Privacy Policy | Casa Milano{% endblock %}
+
+{% block content %}
+
+<section class="legal-hero py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 text-center">
+                <p class="legal-eyebrow mb-2">Casa Milano</p>
+                <h1 class="legal-title mb-3">Privacy Policy</h1>
+                <p class="legal-subtitle mb-0">
+                    Informativa sul trattamento dei dati personali degli utenti del sito.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="legal-content-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+
+                <div class="legal-card">
+
+                    <div class="legal-meta mb-4">
+                        <p class="mb-1"><strong>Ultimo aggiornamento:</strong> 15 maggio 2026</p>
+                        <p class="mb-0"><strong>Versione:</strong> 1.0</p>
+                    </div>
+
+                    <div class="legal-alert mb-5">
+                        La presente informativa descrive come Casa Milano raccoglie, utilizza e protegge
+                        i dati personali forniti dagli utenti durante la navigazione, la registrazione al sito
+                        e l’utilizzo dei servizi disponibili.
+                    </div>
+
+                    <h2>1. Titolare del trattamento</h2>
+                    <p>
+                        Il titolare del trattamento dei dati personali è <strong>Casa Milano</strong>.
+                    </p>
+                    <p>
+                        Per qualsiasi richiesta relativa alla privacy è possibile contattare il titolare
+                        all’indirizzo email:
+                        <a href="mailto:info@casamilano69.it">info@casamilano69.it</a>.
+                    </p>
+
+                    <h2>2. Dati personali raccolti</h2>
+                    <p>
+                        Attraverso il sito possono essere raccolti i seguenti dati personali:
+                    </p>
+
+                    <ul>
+                        <li>nome;</li>
+                        <li>indirizzo email;</li>
+                        <li>password, conservata in forma cifrata/hashata;</li>
+                        <li>eventuali commenti pubblicati dagli utenti;</li>
+                        <li>eventuali consensi prestati dall’utente;</li>
+                        <li>dati tecnici necessari al funzionamento del sito.</li>
+                    </ul>
+
+                    <h2>3. Finalità del trattamento</h2>
+                    <p>
+                        I dati personali vengono trattati per le seguenti finalità:
+                    </p>
+
+                    <ul>
+                        <li>creazione e gestione dell’account utente;</li>
+                        <li>accesso alle funzionalità riservate del sito;</li>
+                        <li>gestione di commenti, interazioni e richieste inviate tramite il sito;</li>
+                        <li>invio di comunicazioni relative agli eventi, solo previo consenso specifico;</li>
+                        <li>adempimento di obblighi di legge;</li>
+                        <li>sicurezza, manutenzione e corretto funzionamento del sito.</li>
+                    </ul>
+
+                    <h2>4. Base giuridica del trattamento</h2>
+                    <p>
+                        Il trattamento dei dati personali si basa su una o più delle seguenti basi giuridiche:
+                    </p>
+
+                    <ul>
+                        <li>esecuzione di un servizio richiesto dall’utente;</li>
+                        <li>consenso espresso dall’utente;</li>
+                        <li>adempimento di obblighi legali;</li>
+                        <li>legittimo interesse alla sicurezza e al corretto funzionamento del sito.</li>
+                    </ul>
+
+                    <h2>5. Newsletter eventi</h2>
+                    <p>
+                        L’utente può scegliere liberamente se ricevere comunicazioni via email relative
+                        a eventi, cene tematiche e iniziative di Casa Milano.
+                    </p>
+                    <p>
+                        Il consenso alla newsletter è facoltativo e può essere revocato in qualsiasi momento.
+                        Il mancato consenso non impedisce la registrazione al sito.
+                    </p>
+
+                    <h2>6. Modalità di conservazione dei dati</h2>
+                    <p>
+                        I dati personali sono conservati con strumenti informatici e protetti mediante
+                        misure tecniche e organizzative adeguate a prevenire accessi non autorizzati,
+                        perdita, modifica o diffusione indebita.
+                    </p>
+
+                    <h2>7. Durata della conservazione</h2>
+                    <p>
+                        I dati relativi all’account sono conservati fino alla cancellazione dell’account
+                        da parte dell’utente o fino a quando siano necessari per le finalità indicate.
+                    </p>
+                    <p>
+                        I dati relativi ai consensi possono essere conservati per finalità di prova
+                        dell’avvenuta acquisizione del consenso.
+                    </p>
+
+                    <h2>8. Comunicazione dei dati a terzi</h2>
+                    <p>
+                        I dati personali non vengono venduti né ceduti a terzi per finalità commerciali.
+                        Potranno essere comunicati solo a soggetti tecnici o fornitori necessari
+                        al funzionamento del sito e dei servizi collegati.
+                    </p>
+
+                    <h2>9. Diritti dell’utente</h2>
+                    <p>
+                        L’utente può esercitare i diritti previsti dalla normativa applicabile, tra cui:
+                    </p>
+
+                    <ul>
+                        <li>accesso ai propri dati personali;</li>
+                        <li>rettifica dei dati inesatti;</li>
+                        <li>cancellazione dei dati;</li>
+                        <li>limitazione del trattamento;</li>
+                        <li>opposizione al trattamento;</li>
+                        <li>revoca del consenso prestato;</li>
+                        <li>richiesta di portabilità dei dati, ove applicabile.</li>
+                    </ul>
+
+                    <h2>10. Modifiche alla presente informativa</h2>
+                    <p>
+                        La presente Privacy Policy può essere aggiornata nel tempo. Eventuali modifiche
+                        saranno pubblicate su questa pagina con indicazione della data di aggiornamento.
+                    </p>
+
+                    <div class="legal-footer-note mt-5">
+                        <p class="mb-0">
+                            Per esercitare i propri diritti o richiedere informazioni
+                            relative al trattamento dei dati personali, l’utente può
+                            utilizzare la
+                            <a href="{% url 'contatti:contatti' %}">pagina contatti</a>.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

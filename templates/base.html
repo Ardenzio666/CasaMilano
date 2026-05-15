@@ -22,6 +22,8 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   <link rel="stylesheet" href="{% static 'eventi/css/eventi.css' %}">
   <link rel="stylesheet" href="{% static 'eventi/css/event_details.css' %}">
   <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+  <link rel="stylesheet" href="{% static 'legal/css/legal.css' %}">
+  <link rel="stylesheet" href="{% static 'base/css/cookie_banner.css' %}">
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -114,7 +116,102 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 <div class="container py-4">
   {% block content %}
   {% endblock content %}
-  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer mt-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- BRAND -->
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="footer-brand">
+                    <h5>Casa Milano</h5>
+                    <p>
+                        Home Restaurant dedicato alla convivialità,
+                        alla tradizione e all’esperienza gastronomica.
+                    </p>
+                </div>
+            </div>
+
+            <!-- NAVIGAZIONE -->
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h6 class="footer-heading">Navigazione</h6>
+
+                <ul class="footer-links list-unstyled">
+                    <li>
+                        <a href="{% url 'homepage:home' %}">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'eventi:eventi' %}">
+                            Eventi
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'menu:menu' %}">
+                            I nostri piatti
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'contatti:contatti' %}">
+                            Contatti
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- AREA LEGALE -->
+            <div class="col-lg-4">
+                <h6 class="footer-heading">Informazioni</h6>
+
+                <ul class="footer-links list-unstyled">
+
+                    <li>
+                        <a href="{% url 'legal:privacy_policy' %}">
+                            Privacy Policy
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'legal:cookie_policy' %}">
+                            Cookie Policy
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'accounts:login' %}">
+                            Area riservata
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom text-center">
+            <p class="mb-0">
+                © {% now "Y" %} Casa Milano · Tutti i diritti riservati
+            </p>
+        </div>
+
+    </div>
+
+</footer>
+<!-- COOKIE BANNER -->
+{% include "includes/cookie_banner.html" %}
+<!-- END FOOTER -->
+
+
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous"></script>
@@ -127,6 +224,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
  <script src="{% static 'homepage/js/script.js' %}"></script>
  <script src="{% static 'eventi/js/script.js' %}"></script>
  <script src="{% static 'menu/js/script.js' %}"></script>
+ <script src="{% static 'base/js/cookie_banner.js' %}"></script>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
