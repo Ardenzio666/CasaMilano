@@ -41,13 +41,50 @@
                             <i class="bi bi-key mr-2"></i>
                             Cambia password
                         </a>
+                        <div class="account-action-card mt-4">
+                            <div class="w-100">
+                                <h5>Preferenze privacy</h5>
 
+                                <p>
+                                    Gestisci il consenso alla ricezione di comunicazioni via email
+                                    sugli eventi, le cene tematiche e le iniziative di Casa Milano.
+                                </p>
+
+                                <form method="post" action="{% url 'accounts:update_consents' %}" class="mt-3">
+                                    {% csrf_token %}
+
+                                    <div class="account-consent-row">
+                                        <input
+                                            type="checkbox"
+                                            id="newsletter_events"
+                                            name="newsletter_events"
+                                            {% if newsletter_enabled %}checked{% endif %}
+                                        >
+
+                                        <label for="newsletter_events">
+                                            Desidero ricevere comunicazioni sugli eventi di Casa Milano.
+                                        </label>
+                                    </div>
+
+                                    {% if latest_newsletter_consent %}
+                                        <p class="account-consent-meta mt-2">
+                                            Ultimo aggiornamento:
+                                            {{ latest_newsletter_consent.accepted_at|date:"d/m/Y H:i" }}
+                                        </p>
+                                    {% endif %}
+
+                                    <button type="submit" class="btn btn-account mt-3">
+                                        Salva preferenze
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                         <button type="button"
                             class="btn btn-outline-danger"
                             data-toggle="modal"
                             data-target="#deleteAccountModal">
                         Cancella account
-                    </button>
+                        </button>
                     </div>
 
                 </div>

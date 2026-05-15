@@ -17,5 +17,6 @@ urlpatterns = [
     path("reset/complete/",views.CustomPasswordResetCompleteView.as_view(),name="password_reset_complete",),
     path("account/", views.user_management, name="user_management"),
     path("account/delete/", views.delete_account, name="delete_account"),
+    path("account/consents/", views.update_consents, name="update_consents"),
     path("activate/<uidb64>/<token>/",views.activate_account,name="activate_account"),
 ]

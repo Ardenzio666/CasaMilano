@@ -301,3 +301,32 @@ def activate_account(request, uidb64, token):
         "accounts/activation_invalid.html"
     )
 
+
+@login_required
+def update_consents(request):
+    if request.method != "POST":
+        logger.warning("Update consents called with non-POST method")
+        return redirect("accounts:user_management")
+
+    newsletter_enabled = request.POST.get("newsletter_events") == "on"
+
+    UserConsent.objects.create(
+        user=request.user,
+        consent_type=UserConsent.NEWSLETTER_EVENTS,
+        accepted=newsletter_enabled,
+        policy_version="1.0",
+    )
+
+    logger.info(
+        "Newsletter consent updated for user=%s value=%s",
+        request.user.email,
+        newsletter_enabled,
+    )
+
+    messages.success(
+        request,
+        "Le preferenze privacy sono state aggiornate correttamente."
+    )
+
+    return redirect("accounts:user_management")
+
