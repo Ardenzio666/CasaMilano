@@ -132,36 +132,36 @@
                         <div class="event-comments-section mt-5">
                             <div class="bottom_line event-line-left event-line-small mb-4"></div>
 
+                            <div id="eventCommentsList{{ event.id }}" class="event-comments-list mt-4">
+                                <h6 class="font-weight-bold mb-3">Commenti</h6>
+
+                                {% with comments=event.approved_comments %}
+                                    {% if comments.exists %}
+                                        {% for comment in comments %}
+                                            <div class="event-comment mb-3 pb-3 border-bottom">
+                                                <p class="mb-1">{{ comment.text }}</p>
+                                                <small class="text-muted">
+                                                    {% if comment.user %}
+                                                        {{ comment.user.username }}
+                                                    {% else %}
+                                                        Anonimo
+                                                    {% endif %}
+                                                    · {{ comment.created_at|date:"d/m/Y" }}
+                                                </small>
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p class="text-muted mb-0">Non ci sono ancora commenti.</p>
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+
                             {% if request.user.is_authenticated %}
                                 <button type="button"
                                         class="btn btn-outline-dark btn-sm show-event-comment-form mt-3"
                                         data-event-id="{{ event.id }}">
                                     Lascia un commento
                                 </button>
-
-                                <div id="eventCommentsList{{ event.id }}" class="event-comments-list mt-4">
-                                    <h6 class="font-weight-bold mb-3">Commenti</h6>
-
-                                    {% with comments=event.approved_comments %}
-                                        {% if comments.exists %}
-                                            {% for comment in comments %}
-                                                <div class="event-comment mb-3 pb-3 border-bottom">
-                                                    <p class="mb-1">{{ comment.text }}</p>
-                                                    <small class="text-muted">
-                                                        {% if comment.user %}
-                                                            {{ comment.user.username }}
-                                                        {% else %}
-                                                            Anonimo
-                                                        {% endif %}
-                                                        · {{ comment.created_at|date:"d/m/Y" }}
-                                                    </small>
-                                                </div>
-                                            {% endfor %}
-                                        {% else %}
-                                            <p class="text-muted mb-0">Non ci sono ancora commenti.</p>
-                                        {% endif %}
-                                    {% endwith %}
-                                </div>
 
                                 <div id="eventCommentForm{{ event.id }}" class="comment-form-wrapper mt-4 d-none">
                                     <h6 class="font-weight-bold mb-3">Lascia un commento</h6>
@@ -191,7 +191,6 @@
                                         </div>
                                     </form>
                                 </div>
-
                             {% else %}
                                 <div class="mt-4">
                                     <p class="text-muted mb-2">
