@@ -29,6 +29,21 @@ import logging
 logger = logging.getLogger(__name__)
 
 def user_login(request):
+    logger.info(
+        "Login request",
+        extra={
+            "method": request.method,
+            "ip": request.META.get("REMOTE_ADDR"),
+            "xff": request.META.get("HTTP_X_FORWARDED_FOR"),
+            "user_agent": request.META.get("HTTP_USER_AGENT"),
+            "referer": request.META.get("HTTP_REFERER"),
+            "origin": request.META.get("HTTP_ORIGIN"),
+            "host": request.get_host(),
+            "is_secure": request.is_secure(),
+            "has_csrf_cookie": "csrftoken" in request.COOKIES,
+            "has_session_cookie": "sessionid" in request.COOKIES,
+        },
+    )
     if request.method == 'POST':
         logger.info("Auth request received")
         form = LoginForm(request.POST)
@@ -56,7 +71,14 @@ def user_login(request):
                         logger.error(f"Problem in logging for user {user_record}")
                         logger.error(f"Trace: {e}")
                 else:
-                    logger.error(f"User {user_record} is None")
+                    logger.warning(
+                "Login failed",
+                extra={
+                    "username": user_record,
+                    "user_agent": request.META.get("HTTP_USER_AGENT"),
+                    "has_session_cookie": "sessionid" in request.COOKIES,
+                },
+            )
             messages.error(request, 'Incorrect email / password')
     else:
         form = LoginForm()

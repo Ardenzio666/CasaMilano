@@ -187,6 +187,7 @@ CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Europe/Rome"
+CSRF_FAILURE_VIEW = "accounts.csrf.csrf_failure"
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
