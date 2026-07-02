@@ -39,6 +39,7 @@ def user_login(request):
                 user_record = User.objects.get(email=cf['email'])
                 logger.info(f"User with email {user_record} is trying to authenticate")
             except User.DoesNotExist:
+                logger.error(f"User {user_record} do not exists")
                 pass
             if user_record:
                 user = authenticate(
@@ -47,9 +48,15 @@ def user_login(request):
                     password=cf['password']
                 )
                 if user is not None:
-                    login(request, user)
-                    logger.info("User is successfully authenticated")
-                    return redirect('homepage:home')
+                    try:
+                        login(request, user)
+                        logger.info("User is successfully authenticated")
+                        return redirect('homepage:home')
+                    except Exception as e:
+                        logger.error(f"Problem in logging for user {user_record}")
+                        logger.error(f"Trace: {e}")
+                else:
+                    logger.error(f"User {user_record} is None")
             messages.error(request, 'Incorrect email / password')
     else:
         form = LoginForm()
