@@ -188,6 +188,7 @@ CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Europe/Rome"
 CSRF_FAILURE_VIEW = "accounts.csrf.csrf_failure"
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
