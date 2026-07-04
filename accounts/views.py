@@ -51,7 +51,7 @@ def user_login(request):
             cf = form.cleaned_data
             user_record = None
             try:
-                user_record = User.objects.get(email=cf['email'])
+                user_record = User.objects.get(email__iexact=cf['email'].strip())
                 logger.info(f"User with email {user_record} is trying to authenticate")
             except User.DoesNotExist:
                 logger.error(f"User {user_record} do not exists")
